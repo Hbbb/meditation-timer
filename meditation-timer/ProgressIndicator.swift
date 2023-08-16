@@ -31,7 +31,7 @@ struct ProgressIndicator: View {
 					path.addArc(center: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2),
 											radius: radius,
 											startAngle: .degrees(90),
-											endAngle: endAngle(for: progress),
+											endAngle: .degrees(360.0 * progress),
 											clockwise: false)
 				}
 				.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
@@ -39,11 +39,6 @@ struct ProgressIndicator: View {
 			}
 			.rotationEffect(.degrees(45))
 		}
-	}
-
-	func endAngle(for progress: CGFloat) -> Angle {
-		let endAngleDegrees = 90.0 + 270.0 * progress
-		return .degrees(endAngleDegrees)
 	}
 
 }
