@@ -11,6 +11,7 @@
 		841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E000A2A8D2AE300E9BE5B /* ContentView.swift */; };
 		841E000D2A8D2AE400E9BE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841E000C2A8D2AE400E9BE5B /* Assets.xcassets */; };
 		841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841E000F2A8D2AE400E9BE5B /* Preview Assets.xcassets */; };
+		841E00172A8D3EC600E9BE5B /* CircularDial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E00162A8D3EC600E9BE5B /* CircularDial.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		841E000A2A8D2AE300E9BE5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		841E000C2A8D2AE400E9BE5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841E000F2A8D2AE400E9BE5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		841E00162A8D3EC600E9BE5B /* CircularDial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularDial.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +47,7 @@
 			children = (
 				841E00082A8D2AE300E9BE5B /* meditation_timerApp.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
+				841E00162A8D3EC600E9BE5B /* CircularDial.swift */,
 				841E000C2A8D2AE400E9BE5B /* Assets.xcassets */,
 				841E000E2A8D2AE400E9BE5B /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				841E00172A8D3EC600E9BE5B /* CircularDial.swift in Sources */,
 				841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */,
 				841E00092A8D2AE300E9BE5B /* meditation_timerApp.swift in Sources */,
 			);

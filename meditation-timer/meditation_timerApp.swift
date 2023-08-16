@@ -8,10 +8,10 @@
 import SwiftUI
 
 @main
-struct meditation_timerApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+struct MeditationTimerApp: App {
+	var body: some Scene {
+		WindowGroup {
+			ContentView()
+		}
+	}
 }
