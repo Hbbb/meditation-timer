@@ -19,8 +19,8 @@ struct ProgressIndicator: View {
 				Path { path in
 					path.addArc(center: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2),
 											radius: radius,
-											startAngle: .degrees(180),
-											endAngle: .degrees(0),
+											startAngle: .degrees(90),
+											endAngle: .degrees(360),
 											clockwise: false)
 				}
 				.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
@@ -30,27 +30,29 @@ struct ProgressIndicator: View {
 				Path { path in
 					path.addArc(center: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2),
 											radius: radius,
-											startAngle: .degrees(180),
-											//											endAngle: .degrees(180.0 + 180.0 * CGFloat(1 - progress)),
-											endAngle: .degrees(180.0 + 180.0 * CGFloat(progress)),
+											startAngle: .degrees(90),
+											endAngle: endAngle(for: progress),
 											clockwise: false)
 				}
 				.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
 				.foregroundColor(.blue)
 			}
+			.rotationEffect(.degrees(45))
 		}
 	}
+
+	func endAngle(for progress: CGFloat) -> Angle {
+		let endAngleDegrees = 90.0 + 270.0 * progress
+		return .degrees(endAngleDegrees)
+	}
+
 }
-
-
-
-
 
 struct ProgressIndicator_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
 			Spacer()
-			ProgressIndicator(progress: 0.9)
+			ProgressIndicator(progress: 0.5)
 			Spacer()
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
