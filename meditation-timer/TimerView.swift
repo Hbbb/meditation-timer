@@ -22,6 +22,9 @@ struct TimerView: View {
 				// Decrement button
 				Button(action: decrementTime, label: {
 					Image(systemName: "minus")
+						.font(.system(size: 18))
+						.frame(width: 32, height: 32)
+						.background(Circle().fill(Color.gray.opacity(0.2)))
 				})
 				.disabled(isRunning)
 
@@ -33,19 +36,21 @@ struct TimerView: View {
 					}
 				}, label: {
 					Image(systemName: isRunning ? "pause" : "play")
+						.font(.system(size: 24))
+						.frame(width: 44, height: 44)
+						.background(Circle().fill(Color.gray.opacity(0.2)))
 				})
 
 				// Increment button
 				Button(action: incrementTime, label: {
 					Image(systemName: "plus")
+						.font(.system(size: 18))
+						.frame(width: 32, height: 32)
+						.background(Circle().fill(Color.gray.opacity(0.2)))
 				})
 				.disabled(isRunning)
-			}.padding()
-
-		}
-		.onDisappear {
-			// Stop the timer when the view disappears
-			stopTimer()
+			}
+			.padding(.horizontal, 20)
 		}
 	}
 
