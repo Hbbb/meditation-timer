@@ -13,6 +13,9 @@ class TimerModel: ObservableObject {
 	@Published var isRunning: Bool = false
 	@Published var timerProgress: CGFloat = 0
 
+	// This prevents the phone from auto-locking while a timer is running
+	@Published var shouldDisableIdleTimer = false
+
 	private var timer: Timer?
 
 	func startTimer() {
@@ -27,6 +30,8 @@ class TimerModel: ObservableObject {
 			}
 		}
 		isRunning = true
+
+		shouldDisableIdleTimer = true
 	}
 
 	func stopTimer() {
@@ -34,6 +39,7 @@ class TimerModel: ObservableObject {
 		timer = nil
 		isRunning = false
 		timerProgress = 0
+		shouldDisableIdleTimer = false
 	}
 	
 	func incrementTime() {

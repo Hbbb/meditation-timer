@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct TimerView: View {
 	@EnvironmentObject var timer: TimerModel
@@ -60,8 +61,14 @@ struct TimerView: View {
 			}
 			.padding(.horizontal, 40)
 		}
+		.onReceive(timer.$shouldDisableIdleTimer) { _ in
+			updateIdleTimer()
+		}
 	}
 
+	private func updateIdleTimer() {
+		UIApplication.shared.isIdleTimerDisabled = timer.shouldDisableIdleTimer
+	}
 }
 
 
