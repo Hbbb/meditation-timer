@@ -4,7 +4,7 @@ import UIKit
 struct TimerView: View {
 	@EnvironmentObject var timer: TimerModel
 
-	var formattedTime: String {
+	var timeRemainingLabel: String {
 		let minutes = Int(timer.remainingTime / 60)
 		let seconds = Int(timer.remainingTime % 60)
 		let secondsFormatted = String(format: "%02d", seconds)
@@ -22,11 +22,11 @@ struct TimerView: View {
 				ProgressIndicator(progress: timer.timerProgress)
 					.frame(width: 300, height: 300)
 
-				Text(formattedTime)
+				Text(timeRemainingLabel)
 					.font(.title)
 			}
 
-			TimerControlsView()
+			TimerControls()
 		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in
 			updateIdleTimer()

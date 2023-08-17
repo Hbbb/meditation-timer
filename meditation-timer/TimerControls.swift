@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimerControlsView: View {
+struct TimerControls: View {
 	@EnvironmentObject var timer: TimerModel
 
 	private var primaryControlIcon: String {

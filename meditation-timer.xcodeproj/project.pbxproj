@@ -14,7 +14,7 @@
 		841E00192A8D4CF400E9BE5B /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E00182A8D4CF400E9BE5B /* ProgressIndicator.swift */; };
 		841E001B2A8D866400E9BE5B /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E001A2A8D866400E9BE5B /* TimerModel.swift */; };
 		8461BB2B2A8DD84100D9A1D6 /* RoundedRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2A2A8DD84100D9A1D6 /* RoundedRectangleView.swift */; };
-		8461BB2D2A8DDCAF00D9A1D6 /* TimerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* TimerControlsView.swift */; };
+		8461BB2D2A8DDCAF00D9A1D6 /* TimerControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* TimerControls.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,7 +26,7 @@
 		841E00182A8D4CF400E9BE5B /* ProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		841E001A2A8D866400E9BE5B /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
 		8461BB2A2A8DD84100D9A1D6 /* RoundedRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangleView.swift; sourceTree = "<group>"; };
-		8461BB2C2A8DDCAF00D9A1D6 /* TimerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControlsView.swift; sourceTree = "<group>"; };
+		8461BB2C2A8DDCAF00D9A1D6 /* TimerControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerControls.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,7 @@
 			children = (
 				841E00082A8D2AE300E9BE5B /* meditation_timerApp.swift */,
 				841E000A2A8D2AE300E9BE5B /* TimerView.swift */,
-				8461BB2C2A8DDCAF00D9A1D6 /* TimerControlsView.swift */,
+				8461BB2C2A8DDCAF00D9A1D6 /* TimerControls.swift */,
 				8461BB2A2A8DD84100D9A1D6 /* RoundedRectangleView.swift */,
 				841E001A2A8D866400E9BE5B /* TimerModel.swift */,
 				841E00182A8D4CF400E9BE5B /* ProgressIndicator.swift */,
@@ -153,7 +153,7 @@
 				841E001B2A8D866400E9BE5B /* TimerModel.swift in Sources */,
 				8461BB2B2A8DD84100D9A1D6 /* RoundedRectangleView.swift in Sources */,
 				841E00192A8D4CF400E9BE5B /* ProgressIndicator.swift in Sources */,
-				8461BB2D2A8DDCAF00D9A1D6 /* TimerControlsView.swift in Sources */,
+				8461BB2D2A8DDCAF00D9A1D6 /* TimerControls.swift in Sources */,
 				841E00092A8D2AE300E9BE5B /* meditation_timerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
