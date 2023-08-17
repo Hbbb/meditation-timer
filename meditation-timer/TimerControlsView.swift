@@ -10,40 +10,58 @@ import SwiftUI
 struct TimerControlsView: View {
 	@EnvironmentObject var timer: TimerModel
 
+	private var primaryControlIcon: String {
+		timer.isRunning ? "pause" : "play"
+	}
+
 	var body: some View {
 		HStack {
-			// Decrement button
-			Button(action: timer.decrementTime, label: {
-				Image(systemName: "minus")
-					.font(.system(size: 18))
-					.frame(width: 32, height: 32)
-					.background(Circle().fill(Color.gray.opacity(0.2)))
-			})
-			.disabled(timer.isRunning)
+			// Decrement
+			SecondaryControlButton(iconName: "minus", action: timer.decrementTime)
+				.disabled(timer.isRunning)
 
-			// Play/pause button
-			Button(action: {
+			// Play/pause
+			PrimaryControlButton(iconName: primaryControlIcon, action: {
 				if timer.isRunning {
 					timer.stopTimer()
 				} else {
 					timer.startTimer()
 				}
-			}, label: {
-				Image(systemName: timer.isRunning ? "pause" : "play")
-					.font(.system(size: 24))
-					.frame(width: 44, height: 44)
-					.background(Circle().fill(Color.gray.opacity(0.2)))
 			})
 
-			// Increment button
-			Button(action: timer.incrementTime, label: {
-				Image(systemName: "plus")
-					.font(.system(size: 18))
-					.frame(width: 32, height: 32)
-					.background(Circle().fill(Color.gray.opacity(0.2)))
-			})
-			.disabled(timer.isRunning)
+			// Increment
+			SecondaryControlButton(iconName: "plus", action: timer.incrementTime)
+				.disabled(timer.isRunning)
 		}
+	}
+}
+
+// TODO: What is the right way to condense these two view in Swift?
+struct PrimaryControlButton: View {
+	let iconName: String
+	let action: () -> Void
+
+	var body: some View {
+		Button(action: action, label: {
+			Image(systemName: iconName)
+				.font(.system(size: 24))
+				.frame(width: 44, height: 44)
+				.background(Circle().fill(Color.gray.opacity(0.2)))
+		})
+	}
+}
+
+struct SecondaryControlButton: View {
+	let iconName: String
+	let action: () -> Void
+
+	var body: some View {
+		Button(action: action, label: {
+			Image(systemName: iconName)
+				.font(.system(size: 18))
+				.frame(width: 32, height: 32)
+				.background(Circle().fill(Color.gray.opacity(0.2)))
+		})
 	}
 }
 
