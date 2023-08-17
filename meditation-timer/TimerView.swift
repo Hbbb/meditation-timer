@@ -12,7 +12,7 @@ struct TimerView: View {
 		if timer.isRunning {
 			return "\(minutes):\(secondsFormatted)"
 		} else {
-			return "\(timer.initialDurationSeconds):00"
+			return "\(timer.initialDurationSeconds / 60):00"
 		}
 	}
 

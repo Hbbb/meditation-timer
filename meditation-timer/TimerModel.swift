@@ -20,11 +20,13 @@ class TimerModel: ObservableObject {
 	private var timer: Timer?
 
 	func startTimer() {
-		stopTimer() // Ensure any existing timer is stopped
+		stopTimer()
 		remainingDurationSeconds = initialDurationSeconds
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {  _ in
 			if self.remainingDurationSeconds > 0 {
 				self.remainingDurationSeconds -= 1
+
+				// This is published specifically for the ProgressIndicator view. Kinda weird to have it in the model
 				self.timerProgress = CGFloat(self.remainingDurationSeconds) / CGFloat(self.initialDurationSeconds)
 			} else {
 				self.stopTimer()
@@ -38,36 +40,39 @@ class TimerModel: ObservableObject {
 	func stopTimer() {
 		timer?.invalidate()
 		timer = nil
+
 		isRunning = false
-		timerProgress = 0
 		shouldDisableIdleTimer = false
+
+		remainingDurationSeconds = initialDurationSeconds
+		timerProgress = 0
 	}
 	
 	func incrementTime() {
-		let inMins = initialDurationSeconds * 60
+		let inMins = initialDurationSeconds / 60
 
 		switch inMins {
 			case 3:
-				initialDurationSeconds = 5
+				initialDurationSeconds = 5 * 60
 			case 4..<30:
-				initialDurationSeconds += 5
+				initialDurationSeconds += 5 * 60
 			case 30..<60:
-				initialDurationSeconds += 15
+				initialDurationSeconds += 15 * 60
 			default:
 				break
 		}
 	}
 
 	func decrementTime() {
-		let inMins = initialDurationSeconds * 60
+		let inMins = initialDurationSeconds / 60
 
 		switch inMins {
 			case 3,5:
-				initialDurationSeconds = 3
+				initialDurationSeconds = 3 * 60
 			case 6...30:
-				initialDurationSeconds -= 5
+				initialDurationSeconds -= 5 * 60
 			default:
-				initialDurationSeconds -= 15
+				initialDurationSeconds -= 15 * 60
 		}
 	}
 }
