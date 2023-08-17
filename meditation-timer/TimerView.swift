@@ -5,14 +5,14 @@ struct TimerView: View {
 	@EnvironmentObject var timer: TimerModel
 
 	var timeRemainingLabel: String {
-		let minutes = Int(timer.remainingTime / 60)
-		let seconds = Int(timer.remainingTime % 60)
+		let minutes = Int(timer.remainingDurationSeconds / 60)
+		let seconds = Int(timer.remainingDurationSeconds % 60)
 		let secondsFormatted = String(format: "%02d", seconds)
 
 		if timer.isRunning {
 			return "\(minutes):\(secondsFormatted)"
 		} else {
-			return "\(timer.meditationTime):00"
+			return "\(timer.initialDurationSeconds):00"
 		}
 	}
 

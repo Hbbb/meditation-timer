@@ -8,23 +8,24 @@
 import Foundation
 
 class TimerModel: ObservableObject {
-	@Published var meditationTime: Int = 3 // Default to 3 minutes
-	@Published var remainingTime: Int = 180
+	@Published var initialDurationSeconds: Int = 180 // The user-selected duration. Defaults to 3 minutes
+	@Published var remainingDurationSeconds: Int = 180 // The duration that the timer works against
+
 	@Published var isRunning: Bool = false
 	@Published var timerProgress: CGFloat = 0
 
-	// This prevents the phone from auto-locking while a timer is running
+	// Prevents phone from auto-locking while a timer is running
 	@Published var shouldDisableIdleTimer = false
 
 	private var timer: Timer?
 
 	func startTimer() {
 		stopTimer() // Ensure any existing timer is stopped
-		remainingTime = meditationTime * 60
+		remainingDurationSeconds = initialDurationSeconds
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {  _ in
-			if self.remainingTime > 0 {
-				self.remainingTime -= 1
-				self.timerProgress = CGFloat(self.remainingTime) / CGFloat(self.meditationTime * 60)
+			if self.remainingDurationSeconds > 0 {
+				self.remainingDurationSeconds -= 1
+				self.timerProgress = CGFloat(self.remainingDurationSeconds) / CGFloat(self.initialDurationSeconds)
 			} else {
 				self.stopTimer()
 			}
@@ -43,26 +44,30 @@ class TimerModel: ObservableObject {
 	}
 	
 	func incrementTime() {
-		switch meditationTime {
+		let inMins = initialDurationSeconds * 60
+
+		switch inMins {
 			case 3:
-				meditationTime = 5
+				initialDurationSeconds = 5
 			case 4..<30:
-				meditationTime += 5
+				initialDurationSeconds += 5
 			case 30..<60:
-				meditationTime += 15
+				initialDurationSeconds += 15
 			default:
 				break
 		}
 	}
 
 	func decrementTime() {
-		switch meditationTime {
+		let inMins = initialDurationSeconds * 60
+
+		switch inMins {
 			case 3,5:
-				meditationTime = 3
+				initialDurationSeconds = 3
 			case 6...30:
-				meditationTime -= 5
+				initialDurationSeconds -= 5
 			default:
-				meditationTime -= 15
+				initialDurationSeconds -= 15
 		}
 	}
 }
