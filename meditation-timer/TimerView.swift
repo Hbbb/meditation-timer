@@ -59,7 +59,6 @@ struct TimerView: View {
 				})
 				.disabled(timer.isRunning)
 			}
-			.padding(.horizontal, 40)
 		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in
 			updateIdleTimer()
