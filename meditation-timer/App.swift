@@ -24,8 +24,17 @@ struct MeditationTimerApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			TimerView()
-				.environmentObject(timerModel)
+			TabView {
+				TimerView()
+					.tabItem {
+						Label("Timer", systemImage: "stopwatch")
+					}
+
+				HistoryView()
+					.tabItem {
+						Label("History", systemImage: "list.clipboard")
+					}
+			}.environmentObject(timerModel)
 		}
 		.onChange(of: scenePhase) { phase in
 			if phase == .background {

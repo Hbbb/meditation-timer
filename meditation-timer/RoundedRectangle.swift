@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RoundedRectangleView<Content: View>: View {
+struct RoundedRectangle<Content: View>: View {
 	let content: Content
 
 	init(@ViewBuilder content: () -> Content) {
@@ -18,13 +18,13 @@ struct RoundedRectangleView<Content: View>: View {
 		GeometryReader { geometry in
 			VStack {
 				Spacer()
-				ZStack(alignment: .bottom) {
+				ZStack(alignment: .top) {
 					Color.gray
 						.frame(width: geometry.size.width, height: geometry.size.height * 0.60)
 						.cornerRadius(150, corners: [.topLeft, .topRight])
 
 					content
-						.padding()
+						.padding(.top)
 				}
 			}
 		}
@@ -52,7 +52,7 @@ struct RoundedCorner: Shape {
 
 struct RoundedRectangleView_Previews: PreviewProvider {
 	static var previews: some View {
-		RoundedRectangleView {
+		RoundedRectangle {
 			Text("Your Cooooooontent Here")
 				.padding()
 				.background(Color.white)

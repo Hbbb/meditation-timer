@@ -45,7 +45,7 @@ struct PrimaryControlButton: View {
 		Button(action: action, label: {
 			Image(systemName: iconName)
 				.font(.system(size: 24))
-				.frame(width: 44, height: 44)
+				.frame(width: 90, height: 90)
 				.background(Circle().fill(Color.gray.opacity(0.2)))
 		})
 	}
@@ -59,7 +59,7 @@ struct SecondaryControlButton: View {
 		Button(action: action, label: {
 			Image(systemName: iconName)
 				.font(.system(size: 18))
-				.frame(width: 32, height: 32)
+				.frame(width: 64, height: 64)
 				.background(Circle().fill(Color.gray.opacity(0.2)))
 		})
 	}
