@@ -30,10 +30,11 @@ class TimerModel: ObservableObject {
 				self.timerProgress = CGFloat(self.remainingDurationSeconds) / CGFloat(self.initialDurationSeconds)
 			} else {
 				self.stopTimer()
+				// TODO: Persist a completed meditation
 			}
 		}
-		isRunning = true
 
+		isRunning = true
 		shouldDisableIdleTimer = true
 	}
 
