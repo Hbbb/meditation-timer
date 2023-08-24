@@ -30,7 +30,7 @@ class TimerModel: ObservableObject {
 				self.timerProgress = CGFloat(self.remainingDurationSeconds) / CGFloat(self.initialDurationSeconds)
 			} else {
 				self.stopTimer()
-				// TODO: Persist a completed meditation
+				WeeklyMeditations.shared.addSession(duration: TimeInterval(self.initialDurationSeconds))
 			}
 		}
 

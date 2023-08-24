@@ -7,9 +7,11 @@
 
 import Foundation
 
-class WeeklyMeditations {
+final class WeeklyMeditations {
 	private var sessions: [MeditationSession] = []
 	private let storageManager = MeditationStorageManager()
+
+	static let shared = WeeklyMeditations()
 
 	private var startDateOfWeek: Date {
 		let calendar = Calendar.current
@@ -19,7 +21,7 @@ class WeeklyMeditations {
 	}
 
 	// Loads sessions for the current week from storage
-	init() {
+	private init() {
 		if let loadedSessions = storageManager.loadSessions(forWeekStarting: startDateOfWeek) {
 			sessions = loadedSessions
 		}
