@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProgressIndicator: View {
-	var progress: CGFloat // A value between 0 and 1 representing the progress
+	var progress: CGFloat
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -28,10 +28,12 @@ struct ProgressIndicator: View {
 
 				// Foreground path for the progress
 				Path { path in
+					let endAngle = 360 - (270 * (1 - progress))
+
 					path.addArc(center: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2),
 											radius: radius,
 											startAngle: .degrees(90),
-											endAngle: .degrees(360.0 * progress),
+											endAngle: .degrees(endAngle),
 											clockwise: false)
 				}
 				.stroke(style: StrokeStyle(lineWidth: 5, lineCap: .round))
