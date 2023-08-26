@@ -60,7 +60,6 @@ struct ContentView: View {
 							timer.decrementTime()
 						}
 
-						UIImpactFeedbackGenerator(style: .light).impactOccurred()
 						gestureStart = value.location.y
 					}
 
@@ -70,6 +69,8 @@ struct ContentView: View {
 					gestureHeight = .zero
 				}
 		)
+
+// This is a hack I use to find real names of fonts. Don't even ask
 //		.onAppear {
 //			for family: String in UIFont.familyNames
 //			{
