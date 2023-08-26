@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MeditationTimerApp: App {
+struct MeditationTimer: App {
 	@Environment(\.scenePhase) private var scenePhase
 	@StateObject private var timerModel = TimerModel()
 
@@ -24,7 +24,7 @@ struct MeditationTimerApp: App {
 
 	var body: some Scene {
 		WindowGroup {
-			TimerView()
+			ContentView()
 				.environmentObject(timerModel)
 		}
 		.onChange(of: scenePhase) { phase in

@@ -1,7 +1,7 @@
 import SwiftUI
 import UIKit
 
-struct TimerView: View {
+struct ContentView: View {
 	@EnvironmentObject var timer: TimerModel
 	@State private var gestureStart: Double = .zero
 	@State private var gestureHeight: Double = .zero
@@ -21,9 +21,9 @@ struct TimerView: View {
 	var body: some View {
 		VStack {
 			ZStack {
-				CircularProgressIndicator(progress: timer.timerProgress)
+				CircularProgressIndicator(progress: timer.progress)
 					.frame(width: 300, height: 300)
-					.animation(.easeInOut, value: timer.timerProgress)
+					.animation(.easeInOut, value: timer.progress)
 
 				ZStack {
 					Circle()
@@ -31,11 +31,9 @@ struct TimerView: View {
 						.frame(width: 225, height: 225)
 					Text(timeRemainingLabel)
 						.font(.custom("Varela Round", size: 52))
-
-
 				}
 			}
-			TimerControls()
+			PlayPauseButton()
 				.padding(.top, 80)
 		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in

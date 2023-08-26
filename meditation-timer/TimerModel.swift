@@ -7,37 +7,42 @@
 
 import Foundation
 
+let THREE_MINUTES = 3 * 60
+let FIVE_MINUTES = 5 * 60
+let FIFTEEN_MINUTES = 15 * 60
+
 class TimerModel: ObservableObject {
 	@Published var initialDurationSeconds: Int = 180 // The user-selected duration. Defaults to 3 minutes
 	@Published var remainingDurationSeconds: Int = 180 // The duration that the timer works against
 
 	@Published var isRunning: Bool = false
-	@Published var timerProgress: CGFloat = 0
+	@Published var progress: Double = 0
 
 	// Prevents phone from auto-locking while a timer is running
 	@Published var shouldDisableIdleTimer = false
 
 	private var timer: Timer?
 
-	func startTimer() {
-		stopTimer()
+	func start() {
+		stop()
 		remainingDurationSeconds = initialDurationSeconds
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {  _ in
-			if self.remainingDurationSeconds > 0 {
-				self.remainingDurationSeconds -= 1
-
-				// This is published specifically for the ProgressIndicator view. Kinda weird to have it in the model
-				self.timerProgress = CGFloat(self.remainingDurationSeconds) / CGFloat(self.initialDurationSeconds)
-			} else {
-				self.stopTimer()
+			guard self.remainingDurationSeconds > 0 else {
+				self.stop()
+				return
 			}
-		}
-		isRunning = true
 
-		shouldDisableIdleTimer = true
+			self.remainingDurationSeconds -= 1
+
+			// This is published specifically for the ProgressIndicator view. Kinda weird to have it in the model
+			self.progress = Double(self.remainingDurationSeconds / self.initialDurationSeconds)
+
+			self.isRunning = true
+			self.shouldDisableIdleTimer = true
+		}
 	}
 
-	func stopTimer() {
+	func stop() {
 		timer?.invalidate()
 		timer = nil
 
@@ -45,7 +50,7 @@ class TimerModel: ObservableObject {
 		shouldDisableIdleTimer = false
 
 		remainingDurationSeconds = initialDurationSeconds
-		timerProgress = 0
+		progress = 0
 	}
 	
 	func incrementTime() {
@@ -53,11 +58,11 @@ class TimerModel: ObservableObject {
 
 		switch inMins {
 			case 3:
-				initialDurationSeconds = 5 * 60
+				initialDurationSeconds = FIVE_MINUTES
 			case 4..<30:
-				initialDurationSeconds += 5 * 60
+				initialDurationSeconds += FIVE_MINUTES
 			case 30..<60:
-				initialDurationSeconds += 15 * 60
+				initialDurationSeconds += FIFTEEN_MINUTES
 			default:
 				break
 		}
@@ -68,11 +73,11 @@ class TimerModel: ObservableObject {
 
 		switch inMins {
 			case 3,5:
-				initialDurationSeconds = 3 * 60
+				initialDurationSeconds = THREE_MINUTES
 			case 6...30:
-				initialDurationSeconds -= 5 * 60
+				initialDurationSeconds -= FIVE_MINUTES
 			default:
-				initialDurationSeconds -= 15 * 60
+				initialDurationSeconds -= FIFTEEN_MINUTES
 		}
 	}
 }
