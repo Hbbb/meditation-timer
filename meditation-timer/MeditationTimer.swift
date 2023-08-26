@@ -11,6 +11,7 @@ import SwiftUI
 struct MeditationTimer: App {
 	@Environment(\.scenePhase) private var scenePhase
 	@StateObject private var timer = TimerModel()
+	@StateObject private var dataController = DataController()
 
 	//	init() {
 	//		BGTaskScheduler.shared.register(
@@ -26,6 +27,7 @@ struct MeditationTimer: App {
 		WindowGroup {
 			ContentView()
 				.environmentObject(timer)
+				.environment(\.managedObjectContext, dataController.container.viewContext)
 		}
 		.onChange(of: scenePhase) { phase in
 			if phase == .background {

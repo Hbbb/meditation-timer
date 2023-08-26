@@ -5,6 +5,7 @@ struct ContentView: View {
 	@EnvironmentObject var timer: TimerModel
 	@State private var gestureStart: Double = .zero
 	@State private var gestureHeight: Double = .zero
+	@Environment(\.managedObjectContext) var moc
 
 	var timeRemainingLabel: String {
 		let minutes = Int(timer.remainingDurationSeconds / 60)

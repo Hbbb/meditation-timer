@@ -19,6 +19,8 @@
 		84504B1D2A99A6500064A378 /* VarelaRound.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84504B1C2A99A6500064A378 /* VarelaRound.ttf */; };
 		84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */; };
 		84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */; };
+		84504B252A99D60F0064A378 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B242A99D60F0064A378 /* DataController.swift */; };
+		84504B272A9A62810064A378 /* AnimatedPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */; };
 		8461BB2B2A8DD84100D9A1D6 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2A2A8DD84100D9A1D6 /* RoundedRectangle.swift */; };
 		8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */; };
 /* End PBXBuildFile section */
@@ -38,6 +40,8 @@
 		84504B1C2A99A6500064A378 /* VarelaRound.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = VarelaRound.ttf; sourceTree = "<group>"; };
 		84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressIndicator.swift; sourceTree = "<group>"; };
 		84504B222A99D4E30064A378 /* MeditationTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeditationTimer.xcdatamodel; sourceTree = "<group>"; };
+		84504B242A99D60F0064A378 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
+		84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPlayPauseButton.swift; sourceTree = "<group>"; };
 		8461BB2A2A8DD84100D9A1D6 /* RoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
 		8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,6 +74,7 @@
 				841E00082A8D2AE300E9BE5B /* MeditationTimer.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */,
+				84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */,
 				8461BB2A2A8DD84100D9A1D6 /* RoundedRectangle.swift */,
 				841E001A2A8D866400E9BE5B /* TimerModel.swift */,
 				841E00182A8D4CF400E9BE5B /* ArcProgressIndicator.swift */,
@@ -78,6 +83,7 @@
 				841E000C2A8D2AE400E9BE5B /* Assets.xcassets */,
 				841E000E2A8D2AE400E9BE5B /* Preview Content */,
 				84504B162A9700C20064A378 /* Colors.swift */,
+				84504B242A99D60F0064A378 /* DataController.swift */,
 			);
 			path = "meditation-timer";
 			sourceTree = "<group>";
@@ -182,8 +188,10 @@
 				84504B0E2A94315B0064A378 /* HistoryView.swift in Sources */,
 				84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */,
 				84504B172A9700C20064A378 /* Colors.swift in Sources */,
+				84504B272A9A62810064A378 /* AnimatedPlayPauseButton.swift in Sources */,
 				841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */,
 				841E001B2A8D866400E9BE5B /* TimerModel.swift in Sources */,
+				84504B252A99D60F0064A378 /* DataController.swift in Sources */,
 				8461BB2B2A8DD84100D9A1D6 /* RoundedRectangle.swift in Sources */,
 				841E00192A8D4CF400E9BE5B /* ArcProgressIndicator.swift in Sources */,
 				8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */,
