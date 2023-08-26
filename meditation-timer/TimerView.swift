@@ -30,10 +30,11 @@ struct TimerView: View {
 						.fill(Colors.primary)
 						.frame(width: 225, height: 225)
 					Text(timeRemainingLabel)
-						.font(.title)
+						.font(.custom("Varela Round", size: 52))
+
+
 				}
 			}
-
 			TimerControls()
 				.padding(.top, 80)
 		}
@@ -71,6 +72,16 @@ struct TimerView: View {
 					gestureHeight = .zero
 				}
 		)
+//		.onAppear {
+//			for family: String in UIFont.familyNames
+//			{
+//				print(family)
+//				for names: String in UIFont.fontNames(forFamilyName: family)
+//				{
+//					print("== \(names)")
+//				}
+//			}
+//		}
 	}
 
 	private func updateIdleTimer() {
