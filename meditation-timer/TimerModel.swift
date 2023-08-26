@@ -25,7 +25,9 @@ class TimerModel: ObservableObject {
 
 	func start() {
 		stop()
-		remainingDurationSeconds = initialDurationSeconds
+		remainingDurationSeconds = initialDurationSeconds - 1
+		self.progress = Double(self.remainingDurationSeconds) / Double(self.initialDurationSeconds)
+
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {  _ in
 			guard self.remainingDurationSeconds > 0 else {
 				self.stop()
@@ -35,11 +37,11 @@ class TimerModel: ObservableObject {
 			self.remainingDurationSeconds -= 1
 
 			// This is published specifically for the ProgressIndicator view. Kinda weird to have it in the model
-			self.progress = Double(self.remainingDurationSeconds / self.initialDurationSeconds)
-
-			self.isRunning = true
-			self.shouldDisableIdleTimer = true
+			self.progress = Double(self.remainingDurationSeconds) / Double(self.initialDurationSeconds)
 		}
+
+		self.isRunning = true
+		self.shouldDisableIdleTimer = true
 	}
 
 	func stop() {
