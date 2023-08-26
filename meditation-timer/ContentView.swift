@@ -23,7 +23,6 @@ struct ContentView: View {
 			ZStack {
 				CircularProgressIndicator(progress: timer.progress)
 					.frame(width: 300, height: 300)
-					.animation(.easeInOut, value: timer.progress)
 
 				ZStack {
 					Circle()

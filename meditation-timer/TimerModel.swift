@@ -16,7 +16,7 @@ class TimerModel: ObservableObject {
 	@Published var remainingDurationSeconds: Int = 180 // The duration that the timer works against
 
 	@Published var isRunning: Bool = false
-	@Published var progress: Double = 0
+	@Published var progress: Double = 1
 
 	// Prevents phone from auto-locking while a timer is running
 	@Published var shouldDisableIdleTimer = false
@@ -52,7 +52,7 @@ class TimerModel: ObservableObject {
 		shouldDisableIdleTimer = false
 
 		remainingDurationSeconds = initialDurationSeconds
-		progress = 0
+		progress = 1
 	}
 	
 	func incrementTime() {

@@ -12,20 +12,24 @@ struct CircularProgressIndicator: View {
 	var progress: Double
 
 	var body: some View {
-		GeometryReader { geometry in
-			Path { path in
-				let radius = min(geometry.size.width, geometry.size.height) / 2
-				let startAngle = Angle(degrees: 0)
-				let endAngle = Angle(degrees: 360 * (1 - self.progress))
-
-				path.addArc(center: CGPoint(x: geometry.size.width / 2, y: geometry.size.height / 2),
-										radius: radius,
-										startAngle: startAngle,
-										endAngle: endAngle,
-										clockwise: true)
-			}
-			.stroke(Colors.secondary, style: StrokeStyle(lineWidth: 10, lineCap: .round, lineJoin: .round))
-			.rotationEffect(Angle(degrees: -90))
+		ZStack {
+			Circle()
+				.stroke(
+					Colors.secondary.opacity(0.5),
+					lineWidth: 30
+				)
+		Circle()
+		// 2
+			.trim(from: 0, to:  1 - progress)
+			.stroke(
+				Colors.secondary,
+				style: StrokeStyle(
+					lineWidth: 30,
+					lineCap: .round
+				)
+			)
+			.rotationEffect(.degrees(-90))
+			.animation(.easeOut, value: progress)
 		}
 	}
 }
