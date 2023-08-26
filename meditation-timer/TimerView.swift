@@ -3,6 +3,8 @@ import UIKit
 
 struct TimerView: View {
 	@EnvironmentObject var timer: TimerModel
+	@State private var gestureStart: Double = .zero
+	@State private var gestureHeight: Double = .zero
 
 	var timeRemainingLabel: String {
 		let minutes = Int(timer.remainingDurationSeconds / 60)
@@ -19,18 +21,56 @@ struct TimerView: View {
 	var body: some View {
 		VStack {
 			ZStack {
-				ProgressIndicator(progress: timer.timerProgress)
+				CircularProgressIndicator(progress: timer.timerProgress)
 					.frame(width: 300, height: 300)
+					.animation(.easeInOut, value: timer.timerProgress)
 
-				Text(timeRemainingLabel)
-					.font(.title)
+				ZStack {
+					Circle()
+						.fill(Colors.primary)
+						.frame(width: 225, height: 225)
+					Text(timeRemainingLabel)
+						.font(.title)
+				}
 			}
 
 			TimerControls()
+				.padding(.top, 80)
 		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in
 			updateIdleTimer()
 		}
+		.gesture(
+			DragGesture()
+				.onChanged { value in
+					if timer.isRunning {
+						return
+					}
+
+					let yOff = value.translation.height
+
+					if gestureStart == .zero {
+						gestureStart = value.startLocation.y
+					}
+
+					let distance = abs(value.location.y - gestureStart)
+					if distance >= 30 {
+						if yOff < gestureHeight {
+							timer.incrementTime()
+						} else {
+							timer.decrementTime()
+						}
+
+						UIImpactFeedbackGenerator(style: .light).impactOccurred()
+						gestureStart = value.location.y
+					}
+
+					gestureHeight = yOff
+				}
+				.onEnded { _ in
+					gestureHeight = .zero
+				}
+		)
 	}
 
 	private func updateIdleTimer() {

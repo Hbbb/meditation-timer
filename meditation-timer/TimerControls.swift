@@ -11,16 +11,11 @@ struct TimerControls: View {
 	@EnvironmentObject var timer: TimerModel
 
 	private var primaryControlIcon: String {
-		timer.isRunning ? "pause" : "play"
+		timer.isRunning ? "stop.fill" : "play.fill"
 	}
 
 	var body: some View {
 		HStack {
-			// Decrement
-			SecondaryControlButton(iconName: "minus", action: timer.decrementTime)
-				.disabled(timer.isRunning)
-
-			// Play/pause
 			PrimaryControlButton(iconName: primaryControlIcon, action: {
 				if timer.isRunning {
 					timer.stopTimer()
@@ -29,14 +24,10 @@ struct TimerControls: View {
 				}
 			})
 
-			// Increment
-			SecondaryControlButton(iconName: "plus", action: timer.incrementTime)
-				.disabled(timer.isRunning)
 		}
 	}
 }
 
-// TODO: What is the right way to condense these two view in Swift?
 struct PrimaryControlButton: View {
 	let iconName: String
 	let action: () -> Void
@@ -46,22 +37,7 @@ struct PrimaryControlButton: View {
 			Image(systemName: iconName)
 				.font(.system(size: 24))
 				.frame(width: 90, height: 90)
-				.background(Circle().fill(Color.gray.opacity(0.2)))
+				.background(Circle().fill(Colors.secondary))
 		})
 	}
 }
-
-struct SecondaryControlButton: View {
-	let iconName: String
-	let action: () -> Void
-
-	var body: some View {
-		Button(action: action, label: {
-			Image(systemName: iconName)
-				.font(.system(size: 18))
-				.frame(width: 64, height: 64)
-				.background(Circle().fill(Color.gray.opacity(0.2)))
-		})
-	}
-}
-
