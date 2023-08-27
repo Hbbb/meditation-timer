@@ -12,6 +12,7 @@ struct MeditationTimer: App {
 	@Environment(\.scenePhase) private var scenePhase
 	@StateObject private var timer = TimerModel()
 	@StateObject private var dataController = DataController()
+	@StateObject private var audioManager = AudioManager()
 
 	//	init() {
 	//		BGTaskScheduler.shared.register(
@@ -27,6 +28,7 @@ struct MeditationTimer: App {
 		WindowGroup {
 			ContentView()
 				.environmentObject(timer)
+				.environmentObject(audioManager)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
 		}
 		.onChange(of: scenePhase) { phase in
