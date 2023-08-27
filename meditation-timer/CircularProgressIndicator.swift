@@ -19,7 +19,6 @@ struct CircularProgressIndicator: View {
 					lineWidth: 30
 				)
 		Circle()
-		// 2
 			.trim(from: 0, to:  1 - progress)
 			.stroke(
 				Colors.secondary,

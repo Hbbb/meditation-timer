@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 let THREE_MINUTES = 3 * 60
 let FIVE_MINUTES = 5 * 60
@@ -21,6 +22,13 @@ class TimerModel: ObservableObject {
 	// Prevents phone from auto-locking while a timer is running
 	@Published var shouldDisableIdleTimer = false
 
+// TODO: Eventually we'll persist meditations with Core Data
+//	var moc: NSManagedObjectContext
+
+//	init(moc: NSManagedObjectContext) {
+//		self.moc = moc
+//	}
+
 	private var timer: Timer?
 
 	func start() {
@@ -30,6 +38,7 @@ class TimerModel: ObservableObject {
 
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) {  _ in
 			guard self.remainingDurationSeconds > 0 else {
+				self.saveMeditation()
 				self.stop()
 				return
 			}
@@ -81,5 +90,13 @@ class TimerModel: ObservableObject {
 			default:
 				initialDurationSeconds -= FIFTEEN_MINUTES
 		}
+	}
+
+	func saveMeditation() {
+		print("Persisted meditation")
+//		let meditation = Meditation(context: moc)
+//		meditation.createdAt = Date()
+//		meditation.durationSeconds = Int16(self.initialDurationSeconds)
+//		try? moc.save()
 	}
 }
