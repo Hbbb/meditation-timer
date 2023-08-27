@@ -2,6 +2,7 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
+	@EnvironmentObject var audioManager: AudioManager
 	@EnvironmentObject var timer: TimerModel
 	@State private var gestureStart: Double = .zero
 	@State private var gestureHeight: Double = .zero
@@ -35,6 +36,9 @@ struct ContentView: View {
 			}
 			PlayPauseButton()
 				.padding(.top, 80)
+		}
+		.onAppear {
+			audioManager.start()
 		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in
 			updateIdleTimer()
