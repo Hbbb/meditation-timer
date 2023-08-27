@@ -21,6 +21,8 @@
 		84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */; };
 		84504B252A99D60F0064A378 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B242A99D60F0064A378 /* DataController.swift */; };
 		84504B272A9A62810064A378 /* AnimatedPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */; };
+		84504B292A9C0B390064A378 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B282A9C0B390064A378 /* AudioManager.swift */; };
+		84504B2B2A9C0F830064A378 /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84504B2A2A9C0F830064A378 /* complete.mp3 */; };
 		8461BB2B2A8DD84100D9A1D6 /* RoundedRectangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2A2A8DD84100D9A1D6 /* RoundedRectangle.swift */; };
 		8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,8 @@
 		84504B222A99D4E30064A378 /* MeditationTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeditationTimer.xcdatamodel; sourceTree = "<group>"; };
 		84504B242A99D60F0064A378 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPlayPauseButton.swift; sourceTree = "<group>"; };
+		84504B282A9C0B390064A378 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		84504B2A2A9C0F830064A378 /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		8461BB2A2A8DD84100D9A1D6 /* RoundedRectangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedRectangle.swift; sourceTree = "<group>"; };
 		8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,11 +83,12 @@
 				841E001A2A8D866400E9BE5B /* TimerModel.swift */,
 				841E00182A8D4CF400E9BE5B /* ArcProgressIndicator.swift */,
 				84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */,
+				84504B282A9C0B390064A378 /* AudioManager.swift */,
+				84504B242A99D60F0064A378 /* DataController.swift */,
+				84504B162A9700C20064A378 /* Colors.swift */,
 				84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */,
 				841E000C2A8D2AE400E9BE5B /* Assets.xcassets */,
 				841E000E2A8D2AE400E9BE5B /* Preview Content */,
-				84504B162A9700C20064A378 /* Colors.swift */,
-				84504B242A99D60F0064A378 /* DataController.swift */,
 			);
 			path = "meditation-timer";
 			sourceTree = "<group>";
@@ -107,6 +112,7 @@
 		84504B1E2A99A7230064A378 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84504B2A2A9C0F830064A378 /* complete.mp3 */,
 				84504B182A99A4A40064A378 /* TitanOne-Regular.ttf */,
 				84504B1C2A99A6500064A378 /* VarelaRound.ttf */,
 			);
@@ -171,6 +177,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84504B2B2A9C0F830064A378 /* complete.mp3 in Resources */,
 				841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */,
 				84504B1B2A99A5D80064A378 /* TitanOne-Regular.ttf in Resources */,
 				84504B1D2A99A6500064A378 /* VarelaRound.ttf in Resources */,
@@ -197,6 +204,7 @@
 				8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
 				841E00092A8D2AE300E9BE5B /* MeditationTimer.swift in Sources */,
+				84504B292A9C0B390064A378 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
