@@ -37,9 +37,6 @@ struct ContentView: View {
 			PlayPauseButton()
 				.padding(.top, 80)
 		}
-		.onAppear {
-			audioManager.start()
-		}
 		.onReceive(timer.$shouldDisableIdleTimer) { _ in
 			updateIdleTimer()
 		}
@@ -74,17 +71,17 @@ struct ContentView: View {
 				}
 		)
 
-// This is a hack I use to find real names of fonts. Don't even ask
-//		.onAppear {
-//			for family: String in UIFont.familyNames
-//			{
-//				print(family)
-//				for names: String in UIFont.fontNames(forFamilyName: family)
-//				{
-//					print("== \(names)")
-//				}
-//			}
-//		}
+		// This is a hack I use to find real names of fonts. Don't even ask
+		//		.onAppear {
+		//			for family: String in UIFont.familyNames
+		//			{
+		//				print(family)
+		//				for names: String in UIFont.fontNames(forFamilyName: family)
+		//				{
+		//					print("== \(names)")
+		//				}
+		//			}
+		//		}
 	}
 
 	private func updateIdleTimer() {

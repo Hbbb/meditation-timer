@@ -9,6 +9,7 @@ import SwiftUI
 
 struct PlayPauseButton: View {
 	@EnvironmentObject var timer: TimerModel
+	@EnvironmentObject var audioManager: AudioManager
 	@State private var rotation: Double = 0
 
 	private var icon: String {
@@ -30,7 +31,8 @@ struct PlayPauseButton: View {
 							timer.start()
 						}
 					}
-
+					print("start audio player")
+					audioManager.playAudio(trackOffset: timer.initialDurationSeconds)
 					UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				}
 			Image(systemName: icon)
