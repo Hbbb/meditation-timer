@@ -13,8 +13,8 @@ let FIVE_MINUTES = 5 * 60
 let FIFTEEN_MINUTES = 15 * 60
 
 class TimerModel: ObservableObject {
-	@Published var initialDurationSeconds: Int = 180 // The user-selected duration. Defaults to 3 minutes
-	@Published var remainingDurationSeconds: Int = 180 // The duration that the timer works against
+	@Published var initialDurationSeconds: Int = 10 // The user-selected duration. Defaults to 3 minutes
+	@Published var remainingDurationSeconds: Int = 10 // The duration that the timer works against
 
 	@Published var isRunning: Bool = false
 	@Published var progress: Double = 1

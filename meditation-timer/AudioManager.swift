@@ -27,6 +27,7 @@ final class AudioManager: ObservableObject {
 	func playAudio(trackOffset: Int) {
 		silencePlayer?.currentTime = 0
 		silencePlayer?.numberOfLoops = -1
+		silencePlayer?.volume = 0.01
 		silencePlayer?.play()
 
 		print(trackOffset)
@@ -34,6 +35,8 @@ final class AudioManager: ObservableObject {
 		DispatchQueue.main.asyncAfter(wallDeadline: .now() + Double(trackOffset)) {
 			print("play chime")
 			self.stopPlaying()
+
+			self.chimePlayer?.volume = 0.2
 			self.chimePlayer?.play()
 		}
 	}
