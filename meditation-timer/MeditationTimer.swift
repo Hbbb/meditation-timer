@@ -13,6 +13,9 @@ struct MeditationTimer: App {
 	@StateObject private var timer = TimerModel()
 	@StateObject private var dataController = DataController()
 	@StateObject private var audioManager = AudioManager()
+	@StateObject private var alarmPlayer = AlarmPlayer()
+
+	private var backgroundTask = BackgroundTask()
 
 	//	init() {
 	//		BGTaskScheduler.shared.register(
@@ -29,7 +32,12 @@ struct MeditationTimer: App {
 			ContentView()
 				.environmentObject(timer)
 				.environmentObject(audioManager)
+				.environmentObject(backgroundTask)
+				.environmentObject(alarmPlayer)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
+				.onAppear {
+					backgroundTask.startBackgroundTask()
+				}
 		}
 		.onChange(of: scenePhase) { phase in
 			if phase == .background {
