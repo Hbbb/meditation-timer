@@ -35,9 +35,6 @@ struct MeditationTimerApp: App {
 				.environmentObject(viewModel)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
 				.onAppear {
-					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded
-					backgroundTask.startBackgroundTask()
-
 					viewModel.timerDidComplete = {
 						alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
 						Thread.sleep(forTimeInterval: 5.0)
@@ -46,8 +43,15 @@ struct MeditationTimerApp: App {
 				}
 		}
 		.onChange(of: scenePhase) { phase in
-			if phase == .background {
-				// I'm not sure if we need anything here, but I'm keeping this in case I do.
+			switch(phase) {
+				case .background:
+					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded
+					backgroundTask.startBackgroundTask()
+					break
+				case .active:
+					backgroundTask.stopBackgroundTask()
+					break
+				default: ()
 			}
 		}
 	}
