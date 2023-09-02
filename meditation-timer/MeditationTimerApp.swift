@@ -11,9 +11,7 @@ import SwiftUI
 struct MeditationTimerApp: App {
 	@Environment(\.scenePhase) private var scenePhase
 
-	// Deprecated. Use AppViewModel instead
 	@StateObject private var viewModel = AppViewModel()
-
 	@StateObject private var dataController = DataController()
 	@StateObject private var alarmPlayer = AlarmPlayer()
 
@@ -42,6 +40,8 @@ struct MeditationTimerApp: App {
 
 					viewModel.timerDidComplete = {
 						alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+						Thread.sleep(forTimeInterval: 5.0)
+						alarmPlayer.stopSound()
 					}
 				}
 		}
