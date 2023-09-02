@@ -41,7 +41,7 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 		do {
 			try AVAudioSession.sharedInstance().setCategory(
 				.playback, // .playAndRecord,
-				options: [.duckOthers, .defaultToSpeaker])
+				options: [.duckOthers, /* .defaultToSpeaker */])
 		} catch {
 			Logger.error("Could not set category", error, context: .alarmPlayer)
 		}
@@ -70,7 +70,7 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 //		AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 
 		// Set vibrate callback
-		let vibrateSoundID = SystemSoundID(kSystemSoundID_Vibrate)
+//		let vibrateSoundID = SystemSoundID(kSystemSoundID_Vibrate)
 
 //		AudioServicesAddSystemSoundCompletion(
 //			vibrateSoundID, nil, nil, { (_: SystemSoundID, _: UnsafeMutableRawPointer?) -> Void in
@@ -144,10 +144,13 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 	func isPlaying() -> Bool {
 		return self.audioPlayer?.isPlaying == true
 	}
+}
 
-	// AVAudioPlayerDelegate protocol
+// MARK: AVAudioPlayerDelegate protocol methods
+extension AlarmPlayer {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		Logger.info("Finished playing", context: .alarmPlayer)
+		self.stopSound()
 	}
 
 	func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
