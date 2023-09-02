@@ -37,8 +37,14 @@ struct MeditationTimerApp: App {
 				.onAppear {
 					viewModel.timerDidComplete = {
 						alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+
+						// TODO: This is a temporary hack. Once I get a proper track I won't need to cut this off
 						Thread.sleep(forTimeInterval: 5.0)
 						alarmPlayer.stopSound()
+
+						// Stop playing silent track after timer completes. The next time a user
+						// opens the app to start a new timer, the backgroundTask will resume
+						backgroundTask.stop()
 					}
 				}
 		}
