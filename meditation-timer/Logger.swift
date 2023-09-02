@@ -20,12 +20,12 @@ struct Logger {
 		log(message, level: .warning, context: context)
 	}
 
-	static func error(_ error: Error, context: LogContext) {
+	static func error(_ message: String, _ error: Error, context: LogContext) {
 		log(error.localizedDescription, level: .error, context: context)
 	}
 
 	private static func log(_ message: String, level: LogLevel, context: LogContext) {
-		print("[\(level.rawValue.uppercased())][\(context.rawValue)] \(message)")
+		print("[\(level.rawValue.uppercased())] [\(context.rawValue)] \(message)")
 	}
 
 	enum LogLevel: String {
@@ -33,6 +33,6 @@ struct Logger {
 	}
 
 	enum LogContext: String {
-		case backgroundTask, view, model
+		case backgroundTask, alarmPlayer
 	}
 }
