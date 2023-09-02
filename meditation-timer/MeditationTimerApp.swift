@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct MeditationTimer: App {
+struct MeditationTimerApp: App {
 	@Environment(\.scenePhase) private var scenePhase
 	@StateObject private var timer = TimerModel()
 	@StateObject private var dataController = DataController()

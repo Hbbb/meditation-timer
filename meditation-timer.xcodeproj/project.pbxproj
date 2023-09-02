@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		841E00092A8D2AE300E9BE5B /* MeditationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E00082A8D2AE300E9BE5B /* MeditationTimer.swift */; };
+		841E00092A8D2AE300E9BE5B /* MeditationTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */; };
 		841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E000A2A8D2AE300E9BE5B /* ContentView.swift */; };
 		841E000D2A8D2AE400E9BE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841E000C2A8D2AE400E9BE5B /* Assets.xcassets */; };
 		841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841E000F2A8D2AE400E9BE5B /* Preview Assets.xcassets */; };
@@ -36,7 +36,7 @@
 
 /* Begin PBXFileReference section */
 		841E00052A8D2AE300E9BE5B /* meditation-timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meditation-timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		841E00082A8D2AE300E9BE5B /* MeditationTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimer.swift; sourceTree = "<group>"; };
+		841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimerApp.swift; sourceTree = "<group>"; };
 		841E000A2A8D2AE300E9BE5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		841E000C2A8D2AE400E9BE5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		841E000F2A8D2AE400E9BE5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
 				84504B0D2A94315B0064A378 /* HistoryView.swift */,
-				841E00082A8D2AE300E9BE5B /* MeditationTimer.swift */,
+				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
 				84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */,
@@ -231,7 +231,7 @@
 				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
-				841E00092A8D2AE300E9BE5B /* MeditationTimer.swift in Sources */,
+				841E00092A8D2AE300E9BE5B /* MeditationTimerApp.swift in Sources */,
 				84504B292A9C0B390064A378 /* AudioManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
