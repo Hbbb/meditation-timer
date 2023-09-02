@@ -67,14 +67,15 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 		// Set up the MPVolumeView so we can set the volume to max
 //		deviceVolumeHandler.setupVolumeView()
 		// Vibrate phone first
-		AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+//		AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
 
 		// Set vibrate callback
 		let vibrateSoundID = SystemSoundID(kSystemSoundID_Vibrate)
-		AudioServicesAddSystemSoundCompletion(
-			vibrateSoundID, nil, nil, { (_: SystemSoundID, _: UnsafeMutableRawPointer?) -> Void in
-				AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-			}, nil)
+
+//		AudioServicesAddSystemSoundCompletion(
+//			vibrateSoundID, nil, nil, { (_: SystemSoundID, _: UnsafeMutableRawPointer?) -> Void in
+//				AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
+//			}, nil)
 
 		let url = URL(fileURLWithPath: Bundle.main.path(forResource: soundName, ofType: "mp3")!)
 
