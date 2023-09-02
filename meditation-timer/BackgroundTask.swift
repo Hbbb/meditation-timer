@@ -35,6 +35,8 @@ class BackgroundTask: ObservableObject {
 	// MARK: - Methods
 
 	func startBackgroundTask() {
+		Logger.info("Starting")
+
 		NotificationCenter.default.addObserver(self,
 																					 selector: #selector(handleInterruption),
 																					 name: AVAudioSession.interruptionNotification,
@@ -45,10 +47,10 @@ class BackgroundTask: ObservableObject {
 		// 10 second and 20 second increments (then stop)
 		self.firstFireTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true, block: { _ in
 			if self.isFirstTimerFire {
-				Logger.info("BackgroundTask first fire", context: .backgroundTask)
+				Logger.info("First fire")
 				self.isFirstTimerFire = false
 			} else {
-				Logger.info("BackgroundTask second fire", context: .backgroundTask)
+				Logger.info("Second fire")
 				self.firstFireTimer?.invalidate()
 				// Logger.info("Background timer still going")
 			}
@@ -63,9 +65,9 @@ class BackgroundTask: ObservableObject {
 					return
 				}
 				if BackgroundTask.player?.isPlaying == true {
-					Logger.info("Background player is playing")
+					Logger.info("Playing")
 				} else {
-					Logger.info("Background player is not playing")
+					Logger.info("Not playing")
 				}
 			}
 		}
@@ -126,7 +128,7 @@ class BackgroundTask: ObservableObject {
 	private func playAudio() {
 		do {
 			if BackgroundTask.player?.isPlaying == true {
-				Logger.info("Background player already playing.")
+				Logger.info("Already playing")
 				return
 			}
 			let bundle = Bundle.main.path(forResource: "blank", ofType: "wav")
@@ -140,7 +142,7 @@ class BackgroundTask: ObservableObject {
 			BackgroundTask.player!.volume = 0.01
 			BackgroundTask.player!.prepareToPlay()
 			BackgroundTask.player!.play()
-			Logger.info("Background player started playing")
+			Logger.info("Started playing")
 		} catch {
 			Logger.error("Failed to playAudio", error, context: .backgroundTask)
 		}
