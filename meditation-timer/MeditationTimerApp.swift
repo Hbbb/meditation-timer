@@ -10,9 +10,11 @@ import SwiftUI
 @main
 struct MeditationTimerApp: App {
 	@Environment(\.scenePhase) private var scenePhase
-	@StateObject private var timer = TimerModel()
+
+	// Deprecated. Use AppViewModel instead
+	@StateObject private var viewModel = AppViewModel()
+
 	@StateObject private var dataController = DataController()
-	@StateObject private var audioManager = AudioManager()
 	@StateObject private var alarmPlayer = AlarmPlayer()
 
 	private var backgroundTask = BackgroundTask()
@@ -30,18 +32,22 @@ struct MeditationTimerApp: App {
 	var body: some Scene {
 		WindowGroup {
 			ContentView()
-				.environmentObject(timer)
-				.environmentObject(audioManager)
 				.environmentObject(backgroundTask)
 				.environmentObject(alarmPlayer)
+				.environmentObject(viewModel)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
 				.onAppear {
+					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded
 					backgroundTask.startBackgroundTask()
+
+					viewModel.timerDidComplete = {
+						alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+					}
 				}
 		}
 		.onChange(of: scenePhase) { phase in
 			if phase == .background {
-				// Schedule the background task
+				// I'm not sure if we need anything here, but I'm keeping this in case I do.
 			}
 		}
 	}

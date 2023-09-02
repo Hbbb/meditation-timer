@@ -3,27 +3,36 @@ import UIKit
 
 struct ContentView: View {
 	@EnvironmentObject var audioManager: AudioManager
-	@EnvironmentObject var timer: TimerModel
+	@EnvironmentObject var viewModel: AppViewModel
+
 	@State private var gestureStart: Double = .zero
 	@State private var gestureHeight: Double = .zero
+
 	@Environment(\.managedObjectContext) var moc
 
 	var timeRemainingLabel: String {
-		let minutes = Int(timer.remainingDurationSeconds / 60)
-		let seconds = Int(timer.remainingDurationSeconds % 60)
+		let minutes: Int
+		let seconds: Int
+
+		if viewModel.timerIsRunning {
+			minutes = viewModel.timeRemaining / 60
+			seconds = viewModel.timeRemaining % 60
+		} else {
+			minutes = viewModel.timerDuration / 60
+			seconds = viewModel.timerDuration % 60
+		}
+
+		let minutesFormatted = String(format: "%02d", minutes)
 		let secondsFormatted = String(format: "%02d", seconds)
 
-		if timer.isRunning {
-			return "\(minutes):\(secondsFormatted)"
-		} else {
-			return "\(timer.initialDurationSeconds / 60):00"
-		}
+		return "\(minutesFormatted):\(secondsFormatted)"
 	}
+
 
 	var body: some View {
 		VStack {
 			ZStack {
-				CircularProgressIndicator(progress: timer.progress)
+				CircularProgressIndicator(progress: viewModel.timerProgress)
 					.frame(width: 300, height: 300)
 
 				ZStack {
@@ -37,13 +46,13 @@ struct ContentView: View {
 			PlayPauseButton()
 				.padding(.top, 80)
 		}
-		.onReceive(timer.$shouldDisableIdleTimer) { _ in
-			updateIdleTimer()
-		}
+//		.onReceive(timer.$shouldDisableIdleTimer) { _ in
+//			updateIdleTimer()
+//		}
 		.gesture(
 			DragGesture()
 				.onChanged { value in
-					if timer.isRunning {
+					if viewModel.timerIsRunning {
 						return
 					}
 
@@ -56,9 +65,9 @@ struct ContentView: View {
 					let distance = abs(value.location.y - gestureStart)
 					if distance >= 30 {
 						if yOff < gestureHeight {
-							timer.incrementTime()
+							viewModel.addTime()
 						} else {
-							timer.decrementTime()
+							viewModel.removeTime()
 						}
 
 						gestureStart = value.location.y
@@ -85,7 +94,7 @@ struct ContentView: View {
 	}
 
 	private func updateIdleTimer() {
-		UIApplication.shared.isIdleTimerDisabled = timer.shouldDisableIdleTimer
+		UIApplication.shared.isIdleTimerDisabled = true
 	}
 }
 

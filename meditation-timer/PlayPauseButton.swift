@@ -8,12 +8,11 @@
 import SwiftUI
 
 struct PlayPauseButton: View {
-	@EnvironmentObject var timer: TimerModel
-	@EnvironmentObject var audioManager: AudioManager
+	@EnvironmentObject var viewModel: AppViewModel
 	@State private var rotation: Double = 0
 
 	private var icon: String {
-		timer.isRunning ? "stop.fill" : "play.fill"
+		viewModel.timerIsRunning ? "stop.fill" : "play.fill"
 	}
 
 	var body: some View {
@@ -23,16 +22,15 @@ struct PlayPauseButton: View {
 				.frame(width: 90, height: 90)
 				.onTapGesture {
 					withAnimation {
-						if timer.isRunning {
+						if viewModel.timerIsRunning {
 							rotation = 0
-							timer.stop()
+							viewModel.stopTimer()
 						} else {
 							rotation += 90
-							timer.start()
+							viewModel.startTimer()
 						}
 					}
-					print("start audio player")
-					audioManager.playAudio(trackOffset: timer.initialDurationSeconds)
+
 					UIImpactFeedbackGenerator(style: .light).impactOccurred()
 				}
 			Image(systemName: icon)
