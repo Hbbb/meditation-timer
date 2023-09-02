@@ -26,9 +26,11 @@
 		8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */; };
 		84865CC02A9D8900009C655C /* singing-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CBF2A9D8900009C655C /* singing-bowl.mp3 */; };
 		84865CC22A9D8936009C655C /* chakra-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC12A9D8936009C655C /* chakra-bowl.mp3 */; };
+		84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC32AA3D577009C655C /* BackgroundTask.swift */; };
+		84865CC62AA3D6EE009C655C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC52AA3D6EE009C655C /* Logger.swift */; };
+		84865CCA2AA3D936009C655C /* blank.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC92AA3D936009C655C /* blank.wav */; };
 		84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */; };
 		84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8C2A9D853200028D6E /* chime.mp3 */; };
-		84AC4B8F2A9D856000028D6E /* silence.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8E2A9D856000028D6E /* silence.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,9 +55,11 @@
 		8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 		84865CBF2A9D8900009C655C /* singing-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "singing-bowl.mp3"; sourceTree = "<group>"; };
 		84865CC12A9D8936009C655C /* chakra-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chakra-bowl.mp3"; sourceTree = "<group>"; };
+		84865CC32AA3D577009C655C /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
+		84865CC52AA3D6EE009C655C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		84865CC92AA3D936009C655C /* blank.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blank.wav; sourceTree = SOURCE_ROOT; };
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
-		84AC4B8E2A9D856000028D6E /* silence.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = silence.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 				841E00182A8D4CF400E9BE5B /* ArcProgressIndicator.swift */,
 				84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */,
 				84504B282A9C0B390064A378 /* AudioManager.swift */,
+				84865CC32AA3D577009C655C /* BackgroundTask.swift */,
+				84865CC52AA3D6EE009C655C /* Logger.swift */,
 				84504B242A99D60F0064A378 /* DataController.swift */,
 				84504B162A9700C20064A378 /* Colors.swift */,
 				84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */,
@@ -120,8 +126,8 @@
 		84504B1E2A99A7230064A378 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				84865CC92AA3D936009C655C /* blank.wav */,
 				84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */,
-				84AC4B8E2A9D856000028D6E /* silence.mp3 */,
 				84AC4B8C2A9D853200028D6E /* chime.mp3 */,
 				84865CBF2A9D8900009C655C /* singing-bowl.mp3 */,
 				84865CC12A9D8936009C655C /* chakra-bowl.mp3 */,
@@ -191,7 +197,7 @@
 			files = (
 				84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */,
 				841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */,
-				84AC4B8F2A9D856000028D6E /* silence.mp3 in Resources */,
+				84865CCA2AA3D936009C655C /* blank.wav in Resources */,
 				84504B1B2A99A5D80064A378 /* TitanOne-Regular.ttf in Resources */,
 				84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */,
 				84504B1D2A99A6500064A378 /* VarelaRound.ttf in Resources */,
@@ -218,6 +224,8 @@
 				8461BB2B2A8DD84100D9A1D6 /* RoundedRectangle.swift in Sources */,
 				841E00192A8D4CF400E9BE5B /* ArcProgressIndicator.swift in Sources */,
 				8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */,
+				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
+				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
 				841E00092A8D2AE300E9BE5B /* MeditationTimer.swift in Sources */,
 				84504B292A9C0B390064A378 /* AudioManager.swift in Sources */,
