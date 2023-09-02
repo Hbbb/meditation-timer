@@ -74,6 +74,7 @@ class BackgroundTask: ObservableObject {
 	}
 
 	func stop() {
+		Logger.info("Stopping")
 		NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
 		BackgroundTask.player?.stop()
 	}
