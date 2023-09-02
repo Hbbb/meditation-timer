@@ -46,10 +46,10 @@ struct MeditationTimerApp: App {
 			switch(phase) {
 				case .background:
 					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded
-					backgroundTask.startBackgroundTask()
+					backgroundTask.start()
 					break
 				case .active:
-					backgroundTask.stopBackgroundTask()
+					backgroundTask.stop()
 					break
 				default: ()
 			}

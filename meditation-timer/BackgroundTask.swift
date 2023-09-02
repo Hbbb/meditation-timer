@@ -34,7 +34,7 @@ class BackgroundTask: ObservableObject {
 
 	// MARK: - Methods
 
-	func startBackgroundTask() {
+	func start() {
 		Logger.info("Starting")
 
 		NotificationCenter.default.addObserver(self,
@@ -73,7 +73,7 @@ class BackgroundTask: ObservableObject {
 		}
 	}
 
-	func stopBackgroundTask() {
+	func stop() {
 		NotificationCenter.default.removeObserver(self, name: AVAudioSession.interruptionNotification, object: nil)
 		BackgroundTask.player?.stop()
 	}
