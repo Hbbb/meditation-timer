@@ -33,6 +33,6 @@ struct Logger {
 	}
 
 	enum LogContext: String {
-		case backgroundTask, alarmPlayer, timerConfig
+		case backgroundTask, alarmPlayer, timerConfig, viewModel
 	}
 }
