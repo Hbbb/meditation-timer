@@ -52,8 +52,7 @@ struct TimerConfig: View {
 				Image(systemName: "speaker.wave.2.fill")
 
 				PlayPauseButton(icon: "play.circle") {
-					Logger.info("Start timer", context: .timerConfig)
-					viewModel.startTimer()
+					viewModel.startMeditation()
 				}
 				.padding(.horizontal, 80)
 
