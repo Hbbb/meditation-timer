@@ -14,6 +14,10 @@ final class AppViewModel: ObservableObject {
 	@Published var timerDuration: Int = 30
 	@Published var timeRemaining: Int = 30
 
+	// Warmup defaults to nothing
+	@Published var warmupDuration: Int = 0
+	@Published var warmupTimeRemaining: Int = 0
+
 	// The percentage of time left on the timer
 	@Published var timerProgress: Double = 1
 
