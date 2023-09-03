@@ -10,24 +10,6 @@ struct ContentView: View {
 
 	@Environment(\.managedObjectContext) var moc
 
-	var timeRemainingLabel: String {
-		let minutes: Int
-		let seconds: Int
-
-		if viewModel.timerIsRunning {
-			minutes = viewModel.timeRemaining / 60
-			seconds = viewModel.timeRemaining % 60
-		} else {
-			minutes = viewModel.timerDuration / 60
-			seconds = viewModel.timerDuration % 60
-		}
-
-		let minutesFormatted = String(format: "%02d", minutes)
-		let secondsFormatted = String(format: "%02d", seconds)
-
-		return "\(minutesFormatted):\(secondsFormatted)"
-	}
-
 	var body: some View {
 		TimerConfig()
 			.sheet(isPresented: $viewModel.timerIsRunning) {
@@ -40,14 +22,15 @@ struct ContentView: View {
 							Circle()
 								.fill(Colors.primary)
 								.frame(width: 225, height: 225)
-							Text(timeRemainingLabel)
+							Text(viewModel.timeRemaining.toMMSS())
 								.font(.custom("Varela Round", size: 52))
 						}
 					}
 
-					PlayPauseButton(icon: "stop.fill") {
+					PlayPauseButton(icon: "stop.circle") {
 						viewModel.stopTimer()
 					}
+					.padding(.vertical)
 				}
 			}
 		//		.onReceive(timer.$shouldDisableIdleTimer) { _ in
