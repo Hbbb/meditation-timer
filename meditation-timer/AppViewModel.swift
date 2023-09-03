@@ -51,6 +51,7 @@ extension AppViewModel {
 
 		timeRemaining = timerDuration
 		timerProgress = 1
+		timerIsRunning = false
 	}
 
 	// Inc/Dec
