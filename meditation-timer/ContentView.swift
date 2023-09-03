@@ -28,57 +28,61 @@ struct ContentView: View {
 		return "\(minutesFormatted):\(secondsFormatted)"
 	}
 
-
 	var body: some View {
-		VStack {
-			ZStack {
-				CircularProgressIndicator(progress: viewModel.timerProgress)
-					.frame(width: 300, height: 300)
+		TimerConfig()
+			.sheet(isPresented: $viewModel.timerIsRunning) {
+				VStack {
+					ZStack {
+						CircularProgressIndicator(progress: viewModel.timerProgress)
+							.frame(width: 300, height: 300)
 
-				ZStack {
-					Circle()
-						.fill(Colors.primary)
-						.frame(width: 225, height: 225)
-					Text(timeRemainingLabel)
-						.font(.custom("Varela Round", size: 52))
+						ZStack {
+							Circle()
+								.fill(Colors.primary)
+								.frame(width: 225, height: 225)
+							Text(timeRemainingLabel)
+								.font(.custom("Varela Round", size: 52))
+						}
+					}
+
+					PlayPauseButton(icon: "stop.fill") {
+						viewModel.stopTimer()
+					}
 				}
 			}
-			PlayPauseButton()
-				.padding(.top, 80)
-		}
-//		.onReceive(timer.$shouldDisableIdleTimer) { _ in
-//			updateIdleTimer()
-//		}
-		.gesture(
-			DragGesture()
-				.onChanged { value in
-					if viewModel.timerIsRunning {
-						return
-					}
-
-					let yOff = value.translation.height
-
-					if gestureStart == .zero {
-						gestureStart = value.startLocation.y
-					}
-
-					let distance = abs(value.location.y - gestureStart)
-					if distance >= 30 {
-						if yOff < gestureHeight {
-							viewModel.addTime()
-						} else {
-							viewModel.removeTime()
-						}
-
-						gestureStart = value.location.y
-					}
-
-					gestureHeight = yOff
-				}
-				.onEnded { _ in
-					gestureHeight = .zero
-				}
-		)
+		//		.onReceive(timer.$shouldDisableIdleTimer) { _ in
+		//			updateIdleTimer()
+		//		}
+		//		.gesture(
+		//			DragGesture()
+		//				.onChanged { value in
+		//					if viewModel.timerIsRunning {
+		//						return
+		//					}
+		//
+		//					let yOff = value.translation.height
+		//
+		//					if gestureStart == .zero {
+		//						gestureStart = value.startLocation.y
+		//					}
+		//
+		//					let distance = abs(value.location.y - gestureStart)
+		//					if distance >= 30 {
+		//						if yOff < gestureHeight {
+		//							viewModel.addTime()
+		//						} else {
+		//							viewModel.removeTime()
+		//						}
+		//
+		//						gestureStart = value.location.y
+		//					}
+		//
+		//					gestureHeight = yOff
+		//				}
+		//				.onEnded { _ in
+		//					gestureHeight = .zero
+		//				}
+		//		)
 
 		// This is a hack I use to find real names of fonts. Don't even ask
 		//		.onAppear {
