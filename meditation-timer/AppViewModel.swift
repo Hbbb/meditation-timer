@@ -9,14 +9,19 @@ import Foundation
 
 final class AppViewModel: ObservableObject {
 	@Published var timerIsRunning: Bool = false
+	@Published var warmupTimerIsRunning: Bool = false
+
+	var meditationIsActive: Bool {
+		return warmupTimerIsRunning || timerIsRunning
+	}
 
 	// Timer defaults to 5 minutes
-	@Published var timerDuration: Int = 300 {
+	@Published var timerDuration: Int = 30 {
 		didSet {
 			timeRemaining = self.timerDuration
 		}
 	}
-	@Published var timeRemaining: Int = 300
+	@Published var timeRemaining: Int = 30
 
 	// Warmup defaults to nothing
 	@Published var warmupDuration: Int = 0 {
@@ -30,17 +35,65 @@ final class AppViewModel: ObservableObject {
 	@Published var timerProgress: Double = 1
 
 	var timerDidComplete: (() -> Void)?
+	var timerDidStart: (() -> Void)?
 	private var timer: Timer?
+
+	var warmupDidStart: (() -> Void)?
+	var warmupDidComplete: (() -> Void)?
+	private var warmupTimer: Timer?
+}
+
+// MARK: Warmup controls
+extension AppViewModel {
+	func startWarmupTimer() {
+		if warmupTimerIsRunning {
+			return
+		}
+		warmupTimerIsRunning = true
+
+		warmupTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+			if self.warmupTimeRemaining == 0 {
+				self.warmupDidComplete?()
+				self.stopWarmupTimer()
+				return
+			}
+
+			self.warmupTimeRemaining -= 1
+		}
+	}
+
+	func stopWarmupTimer() {
+		warmupTimer?.invalidate()
+		warmupTimer = nil
+
+		warmupTimeRemaining = warmupDuration
+
+		warmupDidComplete = nil
+		warmupTimerIsRunning = false
+	}
 }
 
 // MARK: Timer controls
 extension AppViewModel {
+	func startMeditation() {
+		if warmupDuration > 0 {
+			Logger.info("Starting warmup", context: .viewModel)
+			startWarmupTimer()
+
+			self.warmupDidComplete = {
+				Logger.info("Warmup complete", context: .viewModel)
+				self.startTimer()
+			}
+		}
+	}
+
 	func startTimer() {
 		if timerIsRunning {
 			return
 		}
-
 		timerIsRunning = true
+
+		self.timerDidStart?()
 
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 			if self.timeRemaining == 0 {
