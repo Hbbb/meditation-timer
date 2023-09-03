@@ -22,7 +22,6 @@ struct TimerConfig: View {
 
 					Text(viewModel.timerDuration.toMMSS())
 						.font(.system(size: 64))
-						.padding(.horizontal, 20)
 
 					IncDecButton(.plus) {
 						viewModel.addTime()
@@ -35,15 +34,14 @@ struct TimerConfig: View {
 				Text("Warmup")
 				HStack {
 					IncDecButton(.minus) {
-
+						viewModel.removeWarmupTime()
 					}
 
 					Text(viewModel.warmupDuration.toMMSS())
 						.font(.system(size: 64))
-						.padding(.horizontal, 20)
 
 					IncDecButton(.plus) {
-
+						viewModel.addWarmupTime()
 					}
 				}
 			}
@@ -83,6 +81,7 @@ struct IncDecButton: View {
 	var body: some View {
 		Image(systemName: icon.rawValue)
 			.font(.system(size: 32))
+			.padding()
 			.onTapGesture {
 				self.action()
 			}

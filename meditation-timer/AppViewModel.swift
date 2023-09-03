@@ -71,6 +71,18 @@ extension AppViewModel {
 
 		timerDuration -= 300
 	}
+
+	func addWarmupTime() {
+		warmupDuration += 30
+	}
+
+	func removeWarmupTime() {
+		if warmupDuration == 0 {
+			return
+		}
+
+		warmupDuration -= 30
+	}
 }
 
 // MARK: Persistence
