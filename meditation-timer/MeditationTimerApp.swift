@@ -43,7 +43,6 @@ struct MeditationTimerApp: App {
 						alarmPlayer.stopSound()
 					}
 
-
 					viewModel.timerDidComplete = {
 						alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
 

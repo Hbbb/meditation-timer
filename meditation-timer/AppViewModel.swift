@@ -84,7 +84,11 @@ extension AppViewModel {
 				Logger.info("Warmup complete", context: .viewModel)
 				self.startTimer()
 			}
+
+			return
 		}
+
+		startTimer()
 	}
 
 	func startTimer() {
@@ -93,7 +97,10 @@ extension AppViewModel {
 		}
 		timerIsRunning = true
 
-		self.timerDidStart?()
+		DispatchQueue.global(qos: .userInteractive).async {
+			Logger.info("timerDidStart()", context: .viewModel)
+			self.timerDidStart?()
+		}
 
 		timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 			if self.timeRemaining == 0 {
