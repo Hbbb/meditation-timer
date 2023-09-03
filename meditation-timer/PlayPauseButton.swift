@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct PlayPauseButton: View {
-	@EnvironmentObject var viewModel: AppViewModel
-
 	let icon: String
 	let action: (() -> Void)
 
@@ -19,19 +17,25 @@ struct PlayPauseButton: View {
 	}
 
 	var body: some View {
-		ZStack {
-			Circle()
-				.fill(Colors.secondary)
-				.frame(width: 90, height: 90)
-				.onTapGesture {
-					self.action()
-					UIImpactFeedbackGenerator(style: .light).impactOccurred()
-				}
+		Image(systemName: icon)
+			.font(.system(size: 64))
+			.onTapGesture {
+				self.action()
+				UIImpactFeedbackGenerator(style: .light).impactOccurred()
+			}
+	}
+}
 
-			Image(systemName: icon)
-				.font(.system(size: 24))
-				.transition(.identity)
-				.frame(width: 90, height: 90)
+struct PlayPauseButton_Previews: PreviewProvider {
+	static var previews: some View {
+		Group {
+			PlayPauseButton(icon: "play.circle") {
+				print("Play")
+			}
+
+			PlayPauseButton(icon: "stop.circle") {
+				print("Stop")
+			}
 		}
 	}
 }
