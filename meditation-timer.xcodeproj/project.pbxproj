@@ -30,6 +30,7 @@
 		84865CCA2AA3D936009C655C /* blank.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC92AA3D936009C655C /* blank.wav */; };
 		84865CCC2AA3DAA5009C655C /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */; };
 		84865CCE2AA3E6A7009C655C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCD2AA3E6A7009C655C /* AppViewModel.swift */; };
+		84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCF2AA3FEB8009C655C /* TimerConfig.swift */; };
 		84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */; };
 		84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8C2A9D853200028D6E /* chime.mp3 */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		84865CC92AA3D936009C655C /* blank.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blank.wav; sourceTree = SOURCE_ROOT; };
 		84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlayer.swift; sourceTree = "<group>"; };
 		84865CCD2AA3E6A7009C655C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
+		84865CCF2AA3FEB8009C655C /* TimerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfig.swift; sourceTree = "<group>"; };
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
 				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
+				84865CCF2AA3FEB8009C655C /* TimerConfig.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				84504B0D2A94315B0064A378 /* HistoryView.swift */,
 				84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */,
@@ -227,6 +230,7 @@
 				84504B252A99D60F0064A378 /* DataController.swift in Sources */,
 				8461BB2B2A8DD84100D9A1D6 /* RoundedRectangle.swift in Sources */,
 				841E00192A8D4CF400E9BE5B /* ArcProgressIndicator.swift in Sources */,
+				84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */,
 				8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */,
 				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
