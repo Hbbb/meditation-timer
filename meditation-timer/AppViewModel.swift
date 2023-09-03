@@ -16,11 +16,14 @@ final class AppViewModel: ObservableObject {
 			timeRemaining = self.timerDuration
 		}
 	}
-
 	@Published var timeRemaining: Int = 300
 
 	// Warmup defaults to nothing
-	@Published var warmupDuration: Int = 0
+	@Published var warmupDuration: Int = 0 {
+		didSet {
+			warmupTimeRemaining = self.warmupDuration
+		}
+	}
 	@Published var warmupTimeRemaining: Int = 0
 
 	// The percentage of time left on the timer
