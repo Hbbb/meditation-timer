@@ -60,8 +60,12 @@ struct MeditationTimerApp: App {
 		.onChange(of: scenePhase) { phase in
 			switch(phase) {
 				case .background:
-					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded
-					backgroundTask.start()
+
+					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded.
+					// We only do this if there is an active timer running when they background the app
+					if viewModel.meditationIsActive {
+						backgroundTask.start()
+					}
 					break
 				case .active:
 					backgroundTask.stop()
