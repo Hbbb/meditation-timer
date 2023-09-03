@@ -11,8 +11,13 @@ final class AppViewModel: ObservableObject {
 	@Published var timerIsRunning: Bool = false
 
 	// Timer defaults to 5 minutes
-	@Published var timerDuration: Int = 30
-	@Published var timeRemaining: Int = 30
+	@Published var timerDuration: Int = 300 {
+		didSet {
+			timeRemaining = self.timerDuration
+		}
+	}
+
+	@Published var timeRemaining: Int = 300
 
 	// Warmup defaults to nothing
 	@Published var warmupDuration: Int = 0
@@ -56,15 +61,15 @@ extension AppViewModel {
 
 	// Inc/Dec
 	func addTime() {
-		timerDuration += 5
+		timerDuration += 300
 	}
 
 	func removeTime() {
-		if timerDuration == 5 {
+		if timerDuration == 300 {
 			return
 		}
 
-		timerDuration -= 5
+		timerDuration -= 300
 	}
 }
 
