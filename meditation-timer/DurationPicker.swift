@@ -79,7 +79,6 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 
 			if newDuration != parent.duration {
 				parent.duration = min(90, max(1, newDuration)) * 60
-				print("Duration updated to: \(parent.duration)")
 				hapticFeedback.impactOccurred()
 			}
 		}
