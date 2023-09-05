@@ -32,8 +32,13 @@
 		84865CCE2AA3E6A7009C655C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCD2AA3E6A7009C655C /* AppViewModel.swift */; };
 		84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCF2AA3FEB8009C655C /* TimerConfig.swift */; };
 		84865CD22AA52478009C655C /* Int+TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CD12AA52478009C655C /* Int+TimeFormatting.swift */; };
-		84865CD42AA6B9B8009C655C /* DurationPickerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CD32AA6B9B8009C655C /* DurationPickerTest.swift */; };
 		84865CD82AA6C9F9009C655C /* DurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CD72AA6C9F9009C655C /* DurationPicker.swift */; };
+		84865CDF2AA7027D009C655C /* Comfortaa-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CD92AA7027D009C655C /* Comfortaa-SemiBold.ttf */; };
+		84865CE02AA7027D009C655C /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CDA2AA7027D009C655C /* Comfortaa-Bold.ttf */; };
+		84865CE12AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CDB2AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf */; };
+		84865CE22AA7027D009C655C /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CDC2AA7027D009C655C /* Comfortaa-Light.ttf */; };
+		84865CE32AA7027D009C655C /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CDD2AA7027D009C655C /* Comfortaa-Regular.ttf */; };
+		84865CE42AA7027D009C655C /* Comfortaa-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 84865CDE2AA7027D009C655C /* Comfortaa-Medium.ttf */; };
 		84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */; };
 		84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8C2A9D853200028D6E /* chime.mp3 */; };
 /* End PBXBuildFile section */
@@ -66,8 +71,13 @@
 		84865CCD2AA3E6A7009C655C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		84865CCF2AA3FEB8009C655C /* TimerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfig.swift; sourceTree = "<group>"; };
 		84865CD12AA52478009C655C /* Int+TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeFormatting.swift"; sourceTree = "<group>"; };
-		84865CD32AA6B9B8009C655C /* DurationPickerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPickerTest.swift; sourceTree = "<group>"; };
 		84865CD72AA6C9F9009C655C /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
+		84865CD92AA7027D009C655C /* Comfortaa-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-SemiBold.ttf"; sourceTree = "<group>"; };
+		84865CDA2AA7027D009C655C /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		84865CDB2AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		84865CDC2AA7027D009C655C /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		84865CDD2AA7027D009C655C /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		84865CDE2AA7027D009C655C /* Comfortaa-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Medium.ttf"; sourceTree = "<group>"; };
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,7 +106,6 @@
 			children = (
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
-				84865CD32AA6B9B8009C655C /* DurationPickerTest.swift */,
 				84865CD72AA6C9F9009C655C /* DurationPicker.swift */,
 				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
 				84865CCF2AA3FEB8009C655C /* TimerConfig.swift */,
@@ -147,6 +156,12 @@
 				84865CBF2A9D8900009C655C /* singing-bowl.mp3 */,
 				84865CC12A9D8936009C655C /* chakra-bowl.mp3 */,
 				84504B182A99A4A40064A378 /* TitanOne-Regular.ttf */,
+				84865CDA2AA7027D009C655C /* Comfortaa-Bold.ttf */,
+				84865CDC2AA7027D009C655C /* Comfortaa-Light.ttf */,
+				84865CDE2AA7027D009C655C /* Comfortaa-Medium.ttf */,
+				84865CDD2AA7027D009C655C /* Comfortaa-Regular.ttf */,
+				84865CD92AA7027D009C655C /* Comfortaa-SemiBold.ttf */,
+				84865CDB2AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf */,
 				84504B1C2A99A6500064A378 /* VarelaRound.ttf */,
 			);
 			path = Resources;
@@ -210,14 +225,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84865CDF2AA7027D009C655C /* Comfortaa-SemiBold.ttf in Resources */,
+				84865CE42AA7027D009C655C /* Comfortaa-Medium.ttf in Resources */,
 				84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */,
 				841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */,
 				84865CCA2AA3D936009C655C /* blank.wav in Resources */,
+				84865CE22AA7027D009C655C /* Comfortaa-Light.ttf in Resources */,
 				84504B1B2A99A5D80064A378 /* TitanOne-Regular.ttf in Resources */,
+				84865CE02AA7027D009C655C /* Comfortaa-Bold.ttf in Resources */,
 				84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */,
 				84504B1D2A99A6500064A378 /* VarelaRound.ttf in Resources */,
 				84865CC02A9D8900009C655C /* singing-bowl.mp3 in Resources */,
+				84865CE32AA7027D009C655C /* Comfortaa-Regular.ttf in Resources */,
 				841E000D2A8D2AE400E9BE5B /* Assets.xcassets in Resources */,
+				84865CE12AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				84865CC22A9D8936009C655C /* chakra-bowl.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +250,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				84865CD42AA6B9B8009C655C /* DurationPickerTest.swift in Sources */,
 				84504B0E2A94315B0064A378 /* HistoryView.swift in Sources */,
 				84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */,
 				84504B172A9700C20064A378 /* Colors.swift in Sources */,
