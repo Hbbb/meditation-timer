@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 struct TestSlider: View {
-	@State var duration: Int = 0
+	@State var duration: Int = 1
 
 	var body: some View {
 		VStack {
@@ -22,11 +22,12 @@ struct TestSlider: View {
 }
 
 class DurationPicker: UIScrollView {
-	var tickWidth: CGFloat = 3
-	var tickHeight: CGFloat = 15
-	var longTickHeight: CGFloat = 30
+	static let maxTicks: Int = 107
+
+	var tickWidth: CGFloat = 5
+	var tickHeight: CGFloat = 25
+	var longTickHeight: CGFloat = 50
 	var tickInterval: Int = 4
-	var maxTicks: Int = 90
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -42,17 +43,18 @@ class DurationPicker: UIScrollView {
 	}
 
 	private func setupTicks() {
-		for i in 0..<maxTicks {
+		for i in 0..<DurationPicker.maxTicks {
 			let tick = UIView()
-			tick.backgroundColor = .black
+			tick.backgroundColor = i % tickInterval == 0 ? .black : .gray
 			tick.frame.size.width = tickWidth
 			tick.frame.size.height = (i % tickInterval == 0) ? longTickHeight : tickHeight
-			tick.frame.origin.x = CGFloat(i) * (tickWidth + 10)
+			tick.frame.origin.x = CGFloat(i) * (tickWidth + 20)
 			tick.frame.origin.y = self.frame.size.height - tick.frame.size.height
+			tick.layer.cornerRadius = tickWidth / 2
 			self.addSubview(tick)
 		}
 
-		self.contentSize = CGSize(width: CGFloat(maxTicks) * (tickWidth + 10), height: self.frame.size.height)
+		self.contentSize = CGSize(width: CGFloat(DurationPicker.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
 	}
 }
 
@@ -65,20 +67,20 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 
 	class Coordinator: NSObject, UIScrollViewDelegate {
 		var parent: DurationPickerRepresentable
+		let hapticFeedback = UIImpactFeedbackGenerator(style: .light)
 
 		init(_ parent: DurationPickerRepresentable) {
 			self.parent = parent
 		}
 
-		var lastPosition: CGFloat = 0.0
-		let threshold: CGFloat = 30.0
 		func scrollViewDidScroll(_ scrollView: UIScrollView) {
-			let position = max(0, min(scrollView.contentOffset.x, scrollView.contentSize.width - scrollView.frame.width))
+			let rawDuration = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / CGFloat(DurationPicker.maxTicks))) + 1
+			let newDuration = min(90, max(1, rawDuration))
 
-			if abs(lastPosition - position) >= threshold {
-				let direction: Int = (lastPosition < position) ? 1 : -1
-				parent.duration = max(1, min(90, parent.duration + direction))
-				lastPosition = position
+			if newDuration != parent.duration {
+				parent.duration = min(90, max(1, newDuration))
+				print("Duration updated to: \(parent.duration)")
+				hapticFeedback.impactOccurred()
 			}
 		}
 	}
@@ -90,7 +92,7 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 	}
 
 	func updateUIView(_ uiView: DurationPicker, context: Context) {
-		// Updates go here
+		// View updates. Not sure when this is called
 	}
 }
 
