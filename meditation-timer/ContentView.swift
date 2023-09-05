@@ -33,51 +33,18 @@ struct ContentView: View {
 					.padding(.vertical)
 				}
 			}
-		//		.onReceive(timer.$shouldDisableIdleTimer) { _ in
-		//			updateIdleTimer()
-		//		}
-		//		.gesture(
-		//			DragGesture()
-		//				.onChanged { value in
-		//					if viewModel.timerIsRunning {
-		//						return
-		//					}
-		//
-		//					let yOff = value.translation.height
-		//
-		//					if gestureStart == .zero {
-		//						gestureStart = value.startLocation.y
-		//					}
-		//
-		//					let distance = abs(value.location.y - gestureStart)
-		//					if distance >= 30 {
-		//						if yOff < gestureHeight {
-		//							viewModel.addTime()
-		//						} else {
-		//							viewModel.removeTime()
-		//						}
-		//
-		//						gestureStart = value.location.y
-		//					}
-		//
-		//					gestureHeight = yOff
-		//				}
-		//				.onEnded { _ in
-		//					gestureHeight = .zero
-		//				}
-		//		)
 
 		// This is a hack I use to find real names of fonts. Don't even ask
-		//		.onAppear {
-		//			for family: String in UIFont.familyNames
-		//			{
-		//				print(family)
-		//				for names: String in UIFont.fontNames(forFamilyName: family)
-		//				{
-		//					print("== \(names)")
-		//				}
-		//			}
-		//		}
+				.onAppear {
+					for family: String in UIFont.familyNames
+					{
+						print(family)
+						for names: String in UIFont.fontNames(forFamilyName: family)
+						{
+							print("== \(names)")
+						}
+					}
+				}
 	}
 
 	private func updateIdleTimer() {
