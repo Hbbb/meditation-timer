@@ -16,14 +16,14 @@ struct CircularProgressIndicator: View {
 			Circle()
 				.stroke(
 					Colors.secondary.opacity(0.5),
-					lineWidth: 30
+					lineWidth: 20
 				)
 		Circle()
-			.trim(from: 0, to:  1 - progress)
+			.trim(from: 1 - progress, to: 1)
 			.stroke(
 				Colors.secondary,
 				style: StrokeStyle(
-					lineWidth: 30,
+					lineWidth: 20,
 					lineCap: .round
 				)
 			)
@@ -36,7 +36,7 @@ struct CircularProgressIndicator: View {
 struct CircularProgressIndicator_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
-			CircularProgressIndicator(progress: 0.75)
+			CircularProgressIndicator(progress: 0.80)
 				.frame(width: 200, height: 200)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
