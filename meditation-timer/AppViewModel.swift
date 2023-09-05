@@ -16,12 +16,12 @@ final class AppViewModel: ObservableObject {
 	}
 
 	// Timer defaults to 5 minutes
-	@Published var timerDuration: Int = 30 {
+	@Published var timerDuration: Int = 60 {
 		didSet {
 			timeRemaining = self.timerDuration
 		}
 	}
-	@Published var timeRemaining: Int = 30
+	@Published var timeRemaining: Int = 60
 
 	// Warmup defaults to nothing
 	@Published var warmupDuration: Int = 0 {

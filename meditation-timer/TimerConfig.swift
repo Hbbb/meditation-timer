@@ -16,19 +16,12 @@ struct TimerConfig: View {
 			VStack {
 				Text("Meditation")
 				HStack {
-					IncDecButton(.minus) {
-						viewModel.removeTime()
-					}
-
 					Text(viewModel.timerDuration.toMMSS())
 						.font(.system(size: 64))
-
-					IncDecButton(.plus) {
-						viewModel.addTime()
-					}
 				}
 			}
 			.padding(.vertical)
+			DurationPickerRepresentable(duration: $viewModel.timerDuration)
 
 			VStack {
 				Text("Warmup")
