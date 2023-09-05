@@ -121,31 +121,6 @@ extension AppViewModel {
 		timerProgress = 1
 		timerIsRunning = false
 	}
-
-	// Inc/Dec
-	func addTime() {
-		timerDuration += 300
-	}
-
-	func removeTime() {
-		if timerDuration == 300 {
-			return
-		}
-
-		timerDuration -= 300
-	}
-
-	func addWarmupTime() {
-		warmupDuration += 30
-	}
-
-	func removeWarmupTime() {
-		if warmupDuration == 0 {
-			return
-		}
-
-		warmupDuration -= 30
-	}
 }
 
 // MARK: Persistence
