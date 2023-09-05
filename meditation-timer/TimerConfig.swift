@@ -9,76 +9,51 @@ import SwiftUI
 
 struct TimerConfig: View {
 	@EnvironmentObject var viewModel: AppViewModel
+	let selections = ["0s", "30s", "1m"]
+	@State var selection: String = "0s"
 
 	var body: some View {
 		VStack() {
+			Spacer()
+			Text("Meditation")
+				.font(.largeTitle)
+				.padding(.bottom, 40)
 
-			VStack {
-				Text("Meditation")
-				HStack {
-					Text(viewModel.timerDuration.toMMSS())
-						.font(.system(size: 64))
-				}
-			}
-			.padding(.vertical)
+			Text(viewModel.timerDuration.toMMSS())
+				.font(.title)
+				.padding(.bottom, 20)
 			DurationPickerRepresentable(duration: $viewModel.timerDuration)
-
-			VStack {
+				.frame(height: 50)
+				.padding(.bottom, 80)
+			Menu {
+				Button("0s", action: { viewModel.warmupDuration = 0 })
+				Button("30s", action: { viewModel.warmupDuration = 30 })
+				Button("1m", action: { viewModel.warmupDuration = 60 })
+			} label: {
 				Text("Warmup")
-				HStack {
-					IncDecButton(.minus) {
-						viewModel.removeWarmupTime()
-					}
-
-					Text(viewModel.warmupDuration.toMMSS())
-						.font(.system(size: 64))
-
-					IncDecButton(.plus) {
-						viewModel.addWarmupTime()
-					}
-				}
+					.padding(.horizontal, 100)
+					.padding(.vertical, 15)
+					.background(Color.gray)
+					.foregroundColor(.white)
+					.cornerRadius(15)
 			}
-			.padding(.vertical)
-			.padding(.bottom, 100)
+			.padding(.bottom, 40)
 
-			HStack {
-				Image(systemName: "speaker.wave.2.fill")
-
-				PlayPauseButton(icon: "play.circle") {
+			Text("Start Timer")
+				.frame(maxWidth: .infinity)
+				.padding(.vertical, 20)
+				.background(Color.green)
+				.foregroundColor(.white)
+				.cornerRadius(100)
+				.onTapGesture {
 					viewModel.startMeditation()
 				}
-				.padding(.horizontal, 80)
-
-				Image(systemName: "square.and.arrow.down.fill")
-			}.padding([.top, .bottom])
 		}
+		.padding(.horizontal)
 		.frame(maxHeight: .infinity, alignment: .bottom)
 	}
 }
 
-enum IncDecControl: String {
-	case plus
-	case minus
-}
-
-struct IncDecButton: View {
-	let icon: IncDecControl
-	let action: (() -> Void)
-
-	init(_ control: IncDecControl, action: @escaping () -> Void) {
-		icon = control
-		self.action = action
-	}
-
-	var body: some View {
-		Image(systemName: icon.rawValue)
-			.font(.system(size: 32))
-			.padding()
-			.onTapGesture {
-				self.action()
-			}
-	}
-}
 
 struct TimerConfig_Previews: PreviewProvider {
 	static var previews: some View {
