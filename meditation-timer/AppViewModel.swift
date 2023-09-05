@@ -7,13 +7,12 @@
 
 import Foundation
 
-final class AppViewModel: ObservableObject {
-	@Published var timerIsRunning: Bool = false
-	@Published var warmupTimerIsRunning: Bool = false
+enum TimerState {
+	case config, warmup, meditation
+}
 
-	var meditationIsActive: Bool {
-		return warmupTimerIsRunning || timerIsRunning
-	}
+final class AppViewModel: ObservableObject {
+	@Published var timerState: TimerState = .meditation
 
 	// Timer defaults to 5 minutes
 	@Published var timerDuration: Int = 60 {
@@ -33,6 +32,7 @@ final class AppViewModel: ObservableObject {
 
 	// The percentage of time left on the timer
 	@Published var timerProgress: Double = 1
+	@Published var warmupProgress: Double = 1
 
 	var timerDidComplete: (() -> Void)?
 	var timerDidStart: (() -> Void)?
@@ -46,10 +46,10 @@ final class AppViewModel: ObservableObject {
 // MARK: Warmup controls
 extension AppViewModel {
 	func startWarmupTimer() {
-		if warmupTimerIsRunning {
+		if timerState == .warmup {
 			return
 		}
-		warmupTimerIsRunning = true
+		timerState = .warmup
 
 		warmupTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 			if self.warmupTimeRemaining == 0 {
@@ -59,6 +59,7 @@ extension AppViewModel {
 			}
 
 			self.warmupTimeRemaining -= 1
+			self.warmupProgress = Double(self.warmupTimeRemaining) / Double(self.warmupDuration)
 		}
 	}
 
@@ -69,7 +70,7 @@ extension AppViewModel {
 		warmupTimeRemaining = warmupDuration
 
 		warmupDidComplete = nil
-		warmupTimerIsRunning = false
+		timerState = .meditation
 	}
 }
 
@@ -92,10 +93,10 @@ extension AppViewModel {
 	}
 
 	func startTimer() {
-		if timerIsRunning {
+		if timerState == .meditation {
 			return
 		}
-		timerIsRunning = true
+		timerState = .meditation
 
 		DispatchQueue.global(qos: .userInteractive).async {
 			Logger.info("timerDidStart()", context: .viewModel)
@@ -119,7 +120,7 @@ extension AppViewModel {
 
 		timeRemaining = timerDuration
 		timerProgress = 1
-		timerIsRunning = false
+		timerState = .config
 	}
 }
 
