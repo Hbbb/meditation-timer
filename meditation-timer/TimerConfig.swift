@@ -57,7 +57,7 @@ struct TimerConfig: View {
 						viewModel.warmupDuration = 60
 					}
 			}
-			.padding(.bottom, 40)
+			.padding(.bottom, 120)
 
 			Text("Start Timer")
 				.frame(maxWidth: .infinity)
