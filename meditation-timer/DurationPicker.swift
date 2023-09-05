@@ -75,10 +75,10 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 
 		func scrollViewDidScroll(_ scrollView: UIScrollView) {
 			let rawDuration = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / CGFloat(DurationPicker.maxTicks))) + 1
-			let newDuration = min(90, max(1, rawDuration))
+			let newDuration = min(90, max(1, rawDuration)) * 60
 
 			if newDuration != parent.duration {
-				parent.duration = min(90, max(1, newDuration)) * 60
+				parent.duration = newDuration
 				hapticFeedback.impactOccurred()
 			}
 		}
