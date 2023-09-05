@@ -62,7 +62,7 @@ struct MeditationTimerApp: App {
 
 					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded.
 					// We only do this if there is an active timer running when they background the app
-					if viewModel.meditationIsActive {
+					if viewModel.timerState != .config {
 						backgroundTask.start()
 					}
 					break
