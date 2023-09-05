@@ -24,18 +24,38 @@ struct TimerConfig: View {
 				.padding(.bottom, 20)
 			DurationPickerRepresentable(duration: $viewModel.timerDuration)
 				.frame(height: 50)
-				.padding(.bottom, 80)
-			Menu {
-				Button("0s", action: { viewModel.warmupDuration = 0 })
-				Button("30s", action: { viewModel.warmupDuration = 30 })
-				Button("1m", action: { viewModel.warmupDuration = 60 })
-			} label: {
-				Text("Warmup")
-					.padding(.horizontal, 100)
-					.padding(.vertical, 15)
-					.background(Color.gray)
+				.padding(.bottom, 40)
+
+			// Warmup Picker
+			Text("Warmup")
+			HStack {
+				Text("0s")
+					.padding(.horizontal, 30)
+					.padding(.vertical, 10)
+					.background(viewModel.warmupDuration == 0 ? Color.blue : Color.gray)
 					.foregroundColor(.white)
-					.cornerRadius(15)
+					.cornerRadius(50)
+					.onTapGesture {
+						viewModel.warmupDuration = 0
+					}
+				Text("30s")
+					.padding(.horizontal, 30)
+					.padding(.vertical, 10)
+					.background(viewModel.warmupDuration == 30 ? Color.blue : Color.gray)
+					.foregroundColor(.white)
+					.cornerRadius(50)
+					.onTapGesture {
+						viewModel.warmupDuration = 30
+					}
+				Text("1m")
+					.padding(.horizontal, 30)
+					.padding(.vertical, 10)
+					.background(viewModel.warmupDuration == 60 ? Color.blue : Color.gray)
+					.foregroundColor(.white)
+					.cornerRadius(50)
+					.onTapGesture {
+						viewModel.warmupDuration = 60
+					}
 			}
 			.padding(.bottom, 40)
 
