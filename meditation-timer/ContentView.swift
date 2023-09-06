@@ -16,13 +16,13 @@ struct ContentView: View {
 				TimerView(timeRemaining: vm.warmupDuration - vm.elapsedTime,
 									label: "Warm Up",
 									icon: "forward.end.fill",
-									progress: Double(vm.elapsedTime) / Double(vm.warmupDuration),
-									onTap: vm.skipWarmup)
+									duration: vm.warmupDuration,
+									onTap: vm.completeWarmup)
 			case .meditate:
 				TimerView(timeRemaining: vm.meditationDuration - vm.elapsedTime,
 									label: "Meditate",
 									icon: "stop.fill",
-									progress: Double(vm.elapsedTime) / Double(vm.meditationDuration),
+									duration: vm.meditationDuration,
 									onTap: vm.stopMeditation)
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
@@ -43,7 +43,7 @@ struct TimerView: View {
 	var timeRemaining: Int
 	var label: String
 	var icon: String
-	var progress: Double
+	var duration: Int
 	var onTap: (() -> Void)
 
 	var body: some View {
@@ -53,7 +53,7 @@ struct TimerView: View {
 					Text(timeRemaining.toMMSS())
 					Text(label)
 				}
-				CircularProgressIndicator(progress: progress)
+				CircularProgressIndicator(duration: Double(duration))
 					.frame(width: 225, height: 225)
 			}
 			.padding(.bottom, 120)

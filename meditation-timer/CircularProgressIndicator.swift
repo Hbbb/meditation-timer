@@ -9,9 +9,14 @@ import Foundation
 import SwiftUI
 
 struct CircularProgressIndicator: View {
-	var progress: Double
+	@State private var elapsedTime: Double = 0.0
+	var duration: Double
+
+	let timer = Timer.publish(every: 0.1, on: .main, in: .common).autoconnect()
 
 	var body: some View {
+		let progress = elapsedTime / duration
+
 		ZStack {
 			Circle()
 				.stroke(
@@ -30,13 +35,20 @@ struct CircularProgressIndicator: View {
 			.rotationEffect(.degrees(-90))
 			.animation(.easeOut, value: progress)
 		}
+		.onReceive(timer) { _ in
+			if elapsedTime < duration {
+				elapsedTime += 0.1
+			} else {
+				timer.upstream.connect().cancel()
+			}
+		}
 	}
 }
 
 struct CircularProgressIndicator_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
-			CircularProgressIndicator(progress: 0.70)
+			CircularProgressIndicator(duration: 60)
 				.frame(width: 225, height: 225)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)
