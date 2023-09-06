@@ -7,14 +7,17 @@
 
 import Foundation
 
-enum TimerState {
+/**
+ * Controls the state of the view
+ */
+enum ViewState {
 	case config, warmup, meditation
 }
 
 final class AppViewModel: ObservableObject {
-	@Published var timerState: TimerState = .meditation
+	@Published var timerState: ViewState = .meditation
 
-	// Timer defaults to 5 minutes
+	// Timer defaults to 1 minutes
 	@Published var timerDuration: Int = 60 {
 		didSet {
 			timeRemaining = self.timerDuration
@@ -68,9 +71,8 @@ extension AppViewModel {
 		warmupTimer = nil
 
 		warmupTimeRemaining = warmupDuration
-
+		warmupProgress = 1
 		warmupDidComplete = nil
-		timerState = .meditation
 	}
 }
 
