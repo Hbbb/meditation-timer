@@ -15,7 +15,7 @@ enum ViewState {
 }
 
 final class AppViewModel: ObservableObject {
-	@Published var timerState: ViewState = .meditation
+	@Published var viewState: ViewState = .meditation
 
 	// Timer defaults to 1 minutes
 	@Published var timerDuration: Int = 60 {
@@ -44,15 +44,17 @@ final class AppViewModel: ObservableObject {
 	var warmupDidStart: (() -> Void)?
 	var warmupDidComplete: (() -> Void)?
 	private var warmupTimer: Timer?
+
+	var didGoToBackgroundAt: Date?
 }
 
 // MARK: Warmup controls
 extension AppViewModel {
 	func startWarmupTimer() {
-		if timerState == .warmup {
+		if viewState == .warmup {
 			return
 		}
-		timerState = .warmup
+		viewState = .warmup
 
 		warmupTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
 			if self.warmupTimeRemaining == 0 {
@@ -95,10 +97,10 @@ extension AppViewModel {
 	}
 
 	func startTimer() {
-		if timerState == .meditation {
+		if viewState == .meditation {
 			return
 		}
-		timerState = .meditation
+		viewState = .meditation
 
 		DispatchQueue.global(qos: .userInteractive).async {
 			Logger.info("timerDidStart()", context: .viewModel)
@@ -122,7 +124,7 @@ extension AppViewModel {
 
 		timeRemaining = timerDuration
 		timerProgress = 1
-		timerState = .config
+		viewState = .config
 	}
 }
 

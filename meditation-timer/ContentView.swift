@@ -11,7 +11,7 @@ struct ContentView: View {
 	@Environment(\.managedObjectContext) var moc
 
 	var body: some View {
-		switch viewModel.timerState {
+		switch viewModel.viewState {
 			case .config:
 				TimerConfig()
 			case .warmup:

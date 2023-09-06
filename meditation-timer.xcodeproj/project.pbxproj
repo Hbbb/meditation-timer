@@ -106,8 +106,8 @@
 			children = (
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
-				84865CD72AA6C9F9009C655C /* DurationPicker.swift */,
 				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
+				84865CD72AA6C9F9009C655C /* DurationPicker.swift */,
 				84865CCF2AA3FEB8009C655C /* TimerConfig.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				84865CD12AA52478009C655C /* Int+TimeFormatting.swift */,

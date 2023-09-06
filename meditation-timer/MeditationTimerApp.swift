@@ -60,15 +60,36 @@ struct MeditationTimerApp: App {
 			switch(phase) {
 				case .background:
 
-					// Start playing silent .wav track which in theory allows us to play audio while the app is backgrounded.
-					// We only do this if there is an active timer running when they background the app
-					if viewModel.timerState != .config {
+					/**
+					 If there is an active timer:
+					 - Play silent .wav track which enables us to play a sound when the timer ends, even if the app is not in the foreground
+					 - Capture the time the user went to the background. This is used to compute the time difference when they re-open the app
+					 */
+					if viewModel.viewState != .config {
 						backgroundTask.start()
+						viewModel.didGoToBackgroundAt = .now
 					}
-					break
 				case .active:
 					backgroundTask.stop()
-					break
+
+					// If there's not an active timer running, no need to handle this
+					if viewModel.viewState == .config {
+						return
+					}
+
+					if let backroundAt = viewModel.didGoToBackgroundAt {
+						viewModel.didGoToBackgroundAt = nil
+						
+						let elapsedSeconds = Int(Date().timeIntervalSince(backroundAt))
+
+						// The timer is expired, take them back to the config screen
+						if elapsedSeconds > viewModel.timeRemaining {
+							viewModel.viewState = .config
+						} else {
+							viewModel.timeRemaining = viewModel.timeRemaining - elapsedSeconds
+						}
+					}
+
 				default: ()
 			}
 		}
