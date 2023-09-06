@@ -4,20 +4,26 @@ import UIKit
 struct ContentView: View {
 	@EnvironmentObject var vm: MeditationViewModel
 
-	@Environment(\.managedObjectContext) var moc
+	var warmupTimeRemaining: Int {
+		vm.warmupDuration - vm.elapsedTime
+	}
+
+	var meditationTimeRemaining: Int {
+		vm.meditationDuration - vm.elapsedTime
+	}
 
 	var body: some View {
 		switch vm.screenState {
 			case .setup:
 				TimerConfig()
 			case .warmup:
-				TimerView(timeRemaining: vm.warmupDuration - vm.elapsedTime,
+				TimerView(timeRemaining: warmupTimeRemaining,
 									label: "Warm Up",
 									icon: "forward.end.fill",
 									duration: vm.warmupDuration,
 									onTap: vm.completeWarmup)
 			case .meditate:
-				TimerView(timeRemaining: vm.meditationDuration - vm.elapsedTime,
+				TimerView(timeRemaining: meditationTimeRemaining,
 									label: "Meditate",
 									icon: "stop.fill",
 									duration: vm.meditationDuration,
