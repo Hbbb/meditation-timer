@@ -4,31 +4,26 @@ import UIKit
 struct ContentView: View {
 	@EnvironmentObject var audioManager: AudioManager
 	@EnvironmentObject var viewModel: AppViewModel
-
-	@State private var gestureStart: Double = .zero
-	@State private var gestureHeight: Double = .zero
+	@EnvironmentObject var vm: MeditationViewModel
 
 	@Environment(\.managedObjectContext) var moc
 
 	var body: some View {
-		switch viewModel.viewState {
-			case .config:
+		switch vm.screenState {
+			case .setup:
 				TimerConfig()
 			case .warmup:
-				TimerView(timeRemaining: viewModel.warmupTimeRemaining,
+				TimerView(timeRemaining: vm.warmupDuration - vm.elapsedTime,
 									label: "Warm Up",
 									icon: "forward.end.fill",
-									progress: viewModel.warmupProgress,
-									onTap: {
-					viewModel.stopWarmupTimer()
-					viewModel.startTimer()
-				})
-			case .meditation:
-				TimerView(timeRemaining: viewModel.timeRemaining,
+									progress: Double(vm.elapsedTime) / Double(vm.warmupDuration),
+									onTap: vm.skipWarmup)
+			case .meditate:
+				TimerView(timeRemaining: vm.meditationDuration - vm.elapsedTime,
 									label: "Meditate",
 									icon: "stop.fill",
-									progress: viewModel.timerProgress,
-									onTap: viewModel.stopTimer)
+									progress: Double(vm.elapsedTime) / Double(vm.meditationDuration),
+									onTap: vm.stopMeditation)
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
 		//				.onAppear {

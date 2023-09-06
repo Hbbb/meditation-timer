@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct TimerConfig: View {
-	@EnvironmentObject var viewModel: AppViewModel
-	let selections = ["0s", "30s", "1m"]
+	@EnvironmentObject var vm: MeditationViewModel
 	@State var selection: String = "0s"
+
+	let selections = ["0s", "30s", "1m"]
 
 	var body: some View {
 		VStack() {
@@ -19,10 +20,10 @@ struct TimerConfig: View {
 				.font(.largeTitle)
 				.padding(.bottom, 40)
 
-			Text(viewModel.timerDuration.toMMSS())
+			Text(vm.meditationDuration.toMMSS())
 				.font(.title)
 				.padding(.bottom, 20)
-			DurationPickerRepresentable(duration: $viewModel.timerDuration)
+			DurationPickerRepresentable(duration: $vm.meditationDuration)
 				.frame(height: 50)
 				.padding(.bottom, 40)
 
@@ -32,29 +33,29 @@ struct TimerConfig: View {
 				Text("0s")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(viewModel.warmupDuration == 0 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 0 ? Color.blue : Color.gray)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
-						viewModel.warmupDuration = 0
+						vm.warmupDuration = 0
 					}
 				Text("30s")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(viewModel.warmupDuration == 30 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 30 ? Color.blue : Color.gray)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
-						viewModel.warmupDuration = 30
+						vm.warmupDuration = 30
 					}
 				Text("1m")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(viewModel.warmupDuration == 60 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 60 ? Color.blue : Color.gray)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
-						viewModel.warmupDuration = 60
+						vm.warmupDuration = 60
 					}
 			}
 			.padding(.bottom, 120)
@@ -66,7 +67,7 @@ struct TimerConfig: View {
 				.foregroundColor(.white)
 				.cornerRadius(100)
 				.onTapGesture {
-					viewModel.startMeditation()
+					vm.startMeditation()
 				}
 		}
 		.padding(.horizontal)
@@ -79,7 +80,7 @@ struct TimerConfig_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
 			TimerConfig()
-				.environmentObject(AppViewModel())
+				.environmentObject(MeditationViewModel())
 		}
 	}
 }

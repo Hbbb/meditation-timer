@@ -14,6 +14,7 @@ struct MeditationTimerApp: App {
 	@StateObject private var viewModel = AppViewModel()
 	@StateObject private var dataController = DataController()
 	@StateObject private var alarmPlayer = AlarmPlayer()
+	@StateObject private var vm = MeditationViewModel()
 
 	private var backgroundTask = BackgroundTask()
 
@@ -33,6 +34,7 @@ struct MeditationTimerApp: App {
 				.environmentObject(backgroundTask)
 				.environmentObject(alarmPlayer)
 				.environmentObject(viewModel)
+				.environmentObject(vm)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
 				.onAppear {
 					viewModel.timerDidStart = {
@@ -79,7 +81,7 @@ struct MeditationTimerApp: App {
 
 					if let backroundAt = viewModel.didGoToBackgroundAt {
 						viewModel.didGoToBackgroundAt = nil
-						
+
 						let elapsedSeconds = Int(Date().timeIntervalSince(backroundAt))
 
 						// The timer is expired, take them back to the config screen
