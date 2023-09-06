@@ -15,35 +15,21 @@ struct ContentView: View {
 			case .config:
 				TimerConfig()
 			case .warmup:
-				VStack {
-					ZStack {
-						VStack {
-							Text("-\(viewModel.warmupTimeRemaining.toMMSS())")
-							Text("Warm Up")
-						}
-						CircularProgressIndicator(progress: viewModel.warmupProgress)
-							.frame(width: 225, height: 225)
-					}
-					.padding(.bottom, 120)
-					Image(systemName: "forward.end.fill")
-						.font(.system(size: 40))
-				}
+				TimerView(timeRemaining: viewModel.warmupTimeRemaining,
+									label: "Warm Up",
+									icon: "forward.end.fill",
+									progress: viewModel.warmupProgress,
+									onTap: {
+					viewModel.stopWarmupTimer()
+					viewModel.startTimer()
+				})
 			case .meditation:
-				VStack {
-					ZStack {
-						VStack {
-							Text(viewModel.timeRemaining.toMMSS())
-							Text("Meditation")
-						}
-						CircularProgressIndicator(progress: viewModel.timerProgress)
-							.frame(width: 225, height: 225)
-					}
-					.padding(.bottom, 120)
-					Image(systemName: "stop.fill")
-						.font(.system(size: 40))
-				}
+				TimerView(timeRemaining: viewModel.timeRemaining,
+									label: "Meditate",
+									icon: "stop.fill",
+									progress: viewModel.timerProgress,
+									onTap: viewModel.stopTimer)
 		}
-
 		// This is a hack I use to find real names of fonts. Don't even ask
 		//				.onAppear {
 		//					for family: String in UIFont.familyNames
@@ -55,6 +41,33 @@ struct ContentView: View {
 		//						}
 		//					}
 		//				}
+	}
+}
+
+struct TimerView: View {
+	var timeRemaining: Int
+	var label: String
+	var icon: String
+	var progress: Double
+	var onTap: (() -> Void)
+
+	var body: some View {
+		VStack {
+			ZStack {
+				VStack {
+					Text(timeRemaining.toMMSS())
+					Text(label)
+				}
+				CircularProgressIndicator(progress: progress)
+					.frame(width: 225, height: 225)
+			}
+			.padding(.bottom, 120)
+			Image(systemName: icon)
+				.font(.system(size: 40))
+				.onTapGesture {
+					onTap()
+				}
+		}
 	}
 }
 
