@@ -14,6 +14,8 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	let timerManager: TimerManager = TimerManager()
+	let alarmPlayer: AlarmPlayer = AlarmPlayer()
+
 	private var cancellableSet: Set<AnyCancellable> = []
 
 	@Published var screenState: ScreenState = .setup
@@ -51,14 +53,26 @@ class MeditationViewModel: ObservableObject {
 		timerManager.startTimer(duration: meditationDuration)
 	}
 
+	func completeMeditation() {
+		alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+		screenState = .setup
+	}
+
 	func handleState(_ state: TimerManager.TimerState) {
 		switch state {
 			case .idle:
 				screenState = .setup
-			case .running: ()
+			case .running:
+				if screenState == .meditate {
+					alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+				}
 			case .completed:
-				if screenState == .warmup {
-					completeWarmup()
+				switch screenState {
+					case .warmup:
+						completeWarmup()
+					case .meditate:
+						completeMeditation()
+					default: ()
 				}
 		}
 	}
