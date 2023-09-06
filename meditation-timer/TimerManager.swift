@@ -70,6 +70,7 @@ extension TimerManager {
 
 	@objc private func appCameToForeground() {
 		guard let backgroundDate = backgroundDate else { return }
+		print("app came to foreground")
 
 		if timerState.value == .idle {
 			return

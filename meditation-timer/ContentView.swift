@@ -2,8 +2,6 @@ import SwiftUI
 import UIKit
 
 struct ContentView: View {
-	@EnvironmentObject var audioManager: AudioManager
-	@EnvironmentObject var viewModel: AppViewModel
 	@EnvironmentObject var vm: MeditationViewModel
 
 	@Environment(\.managedObjectContext) var moc
