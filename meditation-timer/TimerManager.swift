@@ -51,8 +51,8 @@ class TimerManager {
 	private func tick() {
 		currentTime.value += 1
 		if currentTime.value >= duration {
-			timerState.send(.completed)
 			stopTimer()
+			timerState.send(.completed)
 		}
 	}
 }
