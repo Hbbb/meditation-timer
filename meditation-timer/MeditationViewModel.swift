@@ -46,7 +46,7 @@ class MeditationViewModel: ObservableObject {
 		screenState = .setup
 	}
 
-	func skipWarmup() {
+	func completeWarmup() {
 		screenState = .meditate
 		timerManager.startTimer(duration: meditationDuration)
 	}
@@ -58,9 +58,7 @@ class MeditationViewModel: ObservableObject {
 			case .running: ()
 			case .completed:
 				if screenState == .warmup {
-					screenState = .meditate
-					timerManager.startTimer(duration: meditationDuration)
-					return
+					completeWarmup()
 				}
 		}
 	}
