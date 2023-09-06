@@ -46,6 +46,7 @@ class MeditationViewModel: ObservableObject {
 	func stopMeditation() {
 		timerManager.resetTimer()
 		screenState = .setup
+		alarmPlayer.stopSound()
 	}
 
 	func completeWarmup() {
