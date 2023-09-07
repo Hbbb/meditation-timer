@@ -21,13 +21,15 @@ struct ContentView: View {
 									label: "Warm Up",
 									icon: "forward.end.fill",
 									duration: vm.warmupDuration,
-									onTap: vm.completeWarmup)
+									onTapPrimary: vm.completeWarmup,
+									onTapCancel: vm.stopMeditation)
 			case .meditate:
 				TimerView(timeRemaining: meditationTimeRemaining,
 									label: "Meditate",
 									icon: "stop.fill",
 									duration: vm.meditationDuration,
-									onTap: vm.stopMeditation)
+									onTapPrimary: vm.stopMeditation,
+									onTapCancel: vm.stopMeditation)
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
 		//				.onAppear {
@@ -48,25 +50,40 @@ struct TimerView: View {
 	var label: String
 	var icon: String
 	var duration: Int
-	var onTap: (() -> Void)
+	var onTapPrimary: (() -> Void)
+	var onTapCancel: (() -> Void)
 
 	var body: some View {
 		VStack {
+			HStack(alignment: .top) {
+				Image(systemName: "x.circle")
+					.font(.system(size: 32))
+					.onTapGesture {
+						self.onTapCancel()
+					}
+				Spacer()
+				Image(systemName: "ellipsis.circle")
+					.font(.system(size: 32))
+			}
+			.padding(.bottom, 180)
+			.padding(.top, 40)
 			ZStack {
 				VStack {
 					Text(timeRemaining.toMMSS())
 					Text(label)
 				}
 				CircularProgressIndicator(duration: Double(duration))
-					.frame(width: 225, height: 225)
+					.frame(width: 275, height: 275)
 			}
 			.padding(.bottom, 120)
 			Image(systemName: icon)
 				.font(.system(size: 40))
 				.onTapGesture {
-					onTap()
+					onTapPrimary()
 				}
+			Spacer()
 		}
+		.padding(.horizontal, 20)
 	}
 }
 
