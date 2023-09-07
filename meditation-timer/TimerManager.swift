@@ -70,7 +70,6 @@ extension TimerManager {
 
 	@objc private func appCameToForeground() {
 		guard let backgroundDate = backgroundDate else { return }
-		print("app came to foreground")
 
 		if timerState.value == .idle {
 			return
@@ -79,7 +78,7 @@ extension TimerManager {
 		let timePassed = Int(Date().timeIntervalSince(backgroundDate))
 		currentTime.value = min(timePassed + currentTime.value, duration)
 
-		if currentTime.value >= duration {
+		if timePassed >= duration {
 			timerState.send(.completed)
 		}
 
