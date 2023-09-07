@@ -17,8 +17,6 @@
 		84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */; };
 		84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */; };
 		84504B252A99D60F0064A378 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B242A99D60F0064A378 /* DataController.swift */; };
-		84504B272A9A62810064A378 /* AnimatedPlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */; };
-		8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */; };
 		84865CC02A9D8900009C655C /* singing-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CBF2A9D8900009C655C /* singing-bowl.mp3 */; };
 		84865CC22A9D8936009C655C /* chakra-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC12A9D8936009C655C /* chakra-bowl.mp3 */; };
 		84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC32AA3D577009C655C /* BackgroundTask.swift */; };
@@ -54,8 +52,6 @@
 		84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressIndicator.swift; sourceTree = "<group>"; };
 		84504B222A99D4E30064A378 /* MeditationTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeditationTimer.xcdatamodel; sourceTree = "<group>"; };
 		84504B242A99D60F0064A378 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedPlayPauseButton.swift; sourceTree = "<group>"; };
-		8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayPauseButton.swift; sourceTree = "<group>"; };
 		84865CBF2A9D8900009C655C /* singing-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "singing-bowl.mp3"; sourceTree = "<group>"; };
 		84865CC12A9D8936009C655C /* chakra-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chakra-bowl.mp3"; sourceTree = "<group>"; };
 		84865CC32AA3D577009C655C /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
@@ -109,8 +105,6 @@
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				84865CD12AA52478009C655C /* Int+TimeFormatting.swift */,
 				84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */,
-				8461BB2C2A8DDCAF00D9A1D6 /* PlayPauseButton.swift */,
-				84504B262A9A62810064A378 /* AnimatedPlayPauseButton.swift */,
 				84865CE52AA83ACE009C655C /* TimerManager.swift */,
 				84865CE72AA84101009C655C /* MeditationSession.swift */,
 				84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */,
@@ -249,14 +243,12 @@
 				84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */,
 				84504B172A9700C20064A378 /* Colors.swift in Sources */,
 				84865CD82AA6C9F9009C655C /* DurationPicker.swift in Sources */,
-				84504B272A9A62810064A378 /* AnimatedPlayPauseButton.swift in Sources */,
 				841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */,
 				84865CCC2AA3DAA5009C655C /* AlarmPlayer.swift in Sources */,
 				84504B252A99D60F0064A378 /* DataController.swift in Sources */,
 				84865CE82AA84101009C655C /* MeditationSession.swift in Sources */,
 				84865CD22AA52478009C655C /* Int+TimeFormatting.swift in Sources */,
 				84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */,
-				8461BB2D2A8DDCAF00D9A1D6 /* PlayPauseButton.swift in Sources */,
 				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
