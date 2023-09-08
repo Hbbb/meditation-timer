@@ -31,7 +31,7 @@ class DurationPicker: UIScrollView {
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		self.backgroundColor = .white
+		self.backgroundColor = .clear
 		self.showsHorizontalScrollIndicator = false
 		setupTicks()
 	}
@@ -43,18 +43,33 @@ class DurationPicker: UIScrollView {
 	}
 
 	private func setupTicks() {
+		let centerPoint = self.frame.size.width / 2
+
 		for i in 0..<DurationPicker.maxTicks {
 			let tick = UIView()
-			tick.backgroundColor = i % tickInterval == 0 ? .black : .gray
+
+			// TODO: This need to adapt to the color scheme
+			tick.backgroundColor = .gray
 			tick.frame.size.width = tickWidth
 			tick.frame.size.height = (i % tickInterval == 0) ? longTickHeight : tickHeight
 			tick.frame.origin.x = CGFloat(i) * (tickWidth + 20)
 			tick.frame.origin.y = self.frame.size.height - tick.frame.size.height
 			tick.layer.cornerRadius = tickWidth / 2
+			setTickOpacity(centerPoint: centerPoint)
+
 			self.addSubview(tick)
 		}
 
 		self.contentSize = CGSize(width: CGFloat(DurationPicker.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
+	}
+
+	func setTickOpacity(centerPoint: CGFloat) {
+		for tick in self.subviews {
+			let distanceFromCenter = abs(centerPoint - tick.center.x)
+			let maxDistance: CGFloat = 250  // you can adjust this value
+			let opacity = max(1 - (distanceFromCenter / maxDistance), 0)
+			tick.alpha = CGFloat(opacity)
+		}
 	}
 }
 
@@ -80,6 +95,11 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 			if newDuration != parent.duration {
 				parent.duration = newDuration
 				hapticFeedback.impactOccurred()
+			}
+
+			let centerPoint = scrollView.contentOffset.x + scrollView.bounds.width / 2
+			if let picker = scrollView as? DurationPicker {
+				picker.setTickOpacity(centerPoint: centerPoint)
 			}
 		}
 	}
