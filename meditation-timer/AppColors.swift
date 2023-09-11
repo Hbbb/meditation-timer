@@ -12,6 +12,7 @@ struct AppColors {
 	static let green = Color("Green")
 	static let darkGreen = Color("DarkGreen")
 	static let lightGreen = Color("LightGreen")
-	static let offWhite  = Color("OffWhite")
 	static let yellow  = Color("Yellow")
+	static let background  = Color("Background")
+	static let foreground  = Color("Foreground")
 }

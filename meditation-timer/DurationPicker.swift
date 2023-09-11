@@ -9,18 +9,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-struct TestSlider: View {
-	@State var duration: Int = 1
-
-	var body: some View {
-		VStack {
-			Text("\(duration)")
-			DurationPickerRepresentable(duration: $duration)
-				.frame(height: 50)
-		}
-	}
-}
-
 class DurationPicker: UIScrollView {
 	static let maxTicks: Int = 107
 
@@ -28,6 +16,15 @@ class DurationPicker: UIScrollView {
 	var tickHeight: CGFloat = 25
 	var longTickHeight: CGFloat = 50
 	var tickInterval: Int = 4
+	var tickColor: UIColor = .white
+
+	init(frame: CGRect, tickColor: UIColor) {
+		super.init(frame: frame)
+		self.tickColor = tickColor
+		self.backgroundColor = .clear
+		self.showsHorizontalScrollIndicator = false
+		setupTicks()
+	}
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
@@ -48,8 +45,7 @@ class DurationPicker: UIScrollView {
 		for i in 0..<DurationPicker.maxTicks {
 			let tick = UIView()
 
-			// TODO: This need to adapt to the color scheme
-			tick.backgroundColor = .gray
+			tick.backgroundColor = tickColor
 			tick.frame.size.width = tickWidth
 			tick.frame.size.height = (i % tickInterval == 0) ? longTickHeight : tickHeight
 			tick.frame.origin.x = CGFloat(i) * (tickWidth + 20)
@@ -71,9 +67,28 @@ class DurationPicker: UIScrollView {
 			tick.alpha = CGFloat(opacity)
 		}
 	}
+
+	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+		super.traitCollectionDidChange(previousTraitCollection)
+
+		if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
+			// User interface style changed, handle it here
+			if traitCollection.userInterfaceStyle == .dark {
+				tickColor = .white
+				// Set up for dark mode
+			} else {
+				tickColor = .black
+				// Set up for light mode
+			}
+
+			setupTicks()
+		}
+	}
+
 }
 
 struct DurationPickerRepresentable: UIViewRepresentable {
+	@Environment(\.colorScheme) var colorScheme
 	@Binding var duration: Int
 
 	func makeCoordinator() -> Coordinator {
@@ -105,7 +120,10 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 	}
 
 	func makeUIView(context: Context) -> DurationPicker {
-		let customSlider = DurationPicker(frame: CGRect(x: 0, y: 0, width: 500, height: 50))
+		let customSlider = DurationPicker(
+			frame: CGRect(x: 0, y: 0, width: 500, height: 50),
+			tickColor: colorScheme == .dark ? UIColor.white : UIColor.black)
+
 		customSlider.delegate = context.coordinator
 		return customSlider
 	}

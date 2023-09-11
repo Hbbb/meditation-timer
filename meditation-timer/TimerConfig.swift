@@ -19,43 +19,52 @@ struct TimerConfig: View {
 			Text("Meditation")
 				.font(.largeTitle)
 				.padding(.bottom, 40)
-				.foregroundColor(AppColors.darkGreen)
+				.foregroundColor(AppColors.foreground)
 
 			Text(vm.meditationDuration.toMMSS())
 				.font(.title)
 				.padding(.bottom, 20)
-				.foregroundColor(AppColors.darkGreen)
+				.foregroundColor(AppColors.foreground)
 			DurationPickerRepresentable(duration: $vm.meditationDuration)
 				.frame(height: 50)
 				.padding(.bottom, 40)
 
 			// Warmup Picker
 			Text("Warmup")
-				.foregroundColor(AppColors.darkGreen)
+				.foregroundColor(AppColors.foreground)
 			HStack {
-				Text("0s")
-					.padding(.horizontal, 30)
+				Text("None")
+					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
+					.foregroundColor(vm.warmupDuration == 0 ? .white : .black)
 					.background(vm.warmupDuration == 0 ? AppColors.darkGreen : AppColors.lightGreen)
-					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
 						vm.warmupDuration = 0
 					}
 				Text("30s")
-					.padding(.horizontal, 30)
+					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
+					.foregroundColor(vm.warmupDuration == 30 ? .white : .black)
 					.background(vm.warmupDuration == 30 ? AppColors.darkGreen : AppColors.lightGreen)
-					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
 						vm.warmupDuration = 30
 					}
-				Text("1m")
-					.padding(.horizontal, 30)
+				Text("45s")
+					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
+					.foregroundColor(vm.warmupDuration == 45 ? .white : .black)
+					.background(vm.warmupDuration == 45 ? AppColors.darkGreen : AppColors.lightGreen)
+					.cornerRadius(50)
+					.onTapGesture {
+						vm.warmupDuration = 45
+					}
+				Text("1m")
+					.padding(.horizontal, 20)
+					.padding(.vertical, 10)
+					.foregroundColor(vm.warmupDuration == 60 ? .white : .black)
 					.background(vm.warmupDuration == 60 ? AppColors.darkGreen : AppColors.lightGreen)
-					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
 						vm.warmupDuration = 60
@@ -74,6 +83,7 @@ struct TimerConfig: View {
 				}
 		}
 		.padding(.horizontal)
+		.padding(.vertical)
 		.frame(maxHeight: .infinity, alignment: .bottom)
 	}
 }

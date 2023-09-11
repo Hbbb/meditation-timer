@@ -14,7 +14,7 @@ struct ContentView: View {
 
 	var body: some View {
 		ZStack {
-			AppColors.offWhite
+			AppColors.background
 				.ignoresSafeArea()
 
 			switch vm.screenState {
