@@ -8,6 +8,12 @@
 import Combine
 import Foundation
 
+extension Logger {
+	fileprivate static func info(_ message: String) {
+		Logger.info(message, context: .viewModel)
+	}
+}
+
 class MeditationViewModel: ObservableObject {
 	enum ScreenState {
 		case setup, warmup, meditate
@@ -41,25 +47,31 @@ class MeditationViewModel: ObservableObject {
 			screenState = .meditate
 			timerManager.startTimer(duration: meditationDuration)
 		}
+
+		Logger.info("Starting meditation.\nWarmup: \(warmupDuration)\nMeditation:\(meditationDuration)")
 	}
 
 	func stopMeditation() {
 		timerManager.resetTimer()
 		screenState = .setup
 		alarmPlayer.stopSound()
+
+		Logger.info("Stopping meditation")
 	}
 
-	func completeWarmup() {
+	func warmupDidComplete() {
 		screenState = .meditate
 		timerManager.startTimer(duration: meditationDuration)
 	}
 
-	func completeMeditation() {
+	func meditationDidComplete() {
 		alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
 		screenState = .setup
 	}
 
 	func handleState(_ state: TimerManager.TimerState) {
+		Logger.info("Timer State: \(state) | ScreenState: \(screenState)")
+
 		switch state {
 			case .idle:
 				screenState = .setup
@@ -70,9 +82,9 @@ class MeditationViewModel: ObservableObject {
 			case .completed:
 				switch screenState {
 					case .warmup:
-						completeWarmup()
+						warmupDidComplete()
 					case .meditate:
-						completeMeditation()
+						meditationDidComplete()
 					default: ()
 				}
 		}

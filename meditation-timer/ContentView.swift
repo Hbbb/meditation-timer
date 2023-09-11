@@ -21,7 +21,7 @@ struct ContentView: View {
 									label: "Warm Up",
 									icon: "forward.end.fill",
 									duration: vm.warmupDuration,
-									onTapPrimary: vm.completeWarmup,
+									onTapPrimary: vm.warmupDidComplete,
 									onTapCancel: vm.stopMeditation)
 			case .meditate:
 				TimerView(timeRemaining: meditationTimeRemaining,
