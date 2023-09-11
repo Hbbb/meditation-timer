@@ -45,6 +45,40 @@ struct ContentView: View {
 	}
 }
 
+struct TopControls: View {
+	var onTap: (() -> Void)
+
+	var body: some View {
+		HStack(alignment: .top) {
+			Image(systemName: "x.circle")
+				.font(.system(size: 32))
+				.onTapGesture {
+					self.onTap()
+				}
+			Spacer()
+			Image(systemName: "ellipsis.circle")
+				.font(.system(size: 32))
+		}
+	}
+}
+
+struct Progress: View {
+	var timeRemaining: Int
+	var label: String
+	var duration: Int
+
+	var body: some View {
+		ZStack {
+			VStack {
+				Text(timeRemaining.toMMSS())
+				Text(label)
+			}
+			CircularProgressIndicator(duration: Double(duration))
+				.frame(width: 275, height: 275)
+		}
+	}
+}
+
 struct TimerView: View {
 	var timeRemaining: Int
 	var label: String
@@ -55,27 +89,13 @@ struct TimerView: View {
 
 	var body: some View {
 		VStack {
-			HStack(alignment: .top) {
-				Image(systemName: "x.circle")
-					.font(.system(size: 32))
-					.onTapGesture {
-						self.onTapCancel()
-					}
-				Spacer()
-				Image(systemName: "ellipsis.circle")
-					.font(.system(size: 32))
-			}
+			TopControls(onTap: onTapCancel)
 			.padding(.bottom, 180)
 			.padding(.top, 40)
-			ZStack {
-				VStack {
-					Text(timeRemaining.toMMSS())
-					Text(label)
-				}
-				CircularProgressIndicator(duration: Double(duration))
-					.frame(width: 275, height: 275)
-			}
+
+			Progress(timeRemaining: timeRemaining, label: label, duration: duration)
 			.padding(.bottom, 120)
+
 			Image(systemName: icon)
 				.font(.system(size: 40))
 				.onTapGesture {
