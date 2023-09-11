@@ -10,7 +10,7 @@ import UIKit
 import SwiftUI
 
 class DurationPicker: UIScrollView {
-	static let maxTicks: Int = 107
+	static let maxTicks: Int = 105
 
 	var tickWidth: CGFloat = 5
 	var tickHeight: CGFloat = 25
@@ -19,15 +19,10 @@ class DurationPicker: UIScrollView {
 	var tickColor: UIColor = .white
 
 	init(frame: CGRect, tickColor: UIColor) {
-		super.init(frame: frame)
 		self.tickColor = tickColor
-		self.backgroundColor = .clear
-		self.showsHorizontalScrollIndicator = false
-		setupTicks()
-	}
 
-	override init(frame: CGRect) {
 		super.init(frame: frame)
+
 		self.backgroundColor = .clear
 		self.showsHorizontalScrollIndicator = false
 		setupTicks()
@@ -51,11 +46,11 @@ class DurationPicker: UIScrollView {
 			tick.frame.origin.x = CGFloat(i) * (tickWidth + 20)
 			tick.frame.origin.y = self.frame.size.height - tick.frame.size.height
 			tick.layer.cornerRadius = tickWidth / 2
-			setTickOpacity(centerPoint: centerPoint)
 
 			self.addSubview(tick)
 		}
 
+		setTickOpacity(centerPoint: centerPoint)
 		self.contentSize = CGSize(width: CGFloat(DurationPicker.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
 	}
 
@@ -72,13 +67,10 @@ class DurationPicker: UIScrollView {
 		super.traitCollectionDidChange(previousTraitCollection)
 
 		if traitCollection.userInterfaceStyle != previousTraitCollection?.userInterfaceStyle {
-			// User interface style changed, handle it here
 			if traitCollection.userInterfaceStyle == .dark {
 				tickColor = .white
-				// Set up for dark mode
 			} else {
 				tickColor = .black
-				// Set up for light mode
 			}
 
 			setupTicks()
