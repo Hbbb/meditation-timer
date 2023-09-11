@@ -33,8 +33,6 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 	private var originalAudioSessionOptions: AVAudioSession.CategoryOptions?
 
 	private func setupAudioSession() {
-		Logger.info("Setting up sessions", context: .alarmPlayer)
-
 		originalAudioSessionCategory = AVAudioSession.sharedInstance().category
 		originalAudioSessionOptions = AVAudioSession.sharedInstance().categoryOptions
 
@@ -92,7 +90,6 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 			return
 		}
 
-		Logger.info("Preparing to play", context: .alarmPlayer)
 		audioPlayer.delegate = self
 		audioPlayer.prepareToPlay()
 
@@ -102,8 +99,6 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 //		deviceVolumeHandler.setDeviceVolume(volume)
 
 		// Negative number means loop infinity
-		audioPlayer.numberOfLoops = -1
-		Logger.info("Playing now...", context: .alarmPlayer)
 		self.audioPlayer!.play()
 
 //		audioPlayer.volume = 0
@@ -149,7 +144,6 @@ class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio
 // MARK: AVAudioPlayerDelegate protocol methods
 extension AlarmPlayer {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-		Logger.info("Finished playing", context: .alarmPlayer)
 		self.stopSound()
 	}
 
