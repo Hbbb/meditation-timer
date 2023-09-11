@@ -13,23 +13,28 @@ struct ContentView: View {
 	}
 
 	var body: some View {
-		switch vm.screenState {
-			case .setup:
-				TimerConfig()
-			case .warmup:
-				TimerView(timeRemaining: warmupTimeRemaining,
-									label: "Warm Up",
-									icon: "forward.end.fill",
-									duration: vm.warmupDuration,
-									onTapPrimary: vm.warmupDidComplete,
-									onTapCancel: vm.stopMeditation)
-			case .meditate:
-				TimerView(timeRemaining: meditationTimeRemaining,
-									label: "Meditate",
-									icon: "stop.fill",
-									duration: vm.meditationDuration,
-									onTapPrimary: vm.stopMeditation,
-									onTapCancel: vm.stopMeditation)
+		ZStack {
+			AppColors.offWhite
+				.ignoresSafeArea()
+
+			switch vm.screenState {
+				case .setup:
+					TimerConfig()
+				case .warmup:
+					TimerView(timeRemaining: warmupTimeRemaining,
+										label: "Warm Up",
+										icon: "forward.end.fill",
+										duration: vm.warmupDuration,
+										onTapPrimary: vm.warmupDidComplete,
+										onTapCancel: vm.stopMeditation)
+				case .meditate:
+					TimerView(timeRemaining: meditationTimeRemaining,
+										label: "Meditate",
+										icon: "stop.fill",
+										duration: vm.meditationDuration,
+										onTapPrimary: vm.stopMeditation,
+										onTapCancel: vm.stopMeditation)
+			}
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
 		//				.onAppear {

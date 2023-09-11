@@ -19,21 +19,24 @@ struct TimerConfig: View {
 			Text("Meditation")
 				.font(.largeTitle)
 				.padding(.bottom, 40)
+				.foregroundColor(AppColors.darkGreen)
 
 			Text(vm.meditationDuration.toMMSS())
 				.font(.title)
 				.padding(.bottom, 20)
+				.foregroundColor(AppColors.darkGreen)
 			DurationPickerRepresentable(duration: $vm.meditationDuration)
 				.frame(height: 50)
 				.padding(.bottom, 40)
 
 			// Warmup Picker
 			Text("Warmup")
+				.foregroundColor(AppColors.darkGreen)
 			HStack {
 				Text("0s")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(vm.warmupDuration == 0 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 0 ? AppColors.darkGreen : AppColors.lightGreen)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
@@ -42,7 +45,7 @@ struct TimerConfig: View {
 				Text("30s")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(vm.warmupDuration == 30 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 30 ? AppColors.darkGreen : AppColors.lightGreen)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
@@ -51,7 +54,7 @@ struct TimerConfig: View {
 				Text("1m")
 					.padding(.horizontal, 30)
 					.padding(.vertical, 10)
-					.background(vm.warmupDuration == 60 ? Color.blue : Color.gray)
+					.background(vm.warmupDuration == 60 ? AppColors.darkGreen : AppColors.lightGreen)
 					.foregroundColor(.white)
 					.cornerRadius(50)
 					.onTapGesture {
@@ -63,7 +66,7 @@ struct TimerConfig: View {
 			Text("Start Timer")
 				.frame(maxWidth: .infinity)
 				.padding(.vertical, 20)
-				.background(Color.green)
+				.background(AppColors.green)
 				.foregroundColor(.white)
 				.cornerRadius(100)
 				.onTapGesture {
