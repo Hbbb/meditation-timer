@@ -8,17 +8,8 @@
 import Foundation
 import AudioToolbox
 import AVFoundation
-import MediaPlayer
 
-protocol AlarmAudio {
-	func playSound(soundName: String, volume: Float)
-
-	func stopSound()
-
-	func isPlaying() -> Bool
-}
-
-class AlarmPlayer: NSObject, ObservableObject, AVAudioPlayerDelegate, AlarmAudio {
+class AlarmPlayer: NSObject, AVAudioPlayerDelegate {
 
 	private var audioPlayer: AVAudioPlayer?
 	private var originalAudioSessionCategory: AVAudioSession.Category?
