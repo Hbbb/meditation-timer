@@ -9,7 +9,7 @@ import Foundation
 import AudioToolbox
 import AVFoundation
 
-class AlarmPlayer: NSObject, AVAudioPlayerDelegate {
+class SoundManager: NSObject, AVAudioPlayerDelegate {
 
 	private var audioPlayer: AVAudioPlayer?
 	private var originalAudioSessionCategory: AVAudioSession.Category?
@@ -80,7 +80,7 @@ class AlarmPlayer: NSObject, AVAudioPlayerDelegate {
 }
 
 // MARK: AVAudioPlayerDelegate protocol methods
-extension AlarmPlayer {
+extension SoundManager {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
 		self.stopSound()
 	}

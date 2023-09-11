@@ -22,7 +22,7 @@
 		84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC32AA3D577009C655C /* BackgroundTask.swift */; };
 		84865CC62AA3D6EE009C655C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC52AA3D6EE009C655C /* Logger.swift */; };
 		84865CCA2AA3D936009C655C /* blank.wav in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC92AA3D936009C655C /* blank.wav */; };
-		84865CCC2AA3DAA5009C655C /* AlarmPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */; };
+		84865CCC2AA3DAA5009C655C /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCB2AA3DAA5009C655C /* SoundManager.swift */; };
 		84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CCF2AA3FEB8009C655C /* TimerConfig.swift */; };
 		84865CD22AA52478009C655C /* Int+TimeFormatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CD12AA52478009C655C /* Int+TimeFormatting.swift */; };
 		84865CD82AA6C9F9009C655C /* DurationPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CD72AA6C9F9009C655C /* DurationPicker.swift */; };
@@ -57,7 +57,7 @@
 		84865CC32AA3D577009C655C /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
 		84865CC52AA3D6EE009C655C /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		84865CC92AA3D936009C655C /* blank.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = blank.wav; sourceTree = SOURCE_ROOT; };
-		84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmPlayer.swift; sourceTree = "<group>"; };
+		84865CCB2AA3DAA5009C655C /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		84865CCF2AA3FEB8009C655C /* TimerConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerConfig.swift; sourceTree = "<group>"; };
 		84865CD12AA52478009C655C /* Int+TimeFormatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+TimeFormatting.swift"; sourceTree = "<group>"; };
 		84865CD72AA6C9F9009C655C /* DurationPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationPicker.swift; sourceTree = "<group>"; };
@@ -104,7 +104,7 @@
 				84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				84865CD12AA52478009C655C /* Int+TimeFormatting.swift */,
-				84865CCB2AA3DAA5009C655C /* AlarmPlayer.swift */,
+				84865CCB2AA3DAA5009C655C /* SoundManager.swift */,
 				84865CE52AA83ACE009C655C /* TimerManager.swift */,
 				84865CE72AA84101009C655C /* MeditationSession.swift */,
 				84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */,
@@ -244,7 +244,7 @@
 				84504B172A9700C20064A378 /* Colors.swift in Sources */,
 				84865CD82AA6C9F9009C655C /* DurationPicker.swift in Sources */,
 				841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */,
-				84865CCC2AA3DAA5009C655C /* AlarmPlayer.swift in Sources */,
+				84865CCC2AA3DAA5009C655C /* SoundManager.swift in Sources */,
 				84504B252A99D60F0064A378 /* DataController.swift in Sources */,
 				84865CE82AA84101009C655C /* MeditationSession.swift in Sources */,
 				84865CD22AA52478009C655C /* Int+TimeFormatting.swift in Sources */,

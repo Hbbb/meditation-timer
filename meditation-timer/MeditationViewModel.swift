@@ -20,7 +20,7 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	let timerManager: TimerManager = TimerManager()
-	let alarmPlayer: AlarmPlayer = AlarmPlayer()
+	let soundManager: SoundManager = SoundManager()
 
 	private var cancellableSet: Set<AnyCancellable> = []
 
@@ -54,7 +54,7 @@ class MeditationViewModel: ObservableObject {
 	func stopMeditation() {
 		timerManager.resetTimer()
 		screenState = .setup
-		alarmPlayer.stopSound()
+		soundManager.stopSound()
 
 		Logger.info("Stopping meditation")
 	}
@@ -64,8 +64,10 @@ class MeditationViewModel: ObservableObject {
 		timerManager.startTimer(duration: meditationDuration)
 	}
 
+	// TODO: Eventually we'll implement a "post-completion" screen and
+	// we won't reset the screenState to .setup here.
 	func meditationDidComplete() {
-		alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+		soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
 		screenState = .setup
 	}
 
@@ -77,7 +79,7 @@ class MeditationViewModel: ObservableObject {
 				screenState = .setup
 			case .running:
 				if screenState == .meditate {
-					alarmPlayer.playSound(soundName: "singing-bowl", volume: 100.0)
+					soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
 				}
 			case .completed:
 				switch screenState {
