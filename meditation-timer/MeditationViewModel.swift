@@ -48,7 +48,7 @@ class MeditationViewModel: ObservableObject {
 			timerManager.startTimer(duration: meditationDuration)
 		}
 
-		Logger.info("Starting meditation.\nWarmup: \(warmupDuration)\nMeditation:\(meditationDuration)")
+		Logger.info("Starting meditation. Warmup: \(warmupDuration) | Meditation:\(meditationDuration)")
 	}
 
 	func stopMeditation() {
