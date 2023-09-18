@@ -15,28 +15,32 @@ class DurationPicker: UIScrollView {
 	var tickWidth: CGFloat = 5
 	var tickHeight: CGFloat = 25
 	var longTickHeight: CGFloat = 50
+
+	var duration: Int = 60
 	var tickInterval: Int = 4
 	var tickColor: UIColor = .white
 
-	init(frame: CGRect, tickColor: UIColor) {
+	init(frame: CGRect, tickColor: UIColor, duration: Int) {
 		self.tickColor = tickColor
+		self.duration = duration
 
 		super.init(frame: frame)
 
 		self.backgroundColor = .clear
 		self.showsHorizontalScrollIndicator = false
+
 		setupTicks()
+		setScrollPosition()
 	}
 
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		self.showsHorizontalScrollIndicator = false
 		setupTicks()
+		setScrollPosition()
 	}
 
 	private func setupTicks() {
-		let centerPoint = self.frame.size.width / 2
-
 		for i in 0..<DurationPicker.maxTicks {
 			let tick = UIView()
 
@@ -50,17 +54,16 @@ class DurationPicker: UIScrollView {
 			self.addSubview(tick)
 		}
 
-		setTickOpacity(centerPoint: centerPoint)
 		self.contentSize = CGSize(width: CGFloat(DurationPicker.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
 	}
 
-	func setTickOpacity(centerPoint: CGFloat) {
-		for tick in self.subviews {
-			let distanceFromCenter = abs(centerPoint - tick.center.x)
-			let maxDistance: CGFloat = 250  // you can adjust this value
-			let opacity = max(1 - (distanceFromCenter / maxDistance), 0)
-			tick.alpha = CGFloat(opacity)
-		}
+	private func setScrollPosition() {
+		let minutes = 20 // The persisted duration
+		let contentWidth = self.contentSize.width
+		let offsetPerMinute = contentWidth / CGFloat(DurationPicker.maxTicks)
+		let targetOffsetX = CGFloat(minutes) * offsetPerMinute
+
+		self.setContentOffset(CGPoint(x: targetOffsetX, y: 0), animated: true)
 	}
 
 	override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -83,10 +86,6 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 	@Environment(\.colorScheme) var colorScheme
 	@Binding var duration: Int
 
-	func makeCoordinator() -> Coordinator {
-		Coordinator(self)
-	}
-
 	class Coordinator: NSObject, UIScrollViewDelegate {
 		var parent: DurationPickerRepresentable
 		let hapticFeedback = UIImpactFeedbackGenerator(style: .light)
@@ -103,18 +102,18 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 				parent.duration = newDuration
 				hapticFeedback.impactOccurred()
 			}
-
-			let centerPoint = scrollView.contentOffset.x + scrollView.bounds.width / 2
-			if let picker = scrollView as? DurationPicker {
-				picker.setTickOpacity(centerPoint: centerPoint)
-			}
 		}
+	}
+
+	func makeCoordinator() -> Coordinator {
+		Coordinator(self)
 	}
 
 	func makeUIView(context: Context) -> DurationPicker {
 		let customSlider = DurationPicker(
 			frame: CGRect(x: 0, y: 0, width: 500, height: 50),
-			tickColor: colorScheme == .dark ? UIColor.white : UIColor.black)
+			tickColor: colorScheme == .dark ? UIColor.white : UIColor.black,
+			duration: duration)
 
 		customSlider.delegate = context.coordinator
 		return customSlider
@@ -124,4 +123,3 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 		// View updates. Not sure when this is called
 	}
 }
-
