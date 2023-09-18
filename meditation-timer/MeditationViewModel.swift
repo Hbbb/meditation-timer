@@ -37,6 +37,12 @@ class MeditationViewModel: ObservableObject {
 			.store(in: &cancellableSet)
 
 		timerManager.currentTime.assign(to: &$elapsedTime)
+
+		if let savedMeditationDuration = UserDefaults.standard.value(forKey: "meditationDuration") as? Int,
+			 let savedWarmupDuration = UserDefaults.standard.value(forKey: "warmupDuration") as? Int {
+			meditationDuration = savedMeditationDuration
+			warmupDuration = savedWarmupDuration
+		}
 	}
 
 	func startMeditation() {
@@ -48,6 +54,7 @@ class MeditationViewModel: ObservableObject {
 			timerManager.startTimer(duration: meditationDuration)
 		}
 
+		saveMeditationPreferences()
 		Logger.info("Starting meditation. Warmup: \(warmupDuration) | Meditation:\(meditationDuration)")
 	}
 
@@ -71,7 +78,12 @@ class MeditationViewModel: ObservableObject {
 		screenState = .setup
 	}
 
-	func handleState(_ state: TimerManager.TimerState) {
+	private func saveMeditationPreferences() {
+		UserDefaults.standard.set(meditationDuration, forKey: "meditationDuration")
+		UserDefaults.standard.set(warmupDuration, forKey: "warmupDuration")
+	}
+
+	private func handleState(_ state: TimerManager.TimerState) {
 		Logger.info("Timer State: \(state) | ScreenState: \(screenState)")
 
 		switch state {
