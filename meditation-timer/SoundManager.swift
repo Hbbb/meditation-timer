@@ -10,15 +10,9 @@ import AudioToolbox
 import AVFoundation
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
-
 	private var audioPlayer: AVAudioPlayer?
-	private var originalAudioSessionCategory: AVAudioSession.Category?
-	private var originalAudioSessionOptions: AVAudioSession.CategoryOptions?
 
 	private func setupAudioSession() {
-		originalAudioSessionCategory = AVAudioSession.sharedInstance().category
-		originalAudioSessionOptions = AVAudioSession.sharedInstance().categoryOptions
-
 		do {
 			try AVAudioSession.sharedInstance().setCategory(
 				.playback, // .playAndRecord,
@@ -65,13 +59,6 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 	func stopSound() {
 		self.audioPlayer?.stop()
 		AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate)
-
-		do {
-			// Set the audio session back to what it was (bg session perhaps)
-			try AVAudioSession.sharedInstance().setCategory(
-				originalAudioSessionCategory!,
-				options: originalAudioSessionOptions!)
-		} catch { Logger.error("Failed to setCategory on AVAudioSession", error, context: .alarmPlayer) }
 	}
 
 	func isPlaying() -> Bool {
