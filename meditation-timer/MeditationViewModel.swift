@@ -22,6 +22,9 @@ class MeditationViewModel: ObservableObject {
 	let timerManager: TimerManager = TimerManager()
 	let soundManager: SoundManager = SoundManager()
 
+	let durationDefaultsKey = "meditationDuration"
+	let warmupDurationDefaultsKey = "warmupDuration"
+
 	private var cancellableSet: Set<AnyCancellable> = []
 
 	@Published var screenState: ScreenState = .setup
@@ -38,8 +41,8 @@ class MeditationViewModel: ObservableObject {
 
 		timerManager.currentTime.assign(to: &$elapsedTime)
 
-		if let savedMeditationDuration = UserDefaults.standard.value(forKey: "meditationDuration") as? Int,
-			 let savedWarmupDuration = UserDefaults.standard.value(forKey: "warmupDuration") as? Int {
+		if let savedMeditationDuration = UserDefaults.standard.value(forKey: self.durationDefaultsKey) as? Int,
+			 let savedWarmupDuration = UserDefaults.standard.value(forKey: self.warmupDurationDefaultsKey) as? Int {
 			meditationDuration = savedMeditationDuration
 			warmupDuration = savedWarmupDuration
 		}
@@ -79,8 +82,8 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	private func saveMeditationPreferences() {
-		UserDefaults.standard.set(meditationDuration, forKey: "meditationDuration")
-		UserDefaults.standard.set(warmupDuration, forKey: "warmupDuration")
+		UserDefaults.standard.set(meditationDuration, forKey: self.durationDefaultsKey)
+		UserDefaults.standard.set(warmupDuration, forKey: self.warmupDurationDefaultsKey)
 	}
 
 	private func handleState(_ state: TimerManager.TimerState) {
