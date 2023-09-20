@@ -22,7 +22,7 @@ class DurationPicker: UIScrollView {
 
 	init(frame: CGRect, tickColor: UIColor, duration: Int) {
 		self.tickColor = tickColor
-		self.duration = duration
+		self.duration = duration / 60
 
 		super.init(frame: frame)
 
@@ -102,6 +102,10 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 				parent.duration = newDuration
 				hapticFeedback.impactOccurred()
 			}
+		}
+
+		// TODO: Perhaps publish the duration from here to remove the warning about not publishing in view updates
+		func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 		}
 	}
 
