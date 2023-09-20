@@ -58,7 +58,7 @@ class DurationPicker: UIScrollView {
 	}
 
 	private func setScrollPosition() {
-		let minutes = 20 // The persisted duration
+		let minutes = self.duration
 		let contentWidth = self.contentSize.width
 		let offsetPerMinute = contentWidth / CGFloat(DurationPicker.maxTicks)
 		let targetOffsetX = CGFloat(minutes) * offsetPerMinute
