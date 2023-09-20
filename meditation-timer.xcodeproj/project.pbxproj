@@ -38,6 +38,7 @@
 		84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */; };
 		84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8C2A9D853200028D6E /* chime.mp3 */; };
 		84EB92EE2AAF6EFF00BBD25B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84EB92ED2AAF6EFF00BBD25B /* Colors.xcassets */; };
+		84EB92F02ABBA93700BBD25B /* CompletedMeditation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84EB92EF2ABBA93700BBD25B /* CompletedMeditation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +75,7 @@
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		84EB92ED2AAF6EFF00BBD25B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		84EB92EF2ABBA93700BBD25B /* CompletedMeditation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedMeditation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				84865CD72AA6C9F9009C655C /* DurationPicker.swift */,
 				84865CCF2AA3FEB8009C655C /* TimerConfig.swift */,
 				84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */,
+				84EB92EF2ABBA93700BBD25B /* CompletedMeditation.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				84865CD12AA52478009C655C /* Int+TimeFormatting.swift */,
 				84865CCB2AA3DAA5009C655C /* SoundManager.swift */,
@@ -257,6 +260,7 @@
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
 				841E00092A8D2AE300E9BE5B /* MeditationTimerApp.swift in Sources */,
+				84EB92F02ABBA93700BBD25B /* CompletedMeditation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
