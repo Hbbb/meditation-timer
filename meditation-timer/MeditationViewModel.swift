@@ -16,7 +16,7 @@ extension Logger {
 
 class MeditationViewModel: ObservableObject {
 	enum ScreenState {
-		case setup, warmup, meditate
+		case setup, warmup, meditate, complete
 	}
 
 	let timerManager: TimerManager = TimerManager()
@@ -74,11 +74,9 @@ class MeditationViewModel: ObservableObject {
 		timerManager.startTimer(duration: meditationDuration)
 	}
 
-	// TODO: Eventually we'll implement a "post-completion" screen and
-	// we won't reset the screenState to .setup here.
 	func meditationDidComplete() {
 		soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
-		screenState = .setup
+		screenState = .complete
 	}
 
 	private func saveMeditationPreferences() {
