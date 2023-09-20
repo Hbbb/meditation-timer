@@ -34,6 +34,13 @@ struct ContentView: View {
 										duration: vm.meditationDuration,
 										onTapPrimary: vm.stopMeditation,
 										onTapCancel: vm.stopMeditation)
+				case .complete:
+					CompletedMeditation()
+						.onAppear {
+							DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+								vm.screenState = .setup
+							}
+						}
 			}
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
