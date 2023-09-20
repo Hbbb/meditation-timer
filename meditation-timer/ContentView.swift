@@ -102,11 +102,11 @@ struct TimerView: View {
 	var body: some View {
 		VStack {
 			TopControls(onTap: onTapCancel)
-			.padding(.bottom, 180)
-			.padding(.top, 40)
+				.padding(.bottom, 180)
+				.padding(.top, 40)
 
 			Progress(timeRemaining: timeRemaining, label: label, duration: duration)
-			.padding(.bottom, 120)
+				.padding(.bottom, 120)
 
 			Image(systemName: icon)
 				.font(.system(size: 40))
