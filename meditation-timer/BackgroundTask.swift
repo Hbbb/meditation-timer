@@ -85,12 +85,6 @@ class BackgroundTask: ObservableObject {
 
 	@objc private func handleInterruption(_ notification: Notification) {
 		Logger.info("handleAudioInterruption")
-		//        if notification.name == AVAudioSession.interruptionNotification && notification.userInfo != nil {
-		//            let info = notification.userInfo!
-		//            var intValue = 0
-		//            (info[AVAudioSessionInterruptionTypeKey]! as AnyObject).getValue(&intValue)
-		//            if intValue == 1 { playAudio() }
-		//        }
 		guard let userInfo = notification.userInfo,
 					let typeValue = userInfo[AVAudioSessionInterruptionTypeKey] as? UInt,
 					let type = AVAudioSession.InterruptionType(rawValue: typeValue) else {
