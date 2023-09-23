@@ -35,12 +35,9 @@ struct ContentView: View {
 										onTapPrimary: vm.stopMeditation,
 										onTapCancel: vm.stopMeditation)
 				case .complete:
-					CompletedMeditation()
-						.onAppear {
-							DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-								vm.screenState = .setup
-							}
-						}
+					CompletedMeditation {
+						vm.screenState = .setup
+					}
 			}
 		}
 		// This is a hack I use to find real names of fonts. Don't even ask
@@ -102,7 +99,7 @@ struct TimerView: View {
 	var body: some View {
 		VStack {
 			TopControls(onTap: onTapCancel)
-				.padding(.bottom, 180)
+				.padding(.bottom, 120)
 				.padding(.top, 40)
 
 			Progress(timeRemaining: timeRemaining, label: label, duration: duration)
