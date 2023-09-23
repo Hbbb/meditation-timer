@@ -72,6 +72,7 @@
 		84865CE52AA83ACE009C655C /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		84865CE72AA84101009C655C /* MeditationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationSession.swift; sourceTree = "<group>"; };
 		84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
+		8497B8772ABFB08700436FFC /* meditation-timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meditation-timer.entitlements"; sourceTree = "<group>"; };
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		84EB92ED2AAF6EFF00BBD25B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -100,6 +101,7 @@
 		841E00072A8D2AE300E9BE5B /* meditation-timer */ = {
 			isa = PBXGroup;
 			children = (
+				8497B8772ABFB08700436FFC /* meditation-timer.entitlements */,
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
 				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
@@ -390,6 +392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "meditation-timer/meditation-timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"meditation-timer/Preview Content\"";
@@ -421,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "meditation-timer/meditation-timer.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"meditation-timer/Preview Content\"";
