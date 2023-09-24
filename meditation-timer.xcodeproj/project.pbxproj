@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -35,6 +35,7 @@
 		84865CE62AA83ACE009C655C /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CE52AA83ACE009C655C /* TimerManager.swift */; };
 		84865CE82AA84101009C655C /* MeditationSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CE72AA84101009C655C /* MeditationSession.swift */; };
 		84865CEA2AA8DC9A009C655C /* MeditationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */; };
+		8497B8792ABFB17500436FFC /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497B8782ABFB17500436FFC /* HealthKitManager.swift */; };
 		84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */; };
 		84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84AC4B8C2A9D853200028D6E /* chime.mp3 */; };
 		84EB92EE2AAF6EFF00BBD25B /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84EB92ED2AAF6EFF00BBD25B /* Colors.xcassets */; };
@@ -73,6 +74,7 @@
 		84865CE72AA84101009C655C /* MeditationSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationSession.swift; sourceTree = "<group>"; };
 		84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationViewModel.swift; sourceTree = "<group>"; };
 		8497B8772ABFB08700436FFC /* meditation-timer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "meditation-timer.entitlements"; sourceTree = "<group>"; };
+		8497B8782ABFB17500436FFC /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		84AC4B8A2A9D7B2C00028D6E /* complete.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = complete.mp3; sourceTree = "<group>"; };
 		84AC4B8C2A9D853200028D6E /* chime.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = chime.mp3; sourceTree = "<group>"; };
 		84EB92ED2AAF6EFF00BBD25B /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				84504B1E2A99A7230064A378 /* Resources */,
 				84504B1A2A99A53B0064A378 /* Info.plist */,
 				841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */,
+				8497B8782ABFB17500436FFC /* HealthKitManager.swift */,
 				84865CD72AA6C9F9009C655C /* DurationPicker.swift */,
 				84865CCF2AA3FEB8009C655C /* TimerConfig.swift */,
 				84865CE92AA8DC9A009C655C /* MeditationViewModel.swift */,
@@ -199,7 +202,7 @@
 				};
 			};
 			buildConfigurationList = 841E00002A8D2AE300E9BE5B /* Build configuration list for PBXProject "meditation-timer" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 15.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -258,6 +261,7 @@
 				84865CE82AA84101009C655C /* MeditationSession.swift in Sources */,
 				84865CD22AA52478009C655C /* Int+TimeFormatting.swift in Sources */,
 				84865CD02AA3FEB8009C655C /* TimerConfig.swift in Sources */,
+				8497B8792ABFB17500436FFC /* HealthKitManager.swift in Sources */,
 				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
@@ -400,12 +404,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "meditation-timer/Info.plist";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Meditation timer uses HealthKit to read and write mindful minutes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -432,13 +437,13 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "meditation-timer/Info.plist";
+				INFOPLIST_KEY_NSHealthUpdateUsageDescription = "Meditation timer uses HealthKit to read and write mindful minutes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=iphoneos*]" = 15.0;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
