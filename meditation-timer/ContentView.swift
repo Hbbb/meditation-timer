@@ -36,6 +36,7 @@ struct ContentView: View {
 										onTapCancel: vm.stopMeditation)
 				case .complete:
 					CompletedMeditation {
+						HealthKitManager.shared.writeMindfulMinutes(seconds: vm.meditationDuration) { succeeded, err in }
 						vm.screenState = .setup
 					}
 			}
