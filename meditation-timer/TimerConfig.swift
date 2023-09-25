@@ -42,6 +42,15 @@ struct TimerConfig: View {
 					.onTapGesture {
 						vm.warmupDuration = 0
 					}
+				Text("15s")
+					.padding(.horizontal, 20)
+					.padding(.vertical, 10)
+					.foregroundColor(vm.warmupDuration == 15 ? .white : .black)
+					.background(vm.warmupDuration == 15 ? AppColors.darkGreen : AppColors.lightGreen)
+					.cornerRadius(50)
+					.onTapGesture {
+						vm.warmupDuration = 15
+					}
 				Text("30s")
 					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
@@ -50,15 +59,6 @@ struct TimerConfig: View {
 					.cornerRadius(50)
 					.onTapGesture {
 						vm.warmupDuration = 30
-					}
-				Text("45s")
-					.padding(.horizontal, 20)
-					.padding(.vertical, 10)
-					.foregroundColor(vm.warmupDuration == 45 ? .white : .black)
-					.background(vm.warmupDuration == 45 ? AppColors.darkGreen : AppColors.lightGreen)
-					.cornerRadius(50)
-					.onTapGesture {
-						vm.warmupDuration = 45
 					}
 				Text("1m")
 					.padding(.horizontal, 20)
