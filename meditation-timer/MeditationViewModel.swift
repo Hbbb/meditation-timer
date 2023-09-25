@@ -7,6 +7,7 @@
 
 import Combine
 import Foundation
+import SwiftUI
 
 extension Logger {
 	fileprivate static func info(_ message: String) {
@@ -16,7 +17,7 @@ extension Logger {
 
 class MeditationViewModel: ObservableObject {
 	enum ScreenState {
-		case setup, warmup, meditate, complete
+		case onboard, setup, warmup, meditate, complete
 	}
 
 	let timerManager: TimerManager = TimerManager()
@@ -27,12 +28,18 @@ class MeditationViewModel: ObservableObject {
 
 	private var cancellableSet: Set<AnyCancellable> = []
 
+	@AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
+
 	@Published var screenState: ScreenState = .setup
 	@Published var elapsedTime: Int = 0
 	@Published var warmupDuration: Int = 0
 	@Published var meditationDuration: Int = 60
 
 	init() {
+		if !hasCompletedOnboarding {
+			screenState = .onboard
+		}
+
 		timerManager.timerState
 			.sink { [weak self] state in
 				self?.handleState(state)
@@ -83,6 +90,11 @@ class MeditationViewModel: ObservableObject {
 		soundManager.stopSound()
 	}
 
+	func didCompleteOnboarding() {
+		hasCompletedOnboarding = true
+		screenState = .setup
+	}
+
 	private func saveMeditationPreferences() {
 		UserDefaults.standard.set(meditationDuration, forKey: self.durationDefaultsKey)
 		UserDefaults.standard.set(warmupDuration, forKey: self.warmupDurationDefaultsKey)
@@ -93,7 +105,7 @@ class MeditationViewModel: ObservableObject {
 
 		switch state {
 			case .idle:
-				screenState = .setup
+				screenState = hasCompletedOnboarding ? .setup : .onboard
 			case .running:
 				if screenState == .meditate {
 					soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
