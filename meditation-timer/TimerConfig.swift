@@ -72,15 +72,7 @@ struct TimerConfig: View {
 			}
 			.padding(.bottom, 120)
 
-			Text("Start Timer")
-				.frame(maxWidth: .infinity)
-				.padding(.vertical, 20)
-				.background(AppColors.green)
-				.foregroundColor(.white)
-				.cornerRadius(100)
-				.onTapGesture {
-					vm.startMeditation()
-				}
+			PrimaryActionButton(text: "Start Timer", onTap: vm.startMeditation)
 		}
 		.padding(.horizontal)
 		.padding(.vertical)

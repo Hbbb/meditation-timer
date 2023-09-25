@@ -20,16 +20,8 @@ struct CompletedMeditation: View {
 
 			Text("Great job!")
 
-			Text("Complete")
-				.frame(maxWidth: .infinity)
-				.padding(.vertical, 20)
-				.background(AppColors.green)
-				.foregroundColor(.white)
-				.cornerRadius(100)
+			PrimaryActionButton(text: "Complete", onTap: onTapComplete)
 				.padding(.top, 250)
-				.onTapGesture {
-					onTapComplete()
-				}
 		}
 		.padding(.horizontal)
 		.padding(.vertical)
