@@ -18,6 +18,8 @@ struct ContentView: View {
 				.ignoresSafeArea()
 
 			switch vm.screenState {
+				case .onboard:
+					WelcomeScreen()
 				case .setup:
 					TimerConfig()
 				case .warmup:
