@@ -31,11 +31,6 @@ struct MeditationTimerApp: App {
 			ContentView()
 				.environmentObject(vm)
 				.environment(\.managedObjectContext, dataController.container.viewContext)
-				.onAppear {
-					HealthKitManager.shared.requestHealthKitPermission() { succeeded, err in
-						print("health kit permissions requested")
-					}
-				}
 		}
 		.onChange(of: scenePhase) { phase in
 			switch(phase) {
