@@ -14,7 +14,7 @@ struct WelcomeScreen: View {
 		VStack {
 			Image(systemName: "figure.mind.and.body")
 				.font(.system(size: 48))
-				.padding(.bottom, 20)
+				.padding(.bottom, 30)
 
 			Text("Meditation Timer uses HealthKit to read and write mindful minutes to the Health app so you can track your progress as you meditate.")
 				.padding(.bottom, 200)
@@ -26,6 +26,7 @@ struct WelcomeScreen: View {
 					}
 				}
 			})
+			.padding(.bottom, 20)
 
 			Text("Skip")
 				.foregroundStyle(.gray)
