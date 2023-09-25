@@ -45,6 +45,7 @@ class TimerManager {
 	func stopTimer() {
 		timer?.invalidate()
 		timer = nil
+		backgroundDate = Date()
 		currentTime.send(0)
 	}
 
