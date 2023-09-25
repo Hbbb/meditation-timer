@@ -57,8 +57,25 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 	}
 
 	func stopSound() {
-		self.audioPlayer?.stop()
-		AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate)
+		guard let audioPlayer = self.audioPlayer else { return }
+
+		let originalVolume = audioPlayer.volume
+		let steps = 30
+		let interval: TimeInterval = 0.1 // 3 seconds / 30 steps
+
+		let stepAmount = originalVolume / Float(steps)
+
+		for i in 1...steps {
+			DispatchQueue.main.asyncAfter(deadline: .now() + interval * Double(i)) {
+				audioPlayer.volume -= stepAmount
+			}
+		}
+
+		DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+			audioPlayer.stop()
+			audioPlayer.volume = originalVolume
+			AudioServicesRemoveSystemSoundCompletion(kSystemSoundID_Vibrate)
+		}
 	}
 
 	func isPlaying() -> Bool {

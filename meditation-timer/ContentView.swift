@@ -38,6 +38,7 @@ struct ContentView: View {
 					CompletedMeditation {
 						HealthKitManager.shared.writeMindfulMinutes(seconds: vm.meditationDuration) { succeeded, err in }
 						vm.screenState = .setup
+						vm.stopSound()
 					}
 			}
 		}

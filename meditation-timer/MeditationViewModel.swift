@@ -79,6 +79,10 @@ class MeditationViewModel: ObservableObject {
 		screenState = .complete
 	}
 
+	func stopSound() {
+		soundManager.stopSound()
+	}
+
 	private func saveMeditationPreferences() {
 		UserDefaults.standard.set(meditationDuration, forKey: self.durationDefaultsKey)
 		UserDefaults.standard.set(warmupDuration, forKey: self.warmupDurationDefaultsKey)
