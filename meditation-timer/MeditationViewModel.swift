@@ -78,6 +78,7 @@ class MeditationViewModel: ObservableObject {
 
 	func warmupDidComplete() {
 		screenState = .meditate
+		elapsedTime = 0
 		timerManager.startTimer(duration: meditationDuration)
 	}
 
