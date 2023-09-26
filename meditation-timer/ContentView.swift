@@ -122,4 +122,8 @@ struct TimerView: View {
 	}
 }
 
+#Preview {
+	TimerView(timeRemaining: 458, label: "Warmup", icon: "", duration: 600, onTapPrimary: {}, onTapCancel: {})
+}
+
 
