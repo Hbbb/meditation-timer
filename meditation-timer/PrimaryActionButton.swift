@@ -17,6 +17,7 @@ struct PrimaryActionButton: View {
 			.padding(.vertical, 18)
 			.background(AppColors.green)
 			.foregroundColor(.white)
+			.font(.custom("Barlow-Bold", size: 16))
 			.cornerRadius(100)
 			.onTapGesture {
 				onTap()

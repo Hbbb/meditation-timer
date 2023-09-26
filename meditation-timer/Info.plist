@@ -8,9 +8,10 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>TitanOne-Regular.ttf</string>
-		<string>VarelaRound.ttf</string>
 		<string>Comfortaa-Regular.ttf</string>
+		<string>Barlow-Bold.ttf</string>
+		<string>Barlow-Black.ttf</string>
+		<string>Barlow-Regular.ttf</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

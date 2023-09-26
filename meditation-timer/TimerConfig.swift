@@ -16,13 +16,13 @@ struct TimerConfig: View {
 	var body: some View {
 		VStack() {
 			Spacer()
-			Text("Meditation")
-				.font(.largeTitle)
+			Text("Meditate")
+				.font(.custom("Barlow-Black", size: 48))
 				.padding(.bottom, 40)
 				.foregroundColor(AppColors.foreground)
 
 			Text(vm.meditationDuration.toMMSS())
-				.font(.title)
+				.font(.custom("Barlow-Regular", size: 24))
 				.padding(.bottom, 20)
 				.foregroundColor(AppColors.foreground)
 			DurationPickerRepresentable(duration: $vm.meditationDuration)
@@ -32,8 +32,11 @@ struct TimerConfig: View {
 			// Warmup Picker
 			Text("Warmup")
 				.foregroundColor(AppColors.foreground)
+				.font(.custom("Barlow-Regular", size: 20))
+
 			HStack {
 				Text("None")
+					.font(.custom("Barlow-Regular", size: 16))
 					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
 					.foregroundColor(vm.warmupDuration == 0 ? .white : .black)
@@ -43,6 +46,7 @@ struct TimerConfig: View {
 						vm.warmupDuration = 0
 					}
 				Text("15s")
+					.font(.custom("Barlow-Regular", size: 16))
 					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
 					.foregroundColor(vm.warmupDuration == 15 ? .white : .black)
@@ -52,6 +56,7 @@ struct TimerConfig: View {
 						vm.warmupDuration = 15
 					}
 				Text("30s")
+					.font(.custom("Barlow-Regular", size: 16))
 					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
 					.foregroundColor(vm.warmupDuration == 30 ? .white : .black)
@@ -61,6 +66,7 @@ struct TimerConfig: View {
 						vm.warmupDuration = 30
 					}
 				Text("1m")
+					.font(.custom("Barlow-Regular", size: 16))
 					.padding(.horizontal, 20)
 					.padding(.vertical, 10)
 					.foregroundColor(vm.warmupDuration == 60 ? .white : .black)
@@ -72,7 +78,7 @@ struct TimerConfig: View {
 			}
 			.padding(.bottom, 120)
 
-			PrimaryActionButton(text: "Start Timer", onTap: vm.startMeditation)
+			PrimaryActionButton(text: "Start", onTap: vm.startMeditation)
 		}
 		.padding(.horizontal)
 		.padding(.vertical)

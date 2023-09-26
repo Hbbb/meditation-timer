@@ -18,6 +18,7 @@ struct WelcomeScreen: View {
 
 			Text("Meditation Timer uses HealthKit to read and write mindful minutes to the Health app so you can track your progress as you meditate.")
 				.padding(.bottom, 200)
+				.font(.custom("Barlow-Regular", size: 20))
 
 			PrimaryActionButton(text: "Grant access to Health", onTap: {
 				HealthKitManager.shared.requestHealthKitPermission() { succeeded, err in
@@ -30,6 +31,7 @@ struct WelcomeScreen: View {
 
 			Text("Skip")
 				.foregroundStyle(.gray)
+				.font(.custom("Barlow-Regular", size: 16))
 				.onTapGesture {
 					vm.didCompleteOnboarding()
 				}

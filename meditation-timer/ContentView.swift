@@ -84,7 +84,9 @@ struct Progress: View {
 		ZStack {
 			VStack {
 				Text(timeRemaining.toMMSS())
+					.font(.custom("Barlow-Bold", size: 24))
 				Text(label)
+					.font(.custom("Barlow-Regular", size: 16))
 			}
 			CircularProgressIndicator(duration: Double(duration))
 				.frame(width: 275, height: 275)
