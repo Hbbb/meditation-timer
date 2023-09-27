@@ -73,6 +73,7 @@ extension TimerManager {
 		guard let backgroundDate = backgroundDate else { return }
 
 		if timerState.value == .idle {
+			self.backgroundDate = nil
 			return
 		}
 
