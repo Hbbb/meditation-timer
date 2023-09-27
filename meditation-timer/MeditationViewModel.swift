@@ -23,12 +23,11 @@ class MeditationViewModel: ObservableObject {
 	let timerManager: TimerManager = TimerManager()
 	let soundManager: SoundManager = SoundManager()
 
-	let durationDefaultsKey = "meditationDuration"
-	let warmupDurationDefaultsKey = "warmupDuration"
-
 	private var cancellableSet: Set<AnyCancellable> = []
 
 	@AppStorage("hasCompletedOnboarding") var hasCompletedOnboarding: Bool = false
+	@AppStorage("meditationDuration") var savedMeditationDuration: Int = 600
+	@AppStorage("warmupDuration") var savedWarmupDuration: Int = 15
 
 	@Published var screenState: ScreenState = .setup
 	@Published var elapsedTime: Int = 0
@@ -48,11 +47,8 @@ class MeditationViewModel: ObservableObject {
 
 		timerManager.currentTime.assign(to: &$elapsedTime)
 
-		if let savedMeditationDuration = UserDefaults.standard.value(forKey: self.durationDefaultsKey) as? Int,
-			 let savedWarmupDuration = UserDefaults.standard.value(forKey: self.warmupDurationDefaultsKey) as? Int {
-			meditationDuration = savedMeditationDuration
-			warmupDuration = savedWarmupDuration
-		}
+		meditationDuration = savedMeditationDuration
+		warmupDuration = savedWarmupDuration
 	}
 
 	func startMeditation() {
@@ -97,8 +93,8 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	private func saveMeditationPreferences() {
-		UserDefaults.standard.set(meditationDuration, forKey: self.durationDefaultsKey)
-		UserDefaults.standard.set(warmupDuration, forKey: self.warmupDurationDefaultsKey)
+		savedMeditationDuration = meditationDuration
+		savedWarmupDuration = warmupDuration
 	}
 
 	private func handleState(_ state: TimerManager.TimerState) {
