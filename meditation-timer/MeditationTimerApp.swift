@@ -40,7 +40,7 @@ struct MeditationTimerApp: App {
 					 If there is an active timer:
 					 - Play silent .wav track which enables us to play a sound when the timer ends, even if the app is not in the foreground
 					 */
-					if vm.screenState != .setup {
+					if vm.screenState == .meditate || vm.screenState == .warmup {
 						backgroundTask.start()
 					}
 				case .active:
