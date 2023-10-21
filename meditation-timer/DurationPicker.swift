@@ -13,8 +13,8 @@ class DurationPicker: UIScrollView {
 	static let maxTicks: Int = 105
 
 	var tickWidth: CGFloat = 5
-	var tickHeight: CGFloat = 25
-	var longTickHeight: CGFloat = 50
+	var tickHeight: CGFloat = 30
+	var longTickHeight: CGFloat = 60
 
 	var duration: Int = 60
 	var tickInterval: Int = 4
@@ -48,7 +48,7 @@ class DurationPicker: UIScrollView {
 			tick.frame.size.width = tickWidth
 			tick.frame.size.height = (i % tickInterval == 0) ? longTickHeight : tickHeight
 			tick.frame.origin.x = CGFloat(i) * (tickWidth + 20)
-			tick.frame.origin.y = self.frame.size.height - tick.frame.size.height
+			tick.frame.origin.y =  self.bounds.size.height - tick.frame.size.height
 			tick.layer.cornerRadius = tickWidth / 2
 
 			self.addSubview(tick)
@@ -115,7 +115,7 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 
 	func makeUIView(context: Context) -> DurationPicker {
 		let customSlider = DurationPicker(
-			frame: CGRect(x: 0, y: 0, width: 500, height: 50),
+			frame: CGRect(x: 0, y: 0, width: 500, height: 70),
 			tickColor: colorScheme == .dark ? UIColor.white : UIColor.black,
 			duration: duration)
 

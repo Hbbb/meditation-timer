@@ -16,18 +16,14 @@ struct TimerConfig: View {
 	var body: some View {
 		VStack() {
 			Spacer()
-			Text("Meditate")
+			Text(vm.meditationDuration.toMMSS())
 				.font(.custom("Barlow-Black", size: 48))
 				.padding(.bottom, 40)
 				.foregroundColor(AppColors.foreground)
 
-			Text(vm.meditationDuration.toMMSS())
-				.font(.custom("Barlow-Regular", size: 24))
-				.padding(.bottom, 20)
-				.foregroundColor(AppColors.foreground)
 			DurationPickerRepresentable(duration: $vm.meditationDuration)
-				.frame(height: 50)
-				.padding(.bottom, 40)
+				.frame(height: 70)
+				.padding(.bottom, 60)
 
 			// Warmup Picker
 			Text("Warmup")
