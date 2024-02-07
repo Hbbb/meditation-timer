@@ -17,8 +17,8 @@ struct TimerConfig: View {
 		VStack() {
 			Spacer()
 			Text(vm.meditationDuration.toMMSS())
-				.font(.custom("Barlow-Black", size: 48))
-				.padding(.bottom, 40)
+				.font(.custom("Barlow-Black", size: 110))
+				.padding(.bottom, 10)
 				.foregroundColor(AppColors.foreground)
 
 			DurationPickerRepresentable(duration: $vm.meditationDuration)
@@ -30,48 +30,13 @@ struct TimerConfig: View {
 				.foregroundColor(AppColors.foreground)
 				.font(.custom("Barlow-Regular", size: 20))
 
-			HStack {
-				Text("None")
-					.font(.custom("Barlow-Regular", size: 16))
-					.padding(.horizontal, 20)
-					.padding(.vertical, 10)
-					.foregroundColor(vm.warmupDuration == 0 ? .white : .black)
-					.background(vm.warmupDuration == 0 ? AppColors.darkGreen : AppColors.lightGreen)
-					.cornerRadius(50)
-					.onTapGesture {
-						vm.warmupDuration = 0
-					}
-				Text("15s")
-					.font(.custom("Barlow-Regular", size: 16))
-					.padding(.horizontal, 20)
-					.padding(.vertical, 10)
-					.foregroundColor(vm.warmupDuration == 15 ? .white : .black)
-					.background(vm.warmupDuration == 15 ? AppColors.darkGreen : AppColors.lightGreen)
-					.cornerRadius(50)
-					.onTapGesture {
-						vm.warmupDuration = 15
-					}
-				Text("30s")
-					.font(.custom("Barlow-Regular", size: 16))
-					.padding(.horizontal, 20)
-					.padding(.vertical, 10)
-					.foregroundColor(vm.warmupDuration == 30 ? .white : .black)
-					.background(vm.warmupDuration == 30 ? AppColors.darkGreen : AppColors.lightGreen)
-					.cornerRadius(50)
-					.onTapGesture {
-						vm.warmupDuration = 30
-					}
-				Text("1m")
-					.font(.custom("Barlow-Regular", size: 16))
-					.padding(.horizontal, 20)
-					.padding(.vertical, 10)
-					.foregroundColor(vm.warmupDuration == 60 ? .white : .black)
-					.background(vm.warmupDuration == 60 ? AppColors.darkGreen : AppColors.lightGreen)
-					.cornerRadius(50)
-					.onTapGesture {
-						vm.warmupDuration = 60
-					}
+			Picker("Warmup", selection: $vm.warmupDuration) {
+				Text("None").tag(0)
+				Text("15s").tag(15)
+				Text("30s").tag(30)
+				Text("1m").tag(60)
 			}
+			.pickerStyle(.segmented)
 			.padding(.bottom, 120)
 
 			PrimaryActionButton(text: "Start", onTap: vm.startMeditation)
