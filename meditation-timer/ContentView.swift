@@ -69,8 +69,6 @@ struct TopControls: View {
 					self.onTap()
 				}
 			Spacer()
-			Image(systemName: "ellipsis.circle")
-				.font(.system(size: 32))
 		}
 	}
 }
