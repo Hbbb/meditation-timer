@@ -9,9 +9,6 @@ import SwiftUI
 
 struct TimerConfig: View {
 	@EnvironmentObject var vm: MeditationViewModel
-	@State var selection: String = "0s"
-
-	let selections = ["0s", "30s", "1m"]
 
 	var body: some View {
 		VStack() {
