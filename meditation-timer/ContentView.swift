@@ -44,7 +44,8 @@ struct ContentView: View {
 					}
 			}
 		}
-		// This is a hack I use to find real names of fonts. Don't even ask
+		// This is a hack I use to find real names of fonts. Don't even ask.
+		// It prints the names of all custom fonts to the console.
 		//				.onAppear {
 		//					for family: String in UIFont.familyNames
 		//					{
@@ -58,70 +59,38 @@ struct ContentView: View {
 	}
 }
 
-struct TopControls: View {
-	var onTap: (() -> Void)
-
-	var body: some View {
-		HStack(alignment: .top) {
-			Image(systemName: "x.circle")
-				.font(.system(size: 32))
-				.onTapGesture {
-					self.onTap()
-				}
-			Spacer()
-		}
-	}
-}
-
-struct Progress: View {
-	var timeRemaining: Int
-	var label: String
-	var duration: Int
-
-	var body: some View {
-		ZStack {
-			VStack {
-				Text(timeRemaining.toMMSS())
-					.font(.custom("Barlow-Bold", size: 24))
-				Text(label)
-					.font(.custom("Barlow-Regular", size: 16))
-			}
-			CircularProgressIndicator(duration: Double(duration))
-				.frame(width: 275, height: 275)
-		}
-	}
-}
-
 struct TimerView: View {
 	var timeRemaining: Int
 	var label: String
 	var icon: String
 	var duration: Int
+
+	// TODO: Remove me. There's only a cancel button now, no skip
 	var onTapPrimary: (() -> Void)
 	var onTapCancel: (() -> Void)
 
 	var body: some View {
 		VStack {
-			TopControls(onTap: onTapCancel)
-				.padding(.bottom, 120)
-				.padding(.top, 40)
-
-			Progress(timeRemaining: timeRemaining, label: label, duration: duration)
-				.padding(.bottom, 120)
-
-			Image(systemName: icon)
-				.font(.system(size: 40))
-				.onTapGesture {
-					onTapPrimary()
-				}
 			Spacer()
+
+			ZStack {
+				ProgressCircle()
+				Text(timeRemaining.toMMSS())
+					.font(.custom("Barlow-Bold", size: 24))
+					.foregroundStyle(.white)
+			}
+
+			Spacer()
+
+			PrimaryActionButton(text: "Stop", onTap: onTapCancel)
+				.padding(.bottom, 20)
 		}
 		.padding(.horizontal, 20)
 	}
 }
 
 #Preview {
-	TimerView(timeRemaining: 458, label: "Warmup", icon: "", duration: 600, onTapPrimary: {}, onTapCancel: {})
+	TimerView(timeRemaining: 458, label: "Warmup", icon: "stop.fill", duration: 600, onTapPrimary: {}, onTapCancel: {})
 }
 
 
