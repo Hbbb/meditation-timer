@@ -83,9 +83,9 @@ struct TimerView: View {
 			Spacer()
 
 			PrimaryActionButton(text: "Stop", onTap: onTapCancel)
-				.padding(.bottom, 20)
 		}
-		.padding(.horizontal, 20)
+		.padding(.horizontal)
+		.padding(.vertical)
 	}
 }
 
