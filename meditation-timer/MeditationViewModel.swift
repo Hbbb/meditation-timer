@@ -83,6 +83,13 @@ class MeditationViewModel: ObservableObject {
 		screenState = .complete
 	}
 
+	func playSound() {
+		soundManager.play(soundName: "singing-bowl", volume: 100.0)
+	}
+
+	func pauseSound() {
+		soundManager.pause()
+	}
 	func stopSound() {
 		soundManager.stop()
 	}
@@ -92,13 +99,6 @@ class MeditationViewModel: ObservableObject {
 		screenState = .setup
 	}
 
-	func playSound() {
-		soundManager.pause()
-	}
-
-	func pauseSound() {
-		soundManager.pause()
-	}
 
 	private func saveMeditationPreferences() {
 		savedMeditationDuration = meditationDuration
