@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MediaPlayer
 
 @main
 struct MeditationTimerApp: App {
@@ -43,8 +44,11 @@ struct MeditationTimerApp: App {
 					if vm.screenState == .meditate || vm.screenState == .warmup {
 						backgroundTask.start()
 					}
+					UIApplication.shared.beginReceivingRemoteControlEvents()
+					vm.soundManager.setupRemoteTransportControls()
 				case .active:
 					backgroundTask.stop()
+					UIApplication.shared.endReceivingRemoteControlEvents()
 				default: ()
 			}
 		}
