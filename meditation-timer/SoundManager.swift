@@ -53,7 +53,17 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 		audioPlayer.delegate = self
 		audioPlayer.prepareToPlay()
 
-		self.audioPlayer!.play()
+		audioPlayer.play()
+	}
+
+	func pauseSound() {
+		guard let audioPlayer = self.audioPlayer, audioPlayer.isPlaying else { return }
+		audioPlayer.pause()
+	}
+
+	func resumeSound() {
+		guard let audioPlayer = self.audioPlayer, audioPlayer.isPlaying else { return }
+		audioPlayer.play()
 	}
 
 	func stopSound() {
