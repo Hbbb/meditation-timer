@@ -8,6 +8,7 @@
 import Foundation
 import AudioToolbox
 import AVFoundation
+import MediaPlayer
 
 class SoundManager: NSObject, AVAudioPlayerDelegate {
 	private var audioPlayer: AVAudioPlayer?
@@ -54,6 +55,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 		audioPlayer.prepareToPlay()
 
 		audioPlayer.play()
+		setNowPlayingInfo()
 	}
 
 	func pause() {
@@ -90,6 +92,34 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 
 	func isPlaying() -> Bool {
 		return self.audioPlayer?.isPlaying == true
+	}
+
+	func setNowPlayingInfo() {
+		var nowPlayingInfo = [String: Any]()
+
+		nowPlayingInfo[MPMediaItemPropertyTitle] = "Meditation"
+//		nowPlayingInfo[MPMediaItemPropertyArtist] = "MT"
+//		nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = album
+
+//		nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = self.duration
+//		nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = playbackRate
+
+		// Set the now playing info
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+	}
+
+	func setupRemoteTransportControls() {
+		let cmdCenter = MPRemoteCommandCenter.shared()
+
+		cmdCenter.playCommand.addTarget { _ in
+			self.resume()
+			return .success
+		}
+
+		cmdCenter.pauseCommand.addTarget { _ in
+			self.pause()
+			return .success
+		}
 	}
 }
 
