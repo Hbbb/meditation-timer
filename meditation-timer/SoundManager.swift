@@ -34,7 +34,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 		}
 	}
 
-	func playSound(soundName: String, volume: Float) {
+	func play(soundName: String, volume: Float) {
 		self.setupAudioSession()
 		let url = URL(fileURLWithPath: Bundle.main.path(forResource: soundName, ofType: "mp3")!)
 
@@ -56,17 +56,17 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 		audioPlayer.play()
 	}
 
-	func pauseSound() {
+	func pause() {
 		guard let audioPlayer = self.audioPlayer, audioPlayer.isPlaying else { return }
 		audioPlayer.pause()
 	}
 
-	func resumeSound() {
+	func resume() {
 		guard let audioPlayer = self.audioPlayer, audioPlayer.isPlaying else { return }
 		audioPlayer.play()
 	}
 
-	func stopSound() {
+	func stop() {
 		guard let audioPlayer = self.audioPlayer else { return }
 
 		let originalVolume = audioPlayer.volume
@@ -96,7 +96,7 @@ class SoundManager: NSObject, AVAudioPlayerDelegate {
 // MARK: AVAudioPlayerDelegate protocol methods
 extension SoundManager {
 	func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-		self.stopSound()
+		self.stop()
 	}
 
 	func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {

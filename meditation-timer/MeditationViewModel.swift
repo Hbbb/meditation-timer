@@ -67,7 +67,7 @@ class MeditationViewModel: ObservableObject {
 	func stopMeditation() {
 		timerManager.resetTimer()
 		screenState = .setup
-		soundManager.stopSound()
+		soundManager.stop()
 
 		Logger.info("Stopping meditation")
 	}
@@ -79,12 +79,12 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	func meditationDidComplete() {
-		soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
+		soundManager.play(soundName: "singing-bowl", volume: 100.0)
 		screenState = .complete
 	}
 
 	func stopSound() {
-		soundManager.stopSound()
+		soundManager.stop()
 	}
 
 	func didCompleteOnboarding() {
@@ -93,11 +93,11 @@ class MeditationViewModel: ObservableObject {
 	}
 
 	func playSound() {
-		soundManager.pauseSound()
+		soundManager.pause()
 	}
 
 	func pauseSound() {
-		soundManager.pauseSound()
+		soundManager.pause()
 	}
 
 	private func saveMeditationPreferences() {
@@ -113,7 +113,7 @@ class MeditationViewModel: ObservableObject {
 				screenState = hasCompletedOnboarding ? .setup : .onboard
 			case .running:
 				if screenState == .meditate {
-					soundManager.playSound(soundName: "singing-bowl", volume: 100.0)
+					soundManager.play(soundName: "singing-bowl", volume: 100.0)
 				}
 			case .completed:
 				switch screenState {
