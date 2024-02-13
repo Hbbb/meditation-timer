@@ -12,7 +12,6 @@ struct TimerConfig: View {
 
 	var body: some View {
 		VStack() {
-			Spacer()
 			Text(vm.meditationDuration.toMMSS())
 				.font(.custom("Barlow-Black", size: 110))
 				.padding(.bottom, 10)
@@ -22,7 +21,6 @@ struct TimerConfig: View {
 				.frame(height: 70)
 				.padding(.bottom, 60)
 
-			// Warmup Picker
 			Text("Warmup")
 				.foregroundColor(AppColors.foreground)
 				.font(.custom("Barlow-Regular", size: 20))
