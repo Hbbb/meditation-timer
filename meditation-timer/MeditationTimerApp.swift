@@ -42,13 +42,21 @@ struct MeditationTimerApp: App {
 					 - Play silent .wav track which enables us to play a sound when the timer ends, even if the app is not in the foreground
 					 */
 					if vm.screenState == .meditate || vm.screenState == .warmup {
+						// Subscribe to lockscreen playback controls
+						print("receive remote control events")
+						UIApplication.shared.beginReceivingRemoteControlEvents()
+						backgroundTask.prepareForBackgroundPlayback()
 						backgroundTask.start()
 					}
-					UIApplication.shared.beginReceivingRemoteControlEvents()
-					vm.soundManager.setupRemoteTransportControls()
+
+					break
 				case .active:
 					backgroundTask.stop()
+
+					// Stop receiving lockscreen playback events
+					print("no longer receiving background events")
 					UIApplication.shared.endReceivingRemoteControlEvents()
+					break
 				default: ()
 			}
 		}

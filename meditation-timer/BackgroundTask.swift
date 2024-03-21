@@ -6,6 +6,7 @@
 //
 
 import AVFoundation
+import MediaPlayer
 
 extension Logger {
 	fileprivate static func info(_ message: String) {
@@ -31,9 +32,33 @@ class BackgroundTask: ObservableObject {
 	 */
 	var isFirstTimerFire: Bool = true
 	var firstFireTimer: Timer?
+	var playerDidSetup: Bool = true
+
+	init() {
+		setupPlayer()
+	}
+
+	func setupPlayer() {
+		let bundle = Bundle.main.path(forResource: "blank", ofType: "wav")
+		let silence = URL(fileURLWithPath: bundle!)
+
+		do {
+			try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
+			try AVAudioSession.sharedInstance().setActive(true)
+
+			let player = try AVAudioPlayer(contentsOf: silence)
+			player.prepareToPlay()
+
+			BackgroundTask.player = player
+		} catch {
+			Logger.info("error initializing player")
+		}
+
+		Logger.info("setup background audio player")
+		playerDidSetup = true
+	}
 
 	// MARK: - Methods
-
 	func start() {
 		Logger.info("Starting")
 
@@ -71,6 +96,8 @@ class BackgroundTask: ObservableObject {
 				}
 			}
 		}
+
+		setNowPlayingInfo()
 	}
 
 	func stop() {
@@ -81,6 +108,41 @@ class BackgroundTask: ObservableObject {
 
 	func startIfNotStarted() {
 		self.playAudio()
+	}
+
+	func prepareForBackgroundPlayback() {
+		setNowPlayingInfo()
+		setupRemoteTransportControls()
+	}
+
+	func setNowPlayingInfo() {
+		var nowPlayingInfo = [String: Any]()
+
+		nowPlayingInfo[MPMediaItemPropertyTitle] = "Meditation"
+		nowPlayingInfo[MPMediaItemPropertyArtist] = "MT"
+		nowPlayingInfo[MPMediaItemPropertyAlbumTitle] = "Meditations"
+
+		nowPlayingInfo[MPMediaItemPropertyPlaybackDuration] = 1000
+		nowPlayingInfo[MPNowPlayingInfoPropertyPlaybackRate] = 0.0
+
+		// Set the now playing info
+		MPNowPlayingInfoCenter.default().nowPlayingInfo = nowPlayingInfo
+	}
+
+	func setupRemoteTransportControls() {
+		let cmdCenter = MPRemoteCommandCenter.shared()
+
+		cmdCenter.playCommand.isEnabled = true
+		cmdCenter.playCommand.addTarget { _ in
+			self.start()
+			return .success
+		}
+
+		cmdCenter.pauseCommand.isEnabled = true
+		cmdCenter.pauseCommand.addTarget { _ in
+			self.stop()
+			return .success
+		}
 	}
 
 	@objc private func handleInterruption(_ notification: Notification) {
@@ -94,7 +156,8 @@ class BackgroundTask: ObservableObject {
 		// Switch over the interruption type.
 		switch type {
 			case .began:
-				// An interruption began. Update the UI as needed.
+				// An interruption began. This may be a phone call or a text message.
+				// For now we try to play anyway. I think we can do better.
 				Logger.info("Session interrupted. Trying to play anyways.")
 				playAudio()
 			case .ended:
@@ -102,11 +165,11 @@ class BackgroundTask: ObservableObject {
 				guard let optionsValue = userInfo[AVAudioSessionInterruptionOptionKey] as? UInt else { return }
 				let options = AVAudioSession.InterruptionOptions(rawValue: optionsValue)
 				if options.contains(.shouldResume) {
-					// Interruption ended. Playback should resume.
 					Logger.info("Interruption ended. Playback will resume.")
 					playAudio()
 				} else {
-					// Interruption ended. Playback should not resume.
+					// Interruption ended. Playback should not resume. Unclear why.
+					// Again, for now we resume anyways. Aggressively resume because this is a timer app.
 					Logger.info("Interruption ended. Playback shouldn't resume, but will anyways.")
 					playAudio()
 				}
@@ -121,25 +184,23 @@ class BackgroundTask: ObservableObject {
 	 https://developer.apple.com/documentation/avfoundation/avaudiosession
 	 */
 	private func playAudio() {
-		do {
-			if BackgroundTask.player?.isPlaying == true {
-				Logger.info("Already playing")
-				return
-			}
-			let bundle = Bundle.main.path(forResource: "blank", ofType: "wav")
-			let alertSound = URL(fileURLWithPath: bundle!)
-
-			try AVAudioSession.sharedInstance().setCategory(.playback, options: [.mixWithOthers])
-			try AVAudioSession.sharedInstance().setActive(true)
-			try BackgroundTask.player = AVAudioPlayer(contentsOf: alertSound)
-			// Play audio forever by setting num of loops to -1
-			BackgroundTask.player!.numberOfLoops = -1
-			BackgroundTask.player!.volume = 0.01
-			BackgroundTask.player!.prepareToPlay()
-			BackgroundTask.player!.play()
-			Logger.info("Started playing")
-		} catch {
-			Logger.error("Failed to playAudio", error, context: .backgroundTask)
+		if BackgroundTask.player?.isPlaying == true {
+			Logger.info("Already playing")
+			return
 		}
+
+		if !self.playerDidSetup {
+			setupPlayer()
+		}
+
+		guard let player = BackgroundTask.player else { return }
+
+		// Play audio forever by setting num of loops to -1
+		player.numberOfLoops = -1
+		player.volume = 0.01
+		player.prepareToPlay()
+		player.play()
+
+		Logger.info("Started playing")
 	}
 }

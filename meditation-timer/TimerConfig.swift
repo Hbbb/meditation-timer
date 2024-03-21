@@ -17,7 +17,11 @@ struct TimerConfig: View {
 				.padding(.bottom, 10)
 				.foregroundColor(AppColors.foreground)
 
-			DurationPickerRepresentable(duration: $vm.meditationDuration)
+//			DurationPickerRepresentable(duration: $vm.meditationDuration)
+//				.frame(height: 70)
+//				.padding(.bottom, 60)
+
+			DurationScrubber()
 				.frame(height: 70)
 				.padding(.bottom, 60)
 

@@ -127,3 +127,126 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 		// View updates. Not sure when this is called
 	}
 }
+
+struct DurationScrubber: UIViewControllerRepresentable {
+	func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+	}
+
+	typealias UIViewType = UIViewController
+
+	func makeUIViewController(context: Context) -> UIViewType {
+		return DurationScrubberViewController()
+	}
+
+}
+
+class DurationScrubberViewController: UIViewController {
+	var ticks: [UIView] = []
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		setupTicks()
+		self.view.backgroundColor = .red
+
+		let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+		self.view.addGestureRecognizer(panGesture)
+
+	}
+
+	func generateTick(x: Int) -> UIView {
+		let tick = UIView()
+
+		tick.backgroundColor = .white
+		tick.frame.size.width = 20
+		tick.frame.size.height = 40
+		tick.frame.origin.x = CGFloat(x)
+		tick.layer.cornerRadius = 10
+		return tick
+	}
+
+	/**
+	 * Returns an array of X coordinates for the ticks. We
+	 * Compute the y value based on the index of the ticks
+	 */
+	func setupTicks() {
+		let width = Int(self.view.frame.width)
+		let tickWidth = 20
+		let tickGap = 20
+
+		for x in stride(from: 0, to: width, by: (tickWidth + tickGap)) {
+			self.ticks.append(generateTick(x: x))
+		}
+
+		for tick in ticks {
+			self.view.addSubview(tick)
+		}
+
+	}
+
+	@objc func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
+		let translation = gesture.translation(in: gesture.view)
+		switch gesture.state {
+			case .ended:
+				resetTicks()
+			case .changed:
+				handleDrag(translation: translation)
+			default:
+				return
+		}
+	}
+
+	func handleDrag(translation: CGPoint) {
+		//		// Horizontal drag detected
+		//		if abs(translation.x) > abs(translation.y) {
+		//		}
+
+		for tick in ticks {
+			let tickX = tick.center.x - (tick.bounds.width / 2)
+			let realX = tickX + translation.x
+			var translationX = translation.x
+
+			if (realX < -tick.bounds.width) {
+				let overflowTranslation = -tick.bounds.width - realX
+				translationX = self.view.bounds.width + 20 - tickX - overflowTranslation //TODO: use tickGap instead of hardcoded 20
+			} else if (realX > self.view.bounds.width) {
+				let overflowTranslation = realX - self.view.bounds.width
+				translationX = -tickX - tick.bounds.width + overflowTranslation - 20
+			}
+			tick.transform = CGAffineTransform(translationX: translationX, y: 0)
+			tick.layer.opacity = getTickOpacity(x: tickX + translationX)
+		}
+	}
+
+	func getTickOpacity(x: CGFloat) -> Float {
+		let percentile = x / self.view.bounds.width
+		print(percentile)
+		if (percentile > 0.25 && percentile < 0.75) {
+			return 1.0
+		} else if (percentile <= 0.25){
+			//0.25 == 1.0
+			// < 0 == 0
+			return 0.5
+		} else {
+			return 0.5
+		}
+	}
+
+
+	func resetTicks() {
+		for tick in ticks {
+			tick.frame.origin.x += tick.transform.tx
+			tick.transform = CGAffineTransform(translationX: 0, y: 0)
+		}
+	}
+}
+
+struct DurationTest: View {
+	var body: some View {
+		DurationScrubber()
+	}
+}
+
+struct ContentView_Previews: PreviewProvider {
+	static var previews: some View {
+		DurationTest()
+	}
+}
