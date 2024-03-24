@@ -41,6 +41,7 @@ struct ContentView: View {
 					}
 			}
 		}
+		.frame(maxWidth: .infinity, maxHeight: .infinity)
 		.background(
 			LinearGradient(
 				stops: [
@@ -101,9 +102,11 @@ struct TimerView: View {
 
 			Spacer()
 
-			PrimaryActionButton(text: "Stop", onTap: onTapCancel)
+			Text("Cancel")
+				.onTapGesture {
+					onTapCancel()
+				}
 		}
-		.padding(.horizontal)
 		.padding(.vertical)
 	}
 }
