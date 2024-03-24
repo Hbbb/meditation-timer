@@ -18,7 +18,7 @@ class DurationPicker: UIScrollView {
 
 	var duration: Int = 60
 	var tickInterval: Int = 4
-	var tickColor: UIColor = .white
+	var tickColor: UIColor = UIColor(AppColors.foreground)
 
 	init(frame: CGRect, tickColor: UIColor, duration: Int) {
 		self.tickColor = tickColor
