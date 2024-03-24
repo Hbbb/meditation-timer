@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PrimaryActionButton: View {
-	var text: String
 	var onTap: (() -> Void)
 
 	var body: some View {
@@ -21,6 +20,25 @@ struct PrimaryActionButton: View {
 					.rotationEffect(.degrees(180))
 					.offset(x: 3)
 					.foregroundColor(.background)
+			)
+			.mask(Circle())
+			.onTapGesture {
+				onTap()
+			}
+	}
+}
+
+struct CompleteButton: View {
+	var onTap: (() -> Void)
+
+	var body: some View {
+		Circle()
+			.frame(width: 106, height: 106)
+			.foregroundColor(AppColors.foreground)
+			.overlay(
+				Image(systemName: "hand.thumbsup")
+					.foregroundColor(.background)
+					.font(.system(size: 28))
 			)
 			.mask(Circle())
 			.onTapGesture {
@@ -46,5 +64,5 @@ struct PlayTriangle: Shape {
 }
 
 #Preview {
-	PrimaryActionButton(text: "Start", onTap: {})
+	PrimaryActionButton(onTap: {})
 }

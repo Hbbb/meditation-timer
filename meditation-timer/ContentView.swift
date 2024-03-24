@@ -21,7 +21,7 @@ struct ContentView: View {
 					TimerConfig()
 				case .warmup:
 					TimerView(timeRemaining: warmupTimeRemaining,
-										label: "Warm Up",
+										label: "Warmup",
 										duration: vm.warmupDuration,
 										onActionTap: vm.stopMeditation)
 				case .meditate:

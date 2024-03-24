@@ -13,14 +13,15 @@ struct CompletedMeditation: View {
 
 	var body: some View {
 		VStack {
-			Image(systemName: "checkmark.circle")
-				.font(.system(size: 84))
-				.foregroundColor(AppColors.green)
-				.scaleEffect(scale)
-
 			Text("Great job!")
+				.font(.custom("SmoochSans-Medium", size: 90))
+				.foregroundStyle(AppColors.foreground)
 
-			PrimaryActionButton(text: "Complete", onTap: onTapComplete)
+			Text("15:00 Meditation")
+				.font(.custom("Barlow-Bold", size: 18))
+				.foregroundStyle(AppColors.foreground)
+
+			CompleteButton(onTap: onTapComplete)
 				.padding(.top, 250)
 		}
 		.padding(.horizontal)

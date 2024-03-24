@@ -20,7 +20,7 @@ struct WelcomeScreen: View {
 				.padding(.bottom, 200)
 				.font(.custom("Barlow-Regular", size: 20))
 
-			PrimaryActionButton(text: "Grant access to Health", onTap: {
+			PrimaryActionButton(onTap: {
 				HealthKitManager.shared.requestHealthKitPermission() { succeeded, err in
 					DispatchQueue.main.async {
 						vm.didCompleteOnboarding()

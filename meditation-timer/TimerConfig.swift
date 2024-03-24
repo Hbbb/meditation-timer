@@ -34,7 +34,7 @@ struct TimerConfig: View {
 			.pickerStyle(.segmented)
 			.padding(.bottom, 60)
 
-			PrimaryActionButton(text: "Start", onTap: vm.startMeditation)
+			PrimaryActionButton(onTap: vm.startMeditation)
 		}
 		.padding(.horizontal)
 		.padding(.vertical)
