@@ -14,9 +14,6 @@ struct ContentView: View {
 
 	var body: some View {
 		ZStack {
-//			AppColors.background
-//				.ignoresSafeArea()
-
 			switch vm.screenState {
 				case .onboard:
 					WelcomeScreen()
