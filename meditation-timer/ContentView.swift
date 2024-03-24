@@ -95,9 +95,15 @@ struct TimerView: View {
 
 			ZStack {
 				ProgressCircle()
-				Text(timeRemaining.toMMSS())
-					.font(.custom("Barlow-Bold", size: 24))
-					.foregroundStyle(.white)
+				VStack {
+					Text(timeRemaining.toMMSS())
+						.font(.custom("SmoochSans-Medium", size: 90))
+						.foregroundStyle(AppColors.background)
+
+					Text("Warmup")
+						.font(.custom("Barlow-Bold", size: 18))
+						.foregroundStyle(AppColors.background)
+				}
 			}
 
 			Spacer()

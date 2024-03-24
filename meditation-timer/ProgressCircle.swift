@@ -13,7 +13,8 @@ struct ProgressCircle: View {
 
 	var body: some View {
 		Circle()
-			.frame(width: 100, height: 100)
+			.fill(AppColors.foreground)
+			.frame(width: 125, height: 125)
 			.scaleEffect(scale)
 			.animation(
 				.easeInOut(duration: 4)
