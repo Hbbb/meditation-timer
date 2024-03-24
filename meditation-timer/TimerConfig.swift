@@ -13,7 +13,7 @@ struct TimerConfig: View {
 	var body: some View {
 		VStack() {
 			Text(vm.meditationDuration.toMMSS())
-				.font(.custom("Barlow-Black", size: 110))
+				.font(.custom("SmoochSans-Medium", size: 130))
 				.padding(.bottom, 10)
 				.foregroundColor(AppColors.foreground)
 

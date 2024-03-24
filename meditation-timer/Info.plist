@@ -8,6 +8,10 @@
 	<string></string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>SmoochSans-Medium.ttf</string>
+		<string>SmoochSans-SemiBold.ttf</string>
+		<string>SmoochSans-Bold.ttf</string>
+		<string>SmoochSans-Regular.ttf</string>
 		<string>Comfortaa-Regular.ttf</string>
 		<string>Barlow-Bold.ttf</string>
 		<string>Barlow-Black.ttf</string>

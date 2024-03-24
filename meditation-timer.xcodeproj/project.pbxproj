@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8406C7942BB0B81E0081F49F /* SmoochSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C78B2BB0B81D0081F49F /* SmoochSans-Regular.ttf */; };
+		8406C7952BB0B81E0081F49F /* SmoochSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C78C2BB0B81D0081F49F /* SmoochSans-Light.ttf */; };
+		8406C7962BB0B81E0081F49F /* SmoochSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C78D2BB0B81D0081F49F /* SmoochSans-ExtraBold.ttf */; };
+		8406C7972BB0B81E0081F49F /* SmoochSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C78E2BB0B81E0081F49F /* SmoochSans-Black.ttf */; };
+		8406C7982BB0B81E0081F49F /* SmoochSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C78F2BB0B81E0081F49F /* SmoochSans-ExtraLight.ttf */; };
+		8406C7992BB0B81E0081F49F /* SmoochSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C7902BB0B81E0081F49F /* SmoochSans-Bold.ttf */; };
+		8406C79A2BB0B81E0081F49F /* SmoochSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C7912BB0B81E0081F49F /* SmoochSans-SemiBold.ttf */; };
+		8406C79B2BB0B81E0081F49F /* SmoochSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C7922BB0B81E0081F49F /* SmoochSans-Medium.ttf */; };
+		8406C79C2BB0B81E0081F49F /* SmoochSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8406C7932BB0B81E0081F49F /* SmoochSans-Thin.ttf */; };
 		841E00092A8D2AE300E9BE5B /* MeditationTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */; };
 		841E000B2A8D2AE300E9BE5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841E000A2A8D2AE300E9BE5B /* ContentView.swift */; };
 		841E000D2A8D2AE400E9BE5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 841E000C2A8D2AE400E9BE5B /* Assets.xcassets */; };
@@ -22,7 +31,6 @@
 		84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */; };
 		84504B232A99D4E30064A378 /* MeditationTimer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 84504B212A99D4E30064A378 /* MeditationTimer.xcdatamodeld */; };
 		84504B252A99D60F0064A378 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84504B242A99D60F0064A378 /* DataController.swift */; };
-		8480B0632AE89B9600C8DE4D /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8480B0622AE89B9600C8DE4D /* Settings.swift */; };
 		84865CC02A9D8900009C655C /* singing-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CBF2A9D8900009C655C /* singing-bowl.mp3 */; };
 		84865CC22A9D8936009C655C /* chakra-bowl.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 84865CC12A9D8936009C655C /* chakra-bowl.mp3 */; };
 		84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84865CC32AA3D577009C655C /* BackgroundTask.swift */; };
@@ -50,6 +58,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8406C78B2BB0B81D0081F49F /* SmoochSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Regular.ttf"; sourceTree = "<group>"; };
+		8406C78C2BB0B81D0081F49F /* SmoochSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Light.ttf"; sourceTree = "<group>"; };
+		8406C78D2BB0B81D0081F49F /* SmoochSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		8406C78E2BB0B81E0081F49F /* SmoochSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Black.ttf"; sourceTree = "<group>"; };
+		8406C78F2BB0B81E0081F49F /* SmoochSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		8406C7902BB0B81E0081F49F /* SmoochSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Bold.ttf"; sourceTree = "<group>"; };
+		8406C7912BB0B81E0081F49F /* SmoochSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		8406C7922BB0B81E0081F49F /* SmoochSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Medium.ttf"; sourceTree = "<group>"; };
+		8406C7932BB0B81E0081F49F /* SmoochSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SmoochSans-Thin.ttf"; sourceTree = "<group>"; };
 		841E00052A8D2AE300E9BE5B /* meditation-timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "meditation-timer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		841E00082A8D2AE300E9BE5B /* MeditationTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimerApp.swift; sourceTree = "<group>"; };
 		841E000A2A8D2AE300E9BE5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,7 +84,6 @@
 		84504B1F2A99C4B70064A378 /* CircularProgressIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularProgressIndicator.swift; sourceTree = "<group>"; };
 		84504B222A99D4E30064A378 /* MeditationTimer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MeditationTimer.xcdatamodel; sourceTree = "<group>"; };
 		84504B242A99D60F0064A378 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
-		8480B0622AE89B9600C8DE4D /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		84865CBF2A9D8900009C655C /* singing-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "singing-bowl.mp3"; sourceTree = "<group>"; };
 		84865CC12A9D8936009C655C /* chakra-bowl.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "chakra-bowl.mp3"; sourceTree = "<group>"; };
 		84865CC32AA3D577009C655C /* BackgroundTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundTask.swift; sourceTree = "<group>"; };
@@ -130,7 +146,6 @@
 				84EB92EF2ABBA93700BBD25B /* CompletedMeditation.swift */,
 				841E000A2A8D2AE300E9BE5B /* ContentView.swift */,
 				844CC3142AC227DD00D7F25B /* WelcomeScreen.swift */,
-				8480B0622AE89B9600C8DE4D /* Settings.swift */,
 				84865CD12AA52478009C655C /* Int+TimeFormatting.swift */,
 				84865CCB2AA3DAA5009C655C /* SoundManager.swift */,
 				84865CE52AA83ACE009C655C /* TimerManager.swift */,
@@ -172,6 +187,15 @@
 				84AC4B8C2A9D853200028D6E /* chime.mp3 */,
 				84865CBF2A9D8900009C655C /* singing-bowl.mp3 */,
 				84865CC12A9D8936009C655C /* chakra-bowl.mp3 */,
+				8406C78E2BB0B81E0081F49F /* SmoochSans-Black.ttf */,
+				8406C7902BB0B81E0081F49F /* SmoochSans-Bold.ttf */,
+				8406C78D2BB0B81D0081F49F /* SmoochSans-ExtraBold.ttf */,
+				8406C78F2BB0B81E0081F49F /* SmoochSans-ExtraLight.ttf */,
+				8406C78C2BB0B81D0081F49F /* SmoochSans-Light.ttf */,
+				8406C7922BB0B81E0081F49F /* SmoochSans-Medium.ttf */,
+				8406C78B2BB0B81D0081F49F /* SmoochSans-Regular.ttf */,
+				8406C7912BB0B81E0081F49F /* SmoochSans-SemiBold.ttf */,
+				8406C7932BB0B81E0081F49F /* SmoochSans-Thin.ttf */,
 				84504B182A99A4A40064A378 /* TitanOne-Regular.ttf */,
 				84865CDA2AA7027D009C655C /* Comfortaa-Bold.ttf */,
 				84865CDC2AA7027D009C655C /* Comfortaa-Light.ttf */,
@@ -246,21 +270,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				84865CDF2AA7027D009C655C /* Comfortaa-SemiBold.ttf in Resources */,
+				8406C79C2BB0B81E0081F49F /* SmoochSans-Thin.ttf in Resources */,
 				84865CE42AA7027D009C655C /* Comfortaa-Medium.ttf in Resources */,
 				844CC31D2AC2589D00D7F25B /* Barlow-Regular.ttf in Resources */,
+				8406C7952BB0B81E0081F49F /* SmoochSans-Light.ttf in Resources */,
 				84AC4B8B2A9D7B2C00028D6E /* complete.mp3 in Resources */,
 				841E00102A8D2AE400E9BE5B /* Preview Assets.xcassets in Resources */,
 				84865CCA2AA3D936009C655C /* blank.wav in Resources */,
 				84865CE22AA7027D009C655C /* Comfortaa-Light.ttf in Resources */,
+				8406C7942BB0B81E0081F49F /* SmoochSans-Regular.ttf in Resources */,
+				8406C79A2BB0B81E0081F49F /* SmoochSans-SemiBold.ttf in Resources */,
 				84504B1B2A99A5D80064A378 /* TitanOne-Regular.ttf in Resources */,
 				84865CE02AA7027D009C655C /* Comfortaa-Bold.ttf in Resources */,
+				8406C7992BB0B81E0081F49F /* SmoochSans-Bold.ttf in Resources */,
 				84AC4B8D2A9D853200028D6E /* chime.mp3 in Resources */,
+				8406C7962BB0B81E0081F49F /* SmoochSans-ExtraBold.ttf in Resources */,
 				844CC3192AC2587900D7F25B /* Barlow-Bold.ttf in Resources */,
 				84504B1D2A99A6500064A378 /* VarelaRound.ttf in Resources */,
+				8406C79B2BB0B81E0081F49F /* SmoochSans-Medium.ttf in Resources */,
 				844CC31B2AC2588900D7F25B /* Barlow-Black.ttf in Resources */,
 				84865CC02A9D8900009C655C /* singing-bowl.mp3 in Resources */,
 				84865CE32AA7027D009C655C /* Comfortaa-Regular.ttf in Resources */,
 				841E000D2A8D2AE400E9BE5B /* Assets.xcassets in Resources */,
+				8406C7972BB0B81E0081F49F /* SmoochSans-Black.ttf in Resources */,
+				8406C7982BB0B81E0081F49F /* SmoochSans-ExtraLight.ttf in Resources */,
 				84EB92EE2AAF6EFF00BBD25B /* Colors.xcassets in Resources */,
 				84865CE12AA7027D009C655C /* Comfortaa-VariableFont_wght.ttf in Resources */,
 				84865CC22A9D8936009C655C /* chakra-bowl.mp3 in Resources */,
@@ -289,7 +322,6 @@
 				8497B8792ABFB17500436FFC /* HealthKitManager.swift in Sources */,
 				844CC3152AC227DD00D7F25B /* WelcomeScreen.swift in Sources */,
 				84865CC62AA3D6EE009C655C /* Logger.swift in Sources */,
-				8480B0632AE89B9600C8DE4D /* Settings.swift in Sources */,
 				84865CC42AA3D577009C655C /* BackgroundTask.swift in Sources */,
 				84504B202A99C4B70064A378 /* CircularProgressIndicator.swift in Sources */,
 				844CC3172AC2284200D7F25B /* PrimaryActionButton.swift in Sources */,
