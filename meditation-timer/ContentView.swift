@@ -22,17 +22,13 @@ struct ContentView: View {
 				case .warmup:
 					TimerView(timeRemaining: warmupTimeRemaining,
 										label: "Warm Up",
-										icon: "forward.end.fill",
 										duration: vm.warmupDuration,
-										onTapPrimary: vm.warmupDidComplete,
-										onTapCancel: vm.stopMeditation)
+										onActionTap: vm.stopMeditation)
 				case .meditate:
 					TimerView(timeRemaining: meditationTimeRemaining,
 										label: "Meditate",
-										icon: "stop.fill",
 										duration: vm.meditationDuration,
-										onTapPrimary: vm.stopMeditation,
-										onTapCancel: vm.stopMeditation)
+										onActionTap: vm.stopMeditation)
 				case .complete:
 					CompletedMeditation {
 						HealthKitManager.shared.writeMindfulMinutes(seconds: vm.meditationDuration) { succeeded, err in }
@@ -82,12 +78,9 @@ struct ContentView: View {
 struct TimerView: View {
 	var timeRemaining: Int
 	var label: String
-	var icon: String
 	var duration: Int
 
-	// TODO: Remove me. There's only a cancel button now, no skip
-	var onTapPrimary: (() -> Void)
-	var onTapCancel: (() -> Void)
+	var onActionTap: (() -> Void)
 
 	var body: some View {
 		VStack {
@@ -100,7 +93,7 @@ struct TimerView: View {
 						.font(.custom("SmoochSans-Medium", size: 90))
 						.foregroundStyle(AppColors.background)
 
-					Text("Warmup")
+					Text(label)
 						.font(.custom("Barlow-Bold", size: 18))
 						.foregroundStyle(AppColors.background)
 				}
@@ -109,8 +102,10 @@ struct TimerView: View {
 			Spacer()
 
 			Text("Cancel")
+				.font(.custom("Barlow-Bold", size: 18))
+				.foregroundStyle(AppColors.foreground)
 				.onTapGesture {
-					onTapCancel()
+					onActionTap()
 				}
 		}
 		.padding(.vertical)
@@ -118,7 +113,7 @@ struct TimerView: View {
 }
 
 #Preview {
-	TimerView(timeRemaining: 458, label: "Warmup", icon: "stop.fill", duration: 600, onTapPrimary: {}, onTapCancel: {})
+	TimerView(timeRemaining: 458, label: "Warmup", duration: 600, onActionTap: {})
 }
 
 
