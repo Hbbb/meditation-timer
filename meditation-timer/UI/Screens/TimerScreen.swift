@@ -32,13 +32,7 @@ struct TimerScreen: View {
 			}
 
 			Spacer()
-
-			Text("Cancel")
-				.font(.custom("Barlow-Bold", size: 18))
-				.foregroundStyle(AppColors.foreground)
-				.onTapGesture {
-					onActionTap()
-				}
+			SecondaryButtonView(onTap: onActionTap)
 		}
 		.padding(.vertical)
 	}
