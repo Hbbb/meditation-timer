@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WelcomeScreen: View {
+struct HealthKitPermissionScreen: View {
 	@EnvironmentObject var vm: MeditationViewModel
 
 	var body: some View {
@@ -20,7 +20,7 @@ struct WelcomeScreen: View {
 				.padding(.bottom, 200)
 				.font(.custom("Barlow-Regular", size: 20))
 
-			PrimaryActionButton(onTap: {
+			PrimaryButtonView(onTap: {
 				HealthKitManager.shared.requestHealthKitPermission() { succeeded, err in
 					DispatchQueue.main.async {
 						vm.didCompleteOnboarding()
@@ -42,5 +42,5 @@ struct WelcomeScreen: View {
 }
 
 #Preview {
-	WelcomeScreen()
+	HealthKitPermissionScreen()
 }

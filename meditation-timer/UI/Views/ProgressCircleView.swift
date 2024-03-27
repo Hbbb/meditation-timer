@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProgressCircle: View {
+struct ProgressCircleView: View {
 	// State variable to control the scale of the circle
 	@State private var scale: CGFloat = 2
 
@@ -29,10 +29,10 @@ struct ProgressCircle: View {
 
 struct ProgressCircle_Previews: PreviewProvider {
 	static var previews: some View {
-		ProgressCircle()
+		ProgressCircleView()
 	}
 }
 
 #Preview {
-    ProgressCircle()
+    ProgressCircleView()
 }

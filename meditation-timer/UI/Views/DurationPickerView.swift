@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class DurationPicker: UIScrollView {
+class DurationPickerView: UIScrollView {
 	static let maxTicks: Int = 105
 
 	var tickWidth: CGFloat = 5
@@ -41,7 +41,7 @@ class DurationPicker: UIScrollView {
 	}
 
 	private func setupTicks() {
-		for i in 0..<DurationPicker.maxTicks {
+		for i in 0..<DurationPickerView.maxTicks {
 			let tick = UIView()
 
 			tick.backgroundColor = tickColor
@@ -54,13 +54,13 @@ class DurationPicker: UIScrollView {
 			self.addSubview(tick)
 		}
 
-		self.contentSize = CGSize(width: CGFloat(DurationPicker.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
+		self.contentSize = CGSize(width: CGFloat(DurationPickerView.maxTicks) * (tickWidth + 20), height: self.frame.size.height)
 	}
 
 	private func setScrollPosition() {
 		let minutes = self.duration
 		let contentWidth = self.contentSize.width
-		let offsetPerMinute = contentWidth / CGFloat(DurationPicker.maxTicks)
+		let offsetPerMinute = contentWidth / CGFloat(DurationPickerView.maxTicks)
 		let targetOffsetX = CGFloat(minutes) * offsetPerMinute
 
 		self.setContentOffset(CGPoint(x: targetOffsetX, y: 0), animated: true)
@@ -95,7 +95,7 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 		}
 
 		func scrollViewDidScroll(_ scrollView: UIScrollView) {
-			let rawDuration = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / CGFloat(DurationPicker.maxTicks))) + 1
+			let rawDuration = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / CGFloat(DurationPickerView.maxTicks))) + 1
 			let newDuration = min(90, max(1, rawDuration)) * 60
 
 			if newDuration != parent.duration {
@@ -113,8 +113,8 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 		Coordinator(self)
 	}
 
-	func makeUIView(context: Context) -> DurationPicker {
-		let customSlider = DurationPicker(
+	func makeUIView(context: Context) -> DurationPickerView {
+		let customSlider = DurationPickerView(
 			frame: CGRect(x: 0, y: 0, width: 500, height: 70),
 			tickColor: colorScheme == .dark ? UIColor.white : UIColor.black,
 			duration: duration)
@@ -123,7 +123,7 @@ struct DurationPickerRepresentable: UIViewRepresentable {
 		return customSlider
 	}
 
-	func updateUIView(_ uiView: DurationPicker, context: Context) {
+	func updateUIView(_ uiView: DurationPickerView, context: Context) {
 		// View updates. Not sure when this is called
 	}
 }

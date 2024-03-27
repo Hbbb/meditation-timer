@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct PrimaryActionButton: View {
+struct PrimaryButtonView: View {
 	var onTap: (() -> Void)
 
 	var body: some View {
@@ -64,5 +64,5 @@ struct PlayTriangle: Shape {
 }
 
 #Preview {
-	PrimaryActionButton(onTap: {})
+	PrimaryButtonView(onTap: {})
 }

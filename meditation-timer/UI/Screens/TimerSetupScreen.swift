@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimerConfig: View {
+struct TimerSetupScreen: View {
 	@EnvironmentObject var vm: MeditationViewModel
 
 	var body: some View {
@@ -34,7 +34,7 @@ struct TimerConfig: View {
 			.pickerStyle(.segmented)
 			.padding(.bottom, 60)
 
-			PrimaryActionButton(onTap: vm.startMeditation)
+			PrimaryButtonView(onTap: vm.startMeditation)
 		}
 		.padding(.horizontal)
 		.padding(.vertical)
@@ -46,7 +46,7 @@ struct TimerConfig: View {
 struct TimerConfig_Previews: PreviewProvider {
 	static var previews: some View {
 		Group {
-			TimerConfig()
+			TimerSetupScreen()
 				.environmentObject(MeditationViewModel())
 		}
 	}

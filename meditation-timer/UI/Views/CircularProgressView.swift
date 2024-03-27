@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct CircularProgressIndicator: View {
+struct CircularProgressView: View {
 	@State private var elapsedTime: Double = 0.0
 	var duration: Double
 
@@ -48,7 +48,7 @@ struct CircularProgressIndicator: View {
 struct CircularProgressIndicator_Previews: PreviewProvider {
 	static var previews: some View {
 		VStack {
-			CircularProgressIndicator(duration: 60)
+			CircularProgressView(duration: 60)
 				.frame(width: 225, height: 225)
 		}
 		.frame(maxWidth: .infinity, maxHeight: .infinity)

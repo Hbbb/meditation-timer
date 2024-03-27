@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CompletedMeditation: View {
+struct MeditationCompleteScreen: View {
 	@State var scale: CGFloat = 1
 	var onTapComplete: (() -> Void)
 
@@ -46,6 +46,6 @@ struct CompletedMeditation: View {
 
 struct CompletedMeditation_Previews: PreviewProvider {
 	static var previews: some View {
-		CompletedMeditation(onTapComplete: {})
+		MeditationCompleteScreen(onTapComplete: {})
 	}
 }

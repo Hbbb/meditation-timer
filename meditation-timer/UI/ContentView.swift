@@ -16,21 +16,21 @@ struct ContentView: View {
 		ZStack {
 			switch vm.screenState {
 				case .onboard:
-					WelcomeScreen()
+					HealthKitPermissionScreen()
 				case .setup:
-					TimerConfig()
+					TimerSetupScreen()
 				case .warmup:
-					TimerView(timeRemaining: warmupTimeRemaining,
+					TimerScreen(timeRemaining: warmupTimeRemaining,
 										label: "Warmup",
 										duration: vm.warmupDuration,
 										onActionTap: vm.stopMeditation)
 				case .meditate:
-					TimerView(timeRemaining: meditationTimeRemaining,
+					TimerScreen(timeRemaining: meditationTimeRemaining,
 										label: "Meditate",
 										duration: vm.meditationDuration,
 										onActionTap: vm.stopMeditation)
 				case .complete:
-					CompletedMeditation {
+					MeditationCompleteScreen {
 						HealthKitManager.shared.writeMindfulMinutes(seconds: vm.meditationDuration) { succeeded, err in }
 						vm.screenState = .setup
 						vm.stopSound()
@@ -74,46 +74,3 @@ struct ContentView: View {
 //						}
 	}
 }
-
-struct TimerView: View {
-	var timeRemaining: Int
-	var label: String
-	var duration: Int
-
-	var onActionTap: (() -> Void)
-
-	var body: some View {
-		VStack {
-			Spacer()
-
-			ZStack {
-				ProgressCircle()
-				VStack {
-					Text(timeRemaining.toMMSS())
-						.font(.custom("SmoochSans-Medium", size: 90))
-						.foregroundStyle(AppColors.background)
-
-					Text(label)
-						.font(.custom("Barlow-Bold", size: 18))
-						.foregroundStyle(AppColors.background)
-				}
-			}
-
-			Spacer()
-
-			Text("Cancel")
-				.font(.custom("Barlow-Bold", size: 18))
-				.foregroundStyle(AppColors.foreground)
-				.onTapGesture {
-					onActionTap()
-				}
-		}
-		.padding(.vertical)
-	}
-}
-
-#Preview {
-	TimerView(timeRemaining: 458, label: "Warmup", duration: 600, onActionTap: {})
-}
-
-
