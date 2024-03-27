@@ -26,7 +26,11 @@ struct HealthKitPermissionScreen: View {
 						vm.didCompleteOnboarding()
 					}
 				}
-			})
+			}) {
+				Image(systemName: "play.fill")
+					.rotationEffect(.degrees(90))
+					.offset(x: 3)
+			}
 			.padding(.bottom, 20)
 
 			Text("Skip")

@@ -21,8 +21,12 @@ struct MeditationCompleteScreen: View {
 				.font(.custom("Barlow-Bold", size: 18))
 				.foregroundStyle(AppColors.foreground)
 
-			CompleteButton(onTap: onTapComplete)
-				.padding(.top, 250)
+			PrimaryButtonView(onTap: onTapComplete) {
+				Image(systemName: "hand.thumbsup")
+					.foregroundColor(.background)
+					.font(.system(size: 28))
+			}
+			.padding(.top, 250)
 		}
 		.padding(.horizontal)
 		.padding(.vertical)

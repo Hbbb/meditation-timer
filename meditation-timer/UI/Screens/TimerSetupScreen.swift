@@ -34,7 +34,11 @@ struct TimerSetupScreen: View {
 			.pickerStyle(.segmented)
 			.padding(.bottom, 60)
 
-			PrimaryButtonView(onTap: vm.startMeditation)
+			PrimaryButtonView(onTap: vm.startMeditation) {
+				Image(systemName: "play.fill")
+					.font(.system(size: 28))
+					.offset(x: 3)
+			}
 		}
 		.padding(.horizontal)
 		.padding(.vertical)
