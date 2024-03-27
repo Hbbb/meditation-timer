@@ -99,7 +99,6 @@ class MeditationViewModel: ObservableObject {
 		screenState = .setup
 	}
 
-
 	private func saveMeditationPreferences() {
 		savedMeditationDuration = meditationDuration
 		savedWarmupDuration = warmupDuration
@@ -126,4 +125,3 @@ class MeditationViewModel: ObservableObject {
 		}
 	}
 }
-
